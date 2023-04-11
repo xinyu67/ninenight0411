@@ -1,4 +1,5 @@
 ﻿using DI.Service;
+using DI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +22,9 @@ namespace DI.Controllers
 
         //品牌故事總覽
         [HttpGet]
-        public IActionResult Allproduct()
+        public IActionResult AllStory()
         {
-            var result = _storyDBService.GetProducts();
+            var result = _storyDBService.AllStory();
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
@@ -33,6 +34,28 @@ namespace DI.Controllers
 
 
         //新增品牌故事
+        [HttpPost]
+        public IActionResult CreateStory([FromBody] StoryCreateViewModels value) {
+            var result = _storyDBService.CreateStory(value);
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+
+
+        //修改品牌故事
+        [HttpPut]
+        public IActionResult UpdStory([FromBody] StoryUpdateViewModels value)
+        {
+            var result = _storyDBService.UpdStory(value);
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
 
 
     }

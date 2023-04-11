@@ -125,11 +125,10 @@ namespace DI.Service
         public async Task<ProductCreateViewModels> CreateproductAsync(ProductCreateViewModels value, IFormFile file1) {
 
             var filename = file1.FileName;
+            var filePath = Path.Combine(connectionString, filename);
             using (var stream = System.IO.File.Create(filename)) {
-               //await file1.CopyToAsync(stream);
+               await file1.CopyToAsync(stream);
             }
-
-            //string filePath = Server.MapPath("~/wwwroot/");//保存文件的路徑
 
             //將檔案和伺服器上路徑合併
             //string Url = Path.Combine(Server.MapPath("~/wwwroot/"), filename);
