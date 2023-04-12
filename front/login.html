@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!--google font-->
+    <!---
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+    -->
+    <!--google font-->
+    <!--網站icon-->
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+    <!--網站icon-->
+    <link rel="stylesheet" href="./css/login.css">
+    <title>會員登入</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo ">
+                <a href="./login.html"><img src="./img/logo.png "></a>
+            </div>
+            <div class="center-box ">
+                <nav class="menu ">
+                    <ul>
+                        <li>
+                            <a href="./front-story.html">品牌故事</a>
+                        </li>
+                        <li>
+                            <a href="./front-news.html">最新資訊</a>
+                        </li>
+                        <li>
+                            <a href="./front-store.html">門市據點</a>
+                        </li>
+                        <li>
+                            <a href="./front-product.html">產品總覽</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-box " id="login1">
+                <ul>
+                    <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box " id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
+                <div class="dropdown">
+                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <div class="dropdown-content">
+                        <a href="./front-fix-user.html">修改資料</a>
+                        <a href="./front-fixpwd-verification.html">修改密碼</a>
+                        <a href="./front-myorder.html">我的訂單</a>
+                        <a href="./front-login.html">登 &nbsp 出</a>
+                    </div>
+                </div>
+
+                <ul id="cart">
+                    <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+    <content>
+        <div class="login-word">會 員 登 入</div>
+        <form>
+            <div class="login-content">
+                <div class="login-user">帳號：<input type="text" id="user55" name="user55" required></div>
+                <div class="login-pwd">密碼：<input type="password" required></div>
+                <div class="login-button"><input type="button" class="loginb mouse" id="login" value="登入"></div>
+                <div class="function">
+                    <div class="forget"><a href="./forget.html" class="noline">忘記密碼?</a></div>
+                    <div class="register"><a href="./signup.html" class="noline">會員註冊</a></div>
+                </div>
+            </div>
+        </form>
+    </content>
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+    </div>
+    <footer>
+        <div class="copy">
+            <p>版權所有 Copyright © 2023 Nine Night </p>
+        </div>
+    </footer>
+</body>
+<script src="./js/login.js"></script>
+
+</html>

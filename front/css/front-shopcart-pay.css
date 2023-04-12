@@ -1,0 +1,387 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Libre Baskerville', serif, '微軟正黑體';
+    background-color: rgba(255, 250, 244, 1);
+    height: 100%;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(90, 58, 41, 1);
+    position: fixed;
+    z-index: 9;
+    top: 0px;
+}
+
+.header-content {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    /*上右下左*/
+    padding: 0px 20px 0px 20px;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.center-box {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul {
+    /*取消項目符號*/
+    list-style-type: none;
+    display: flex;
+    height: 100%;
+}
+
+.menu li {
+    height: 100%;
+    display: contents;
+}
+
+.menu a:hover {
+    background-color: #8383837e;
+    border-bottom: 3px solid #E5E5D4;
+}
+
+.menu a {
+    color: #E5E5D4;
+    font-size: 22px;
+    /*取消底線*/
+    text-decoration: none;
+    padding-left: 40px;
+    padding-right: 40px;
+    letter-spacing: 0.05em;
+    align-items: center;
+    display: flex;
+}
+
+
+/*Header下拉選單*/
+
+.right-box {
+    display: flex;
+}
+
+.userbtn,
+.cartbtn {
+    background-color: rgba(90, 58, 41, 1);
+    color: #EAE4DD;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #EAE4DD;
+    min-width: 100.5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+}
+
+.dropdown-content a {
+    color: rgba(90, 58, 41, 1);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1px rgb(109, 107, 107) solid;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/*Header 購物車icon*/
+
+#cart {
+    margin-top: 27px;
+}
+
+.right-box li {
+    list-style-type: none;
+}
+
+.right-box i {
+    font-size: 16px;
+    color: #E5E5D4;
+}
+
+
+/*----header END----*/
+
+.content {
+    width: 100%;
+    position: relative;
+    top: 70px;
+    padding-bottom: 180px;
+}
+
+.content img {
+    width: 100%;
+}
+
+.content-body {
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+}
+
+.content-body .t1 {
+    width: 60%;
+    text-align: center;
+    font-weight: bold;
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+.function {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.f-text {
+    color: #484848;
+}
+
+.content-body .t2 {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content-body th {
+    background-color: #A28360;
+    color: #fff;
+    padding: 10px 0px;
+}
+
+.take {
+    display: flex;
+    justify-content: center;
+}
+
+.content-body td {
+    background-color: #E5E5D4;
+    color: #484848;
+    padding: 10px 0px;
+    font-family: 'Inter';
+}
+
+.content-body li {
+    list-style: none;
+}
+
+.content-body a {
+    text-decoration: none;
+    color: #484848;
+}
+
+.table-img {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+.table-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.total-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: #EEEEEE;
+    align-items: center;
+    color: #484848;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#eng {
+    font-size: 12px;
+}
+
+.total-money {
+    color: #A28360;
+    padding-right: 10px;
+}
+
+.next {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.next button {
+    width: 60px;
+    height: 28px;
+    background-color: #B4A3A3;
+    color: #5A3A29;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    border: none;
+}
+
+.next li {
+    width: 60px;
+    height: 28px;
+    background-color: #B4A3A3;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    padding-top: 5px;
+}
+
+
+/**/
+
+.userbtn,
+.cartbtn {
+    background-color: rgba(90, 58, 41, 1);
+    color: #EAE4DD;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #EAE4DD;
+    min-width: 100.5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+}
+
+.dropdown-content a {
+    color: rgba(90, 58, 41, 1);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1px rgb(109, 107, 107) solid;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+/**/
+
+
+/*----content END----*/
+
+.footer {
+    background-color: rgba(90, 58, 41, 1);
+    width: 100%;
+    height: 60px;
+    padding-top: 20px;
+    margin-top: -64px;
+    position: relative;
+}
+
+.footer-slogan {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.slogan-left {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-right {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-img {
+    width: 45px;
+    height: 45px;
+    padding: 0px 15px;
+}
+
+.slogan-left img {
+    width: 100%;
+    height: 100%;
+}
+
+.slogan-right img {
+    width: 100%;
+    height: 100%;
+}
+
+.line {
+    margin: 0px 60px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #E5E5D4;
+    color: #E5E5D4;
+    font-size: 12px;
+}

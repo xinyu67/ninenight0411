@@ -1,0 +1,275 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Libre Baskerville', serif, '微軟正黑體';
+    background-color: rgba(255, 250, 244, 1);
+    height: 100%;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(90, 58, 41, 1);
+    position: fixed;
+    z-index: 9;
+    top: 0px;
+}
+
+.header-content {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    /*上右下左*/
+    padding: 0px 20px 0px 20px;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.center-box {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul {
+    /*取消項目符號*/
+    list-style-type: none;
+    display: flex;
+    height: 100%;
+}
+
+.menu li {
+    height: 100%;
+    display: contents;
+}
+
+.menu a:hover {
+    background-color: #8383837e;
+    border-bottom: 3px solid #E5E5D4;
+}
+
+.menu a {
+    color: #E5E5D4;
+    font-size: 22px;
+    /*取消底線*/
+    text-decoration: none;
+    padding-left: 40px;
+    padding-right: 40px;
+    letter-spacing: 0.05em;
+    align-items: center;
+    display: flex;
+}
+
+.right-box {
+    display: flex;
+    align-items: center;
+}
+
+.right-box ul {
+    list-style-type: none;
+}
+
+.right-box a {
+    text-decoration: none;
+    color: #E5E5D4;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+.right-box li a:hover {
+    color: #b8a397;
+}
+
+
+/*----header END----*/
+
+.content {
+    width: 100%;
+    min-height: 800px;
+    max-height: 100%;
+    position: relative;
+    top: 70px;
+    padding-bottom: 180px;
+}
+
+.content img {
+    width: 100%;
+}
+
+.content-body {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.content-frame {
+    width: 500px;
+    height: 300px;
+    border-radius: 3px;
+    background-color: #AB8C68;
+}
+
+.content-title {
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #5A3A29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.content-title span {
+    color: #E5E5D4;
+}
+
+#chi {
+    font-size: 22px;
+    letter-spacing: 0.4em;
+    padding-bottom: 4px;
+}
+
+#eng {
+    font-size: 12px;
+}
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.all {
+    text-align: center;
+    margin: 12px 0px;
+}
+
+.login-user,
+.login-pwd {
+    color: #FFFFFF;
+}
+
+.login-user input[type=text],
+input[type=password] {
+    background-color: #EAE4DD;
+    border: 1px solid #ccc;
+    padding: 4px 5px;
+    border-radius: 3px;
+}
+
+.login-button {
+    width: 60px;
+    height: 22px;
+    cursor: pointer;
+    border: none;
+    background: #EAE4DD;
+    border-radius: 3px;
+    list-style: none;
+    color: #5A3A29;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 2px 0px 0px 0px;
+}
+
+.login-button a {
+    text-decoration: none;
+    color: #5A3A29;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+.function {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+    padding: 15px 0px;
+    border-top: 2px solid #fff;
+}
+
+.function a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/*----content END----*/
+
+.footer {
+    background-color: rgba(90, 58, 41, 1);
+    width: 100%;
+    height: 60px;
+    padding-top: 20px;
+    margin-top: -64px;
+    position: relative;
+}
+
+.footer-slogan {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.slogan-left {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-right {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-img {
+    width: 45px;
+    height: 45px;
+    padding: 0px 15px;
+}
+
+.slogan-left img {
+    width: 100%;
+    height: 100%;
+}
+
+.slogan-right img {
+    width: 100%;
+    height: 100%;
+}
+
+.line {
+    margin: 0px 60px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #E5E5D4;
+    color: #E5E5D4;
+    font-size: 12px;
+}
+
+
+/**/

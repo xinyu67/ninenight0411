@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車-結帳</title>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/front-shopcart-pay.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo">
+                <a href="./front-index.html" target="_self"><img src="./img/logo.png "></a>
+            </div>
+            <div class="center-box ">
+                <nav class="menu ">
+                    <ul>
+                        <li>
+                            <a href="./front-story.html">品牌故事</a>
+                        </li>
+                        <li>
+                            <a href="./front-news.html">最新資訊</a>
+                        </li>
+                        <li>
+                            <a href="./front-store.html">門市據點</a>
+                        </li>
+                        <li>
+                            <a href="./front-product.html">產品總覽</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-box">
+                <div class="dropdown">
+                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <div class="dropdown-content">
+                        <a href="./front-fix-user.html">修改資料</a>
+                        <a href="./front-fixpwd-verification.html">修改密碼</a>
+                        <a href="./front-myorder.html">我的訂單</a>
+                        <a href="./login.html">登 &nbsp 出</a>
+                    </div>
+                </div>
+
+                <ul id="cart">
+                    <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="content">
+        <img src="./img/bannerpng7.png">
+        <div class="content-body">
+            <table class="t1">
+                <tr>
+                    <th>取貨人</th>
+                    <th style=" background-color: #E5E5D4;"><input type="text" style="height: 20px;"></th>
+                </tr>
+
+                <tr>
+                    <th>取貨方式</th>
+                    <th style=" background-color: #E5E5D4;">
+                        <div class="function">
+                            <div class="f-text"><input type="radio" name="take" value="self" checked>自取
+                                <select>
+                            <option value="">--請選擇--</option>
+                            <option value="Taipei">Nine-Night臺北直營店</option>
+                            <option value="Taichung">Nine-Night臺中旗艦店</option>
+                        </select>
+                            </div><br>
+                            <div class="f-text"><input type="radio" name="take" value="delivery">宅配
+                                <input type="text" style="width: 70%;">
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>取貨時間</th>
+                    <td>
+                        <div class="take">
+                            <select id="ampm">
+                        <option value="">--請選擇--</option>
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                            <select id="amtime">
+                        <option value="">--請選擇--</option>
+                        <option value="">00:00~03:00</option>
+                        <option value="">03:00~06:00</option>
+                        <option value="">06:00~09:00</option>
+                        <option value="">09:00~12:00</option>
+                    </select>
+
+                            <select id="pmtime">
+                        <option value="" >--請選擇--</option>
+                        <option value="">12:00~15:00</option>
+                        <option value="">15:00~18:00</option>
+                        <option value="">18:00~21:00</option>
+                        <option value="">21:00~00:00</option>
+                    </select>
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+            <table class="t2">
+                <tr>
+                    <th>產品圖片</th>
+                    <th>產品名稱</th>
+                    <th>產品價格</th>
+                    <th>產品數量</th>
+                    <th>總金額</th>
+                    <th>操作</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="table-img"><img src="./img/product/p1.png"></div>
+                    </td>
+                    <td>海尼根星銀啤酒&nbsp;650ml</td>
+                    <td>$75</td>
+                    <td>
+                        <!--<input id="dec" type="button" value="-">-->
+                        <input id="count" type="text" value="2" size="1" style="text-align:center; background-color:#d2d0d0;" readonly>
+                        <!--<input id="inc" type="button" value="+">-->
+                    </td>
+                    <td>$160</td>
+                    <td>
+                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="table-img"><img src="./img/product/p3.png"></div>
+                    </td>
+                    <td>虎牌1度C冰釀啤酒&nbsp;600ml</td>
+                    <td>$60</td>
+                    <td>
+                        <!--<input id="dec" type="button" value="-">-->
+                        <input id="count" type="text" value="2" size="1" style="text-align:center;background-color:#d2d0d0;" readonly>
+                        <!--<input id="inc" type="button" value="+">-->
+                    </td>
+                    <td>$120</td>
+                    <td>
+                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="total-content">
+                <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
+
+                <div class="total-money">$280</div>
+            </div>
+
+            <div class="next">
+                <!--<button>去結帳</button>-->
+                <li><a href="./front-myorder.html">送出</a></li>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="line">
+            版權所有 Copyright © 2023 Nine Night
+        </div>
+    </footer>
+
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+
+    </div>
+
+</body>
+<script src="./js/front-shopcart-pay.js"></script>
+
+</html>
