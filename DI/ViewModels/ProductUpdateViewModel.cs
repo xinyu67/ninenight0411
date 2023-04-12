@@ -10,7 +10,7 @@
         public Guid place_id { get; set; }
         public int product_ml { get; set; }
         public string product_content { get; set; }
-        public string update_id { get; set; }
-        public DateTime update_time { get; set; }
+        //public string update_id { get; set; }
+        //public DateTime update_time { get; set; }
     }
 }

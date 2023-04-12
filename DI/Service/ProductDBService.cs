@@ -104,6 +104,22 @@ namespace DI.Service
                         Data.product_ml = (int)reader["product_ml"];
                         Data.product_content = reader["product_content"].ToString();
                         Data.isdel = (bool)reader["isdel"];
+                        if (reader["update_id"].Equals(DBNull.Value))
+                        {
+                            Data.update_id = null;
+                        }
+                        else
+                        {
+                            Data.update_id = reader["update_id"].ToString();
+                        }
+                        if (reader["update_time"].Equals(DBNull.Value))
+                        {
+                            Data.update_time = null;
+                        }
+                        else
+                        {
+                            Data.update_time = (DateTime)reader["update_time"];
+                        }
 
                         DataList.Add(Data);
                     }

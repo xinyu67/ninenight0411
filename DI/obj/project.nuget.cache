@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GBaUlBhLrAR6D//KmmuVc6emfJI9X3dXN8RlTzourTvEW4fNUxjjnjNfHzWMmR2DpzA6PhjIojb0utjWgvnz5w==",
+  "dgSpecHash": "qdkmQektdk4+Mr/v+SCoS3ADOalXiclB8F1PThZJeKC442AB6QQ2+22vfUb9LEPJzQDcclyaFeWzTHucSbJnuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\silvi\\OneDrive\\桌面\\DI\\DI\\DI.csproj",
+  "projectFilePath": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\DI\\DI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\silvi\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\silvi\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
