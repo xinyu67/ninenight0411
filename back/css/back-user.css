@@ -1,0 +1,332 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Libre Baskerville', serif, '微軟正黑體';
+    background-color: rgba(255, 250, 244, 1);
+}
+.mouse{
+    cursor: pointer;
+}
+input[type=text] {
+    width: 30%;
+    padding: 6px 15px;
+    margin: 2px 0;
+    box-sizing: content-box;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 17px;
+    color: #5A3A29;
+    background-color: #b8b6b662;
+  }
+  input[type=text]:focus {
+    background-color: #b8b6b6;
+  }
+
+
+
+
+header {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(90, 58, 41, 1);
+    position: fixed;
+    z-index: 9;
+    top: 0px;
+}
+
+.header-content {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    /*上右下左*/
+    padding: 0px 20px 0px 20px;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.center-box {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul {
+    /*取消項目符號*/
+    list-style-type: none;
+    display: flex;
+    height: 100%;
+}
+
+.menu li {
+    height: 100%;
+    display: contents;
+}
+
+.menu a:hover {
+    background-color: #8383837e;
+    border-bottom: 3px solid #E5E5D4;
+}
+
+.thispage a{
+    background-color: #8383837e;
+}
+
+.menu a {
+    color: #E5E5D4;
+    font-size: 22px;
+    /*取消底線*/
+    text-decoration: none;
+    padding-left: 40px;
+    padding-right: 40px;
+    letter-spacing: 0.05em;
+    align-items: center;
+    display: flex;
+}
+
+.right-box {
+    display: flex;
+    align-items: center;
+}
+
+.right-box ul {
+    list-style-type: none;
+}
+
+.right-box a {
+    text-decoration: none;
+    color: #E5E5D4;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+.right-box li a:hover {
+    color: #b8a397;
+}
+
+/*header結束*/
+
+.banner1{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5A3A29;
+    margin-top: 70px;
+    border-top: 2px solid #EAE4DD;
+}
+.change-btn{
+    background-color: #EAE4DD;
+    color: #5A3A29;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+}
+.change-btn:hover{
+    background-color: #A28360;
+    color: #EAE4DD;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+}
+.logout-btn{
+    background-color: #EAE4DD;
+    color: #B71515;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+    margin-left: 10px;
+}
+.logout-btn:hover{
+    background-color: #B71515;
+    color: #EAE4DD;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+}
+
+/*banner1結束*/
+
+
+.content{
+    width: calc(100% - 600px);
+    min-height: 800px;
+    max-height: 100%;
+    padding: 0px 300px;
+
+}
+.search{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-btn{
+    background-color: #5a3a29ee;
+    color: #EAE4DD;
+    font-size: 18px;
+    border: 0px;
+    border-radius: 50px;
+    padding: 0px 30px;
+    margin-left: 10px;
+    height: 32px;
+}
+.search-btn:hover{
+    background-color: #5A3A29;
+    color: #EAE4DD;
+}
+
+table{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 30px;
+}
+table th{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    padding: 0px 5px;
+    background-color: #A28360;
+    width: 25%;
+    height: 30px;
+}
+table td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    padding: 0px 5px;
+    height: 30px;
+}
+
+
+
+
+/*content結束*/
+
+.footer-slogan {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.slogan-left {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-right {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+    display: contents;
+}
+
+.slogan-img {
+    width: 45px;
+    height: 45px;
+    padding: 0px 15px;
+}
+
+.slogan-left img {
+    width: 100%;
+    height: 100%;
+}
+
+.slogan-right img {
+    width: 100%;
+    height: 100%;
+}
+
+
+footer {
+    background-color: #5A3A29;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0px;
+    bottom: 55px;
+    position: relative;
+    width: 100%;
+    height: 50px;
+  }
+
+  .copy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 60px;
+    padding-top: 20px;
+    border-top: 1px solid #afafaf;
+    font-size: 12px;
+  }
+
+
+  /*按鈕*/
+  .edit-btn{
+    background-color: #5a3a29;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 10px;
+    margin: 0px 10px;
+    height: 24px;
+}
+  .edit-btn:hover{
+    background-color: #5a3a2967;
+    color: #5a3a29;
+}
+
+.stop-btn{
+    background-color: #B71515;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 10px;
+    margin: 0px 10px;
+    height: 24px;
+}
+  .stop-btn:hover{
+    background-color: #EAE4DD;
+    color: #B71515;
+}
+
+.start-btn{
+    background-color: #1ab715;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 10px;
+    margin: 0px 10px;
+    height: 24px;
+}
+  .start-btn:hover{
+    background-color: #EAE4DD;
+    color: #1ab715;
+}

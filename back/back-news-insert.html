@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--網站icon-->
+    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+    <!--網站icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/back-news-insert.css">
+    <title>(後台)新增最新資訊</title>
+</head>
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo ">
+                <a href="./back-index.html"><img src="./img/logo.png "></a>
+            </div>
+            <div class="header-word"><a>新增最新資訊</a></div>
+        </div>
+    </header>
+    <div class="banner1">
+        <div class="back"><a href="./back-news.html"><input type="button" class="back-btn mouse" value="返回"></a></div>
+    </div>
+    <div class="content">
+   <!--- <form>
+        <img id="preview-img"/>
+        <input id="store" type="file" accept="image/gif, image/jpeg, image/png, image/jpg">
+    </form>-->
+    <form>
+        <div class="news-content">
+            <div class="news-top">
+                <div class="news-top-left"><img id="blah" src=" " /></div>
+                <div class="news-top-right">
+                    <div class="title">標題：<input type="text" value="" placeholder="請輸入活動標題" required></div>
+                    <div class="newscontent">
+                        內容：<textarea name="editorDemo" style="white-space:pre-wrap;" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="news-bottom">
+                <input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                <a href="#"><input type="reset" class="cancel-btn mouse" value="取消"></a>
+                <a href="#"><input type="submit" class="yes-btn mouse" value="確認新增"></a>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+    
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+    </div>
+    <footer>
+        <div class="copy">
+            <p>版權所有 Copyright © 2023   Nine Night </p>
+        </div>
+    </footer>
+    <script src="./ckeditor/ckeditor.js"></script>
+    <script src="./js/back-news-insert.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</body>
+
+</html>

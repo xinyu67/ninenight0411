@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--網站icon-->
+    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+    <!--網站icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/back-order.css">
+    <title>(後台)瀏覽訂單資料</title>
+</head>
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo ">
+                <a href="./back-index.html"><img src="./img/logo.png "></a>
+            </div>
+            <div class="center-box ">
+                <nav class="menu ">
+                    <ul>
+                        <li>
+                            <a href="./back-story.html">品牌故事</a>
+                        </li>
+                        <li>
+                            <a href="./back-news.html">最新資訊</a>
+                        </li>
+                        <li>
+                            <a href="./back-store.html">門市據點</a>
+                        </li>
+                        <li>
+                            <a href="./back-product.html">產品總覽</a>
+                        </li>
+                        <li>
+                            <a href="./back-user.html">會員管理</a>
+                        </li>
+                        <li class="thispage">
+                            <a href="./back-order.html">訂單管理</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-box ">
+                <ul>
+                    <li><a href="#">歡迎　--------</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="banner1">
+        <div class="change"><a href="#"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
+        <div class="logout"><a href="#"><input type="button" class="logout-btn mouse" value="登出"></a></div>
+    </div>
+    <div class="content">
+        <div class="search">
+            <input type="text" placeholder="輸入欲查詢的 '電話' 或 '姓名'">
+            <input type="button" class="search-btn mouse" value="搜尋">
+        </div>
+        <table>
+            <tr align="center">
+                <th>訂單編號</th>
+                <th>取貨姓名</th>
+                <th>連絡電話</th>
+                <th>訂單金額</th>
+                <th>取貨時間</th>
+                <th>取貨方式</th>
+                <th>訂單狀態</th>
+                <th>更多功能</th>
+                <th>詳細資料</th>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單可取貨</td>
+                <td>
+                    <input type="button" class="fin-btn mouse" value="完成">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單未確認</td>
+                <td>
+                    <input type="button" class="ok-btn mouse" value="確認">
+                    <input type="button" class="cancel-btn mouse" value="取消">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單已確認</td>
+                <td>
+                    <input type="button" class="cancel-btn mouse" value="取消">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單已出貨</td>
+                <td>
+                    <input type="button" class="fin-btn mouse" value="完成">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單已完成</td>
+                <td>
+                    <input type="button" class="delete-btn mouse" value="刪除">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
+            </tr>
+            <tr align="center">
+                <td>GTS569HX50USXKT6</td>
+                <td>邱郁珊</td>
+                <td>0912345679</td>
+                <td>345</td>
+                <td>2023-03-02 PM 15:00-18:00</td>
+                <td>自取</td>
+                <td>訂單取消</td>
+                <td>
+                    <input type="button" class="delete-btn mouse" value="刪除">
+                </td>
+                <td>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+    </div>
+    <footer>
+        <div class="copy">
+            <p>版權所有 Copyright © 2023   Nine Night </p>
+        </div>
+    </footer>
+</body>
+<script src="./js/back-order.js"></script>
+</html>

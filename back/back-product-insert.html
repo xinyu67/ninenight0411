@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--網站icon-->
+    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+    <!--網站icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/back-product-insert.css">
+    <title>(後台)新增產品資料</title>
+</head>
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo ">
+                <a href="./back-index.html"><img src="./img/logo.png "></a>
+            </div>
+            <div class="header-word"><a>新增產品資料</a></div>
+        </div>
+    </header>
+    <div class="banner1">
+        <div class="back"><a href="./back-product.html"><input type="button" class="back-btn mouse" value="返回"></a></div>
+    </div>
+    <div class="content">
+   <!--- <form>
+        <img id="preview-img"/>
+        <input id="store" type="file" accept="image/gif, image/jpeg, image/png, image/jpg">
+    </form>-->
+    <form>
+        <div class="product-content">
+            <div class="product-top">
+                <div class="product-top-left"><img id="blah" src=" " /></div>
+                <div class="product-top-right">
+                    <div class="title-top">
+                        <input type="text" value="" placeholder="請輸入產品中文名" required>
+                        <input type="text" value="" placeholder="請輸入產品英文名" required>
+                    </div>
+                    <div class="price-place">
+                        <div class="place">
+                            產地：<select name="place-select" id="place-select" class="select">
+                                <option value="">--請選擇產地--</option>
+                                <option>台灣</option>
+                                <option>荷蘭</option>
+                                <option value="change">新增產地</option>
+                                </select>
+                                <input type="address" id="insertplace" placeholder="請輸入產地">
+                                <input type="button" id="insertbutton" class="insert-btn mouse" value="重選">
+                        </div>
+                        <div class="brand">
+                            品牌：<select name="brand-select" class="select1">
+                                <option>--請選擇品牌--</option>
+                                <option>海尼根</option>
+                                <option>柏克金</option>
+                                </select>
+                        </div>
+                        <div class="ml">
+                            容量：<input type="number" value="" placeholder="容量(數字/毫升)" required>
+                        </div>
+                        <div class="price">
+                            價格：<input type="number" value="" placeholder="價格(數字)" required>
+                        </div>
+                    </div>
+                        <div class="productcontent">
+                            內容：<textarea name="editorDemo" style="white-space:pre-wrap;" class="textarea"></textarea>
+                            <div class="insert-place">
+                                
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="product-bottom">
+                <input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                <a href="#"><input type="reset" class="cancel-btn mouse" value="清除"></a>
+                <a href="#"><input type="submit" class="yes-btn mouse" value="確認新增"></a>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+    
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+    </div>
+    <footer>
+        <div class="copy">
+            <p>版權所有 Copyright © 2023   Nine Night </p>
+        </div>
+    </footer>
+    <script src="./ckeditor/ckeditor.js"></script>
+    <script src="./js/back-product-insert.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</body>
+
+</html>
