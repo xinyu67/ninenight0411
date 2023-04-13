@@ -3,6 +3,7 @@ using DI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace DI.Controllers
 {
     [Route("api/[controller]")]
@@ -64,6 +65,19 @@ namespace DI.Controllers
         {
             string result = _brandDBService.DeleteBrand(brand_id);
             if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+
+        //品牌總覽(id搜尋)
+        [HttpGet]
+        [Route("brand_id")]
+        public IActionResult IdBrand([FromQuery] string brand_id = null)
+        {
+            var result = _brandDBService.IdBrand(brand_id);
+            if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
             }

@@ -165,5 +165,58 @@ namespace DI.Service
                 }
             }
         }
+
+
+        //總覽品牌(id搜尋)
+        public List<BrandOneViewModels> IdBrand(string brand_id)
+        {
+            string Sql = string.Empty;
+            if (string.IsNullOrWhiteSpace(brand_id) == false)
+            {
+                Sql = "SELECT * FROM brand where brand_id LIKE '%' + @brand_id + '%'";
+            }
+            else
+            {
+                Sql = "SELECT * FROM brand";
+            }
+
+            List<BrandOneViewModels> DataList = new List<BrandOneViewModels>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(Sql, conn);
+
+                if (string.IsNullOrWhiteSpace(brand_id) == false)
+                {
+                    command.Parameters.AddWithValue("@brand_id", brand_id);
+                }
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        BrandOneViewModels Data = new BrandOneViewModels();
+                        Data.brand_id = (Guid)reader["brand_id"];
+                        Data.brand_name = reader["brand_name"].ToString();
+                        Data.brand_eng = reader["brand_eng"].ToString();
+                        Data.isdel = (bool)reader["isdel"];
+
+                        DataList.Add(Data);
+                    }
+                }
+                catch (Exception e)
+                {
+                    //丟出錯誤
+                    throw new Exception(e.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return DataList;
+            }
+        }
     }
 }
