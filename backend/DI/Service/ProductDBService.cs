@@ -19,54 +19,6 @@ namespace DI.Service
             connectionString = _config.GetConnectionString("local");
         }
 
-
-        /*
-        //商品總覽
-        public List<ProductModels> GetProducts()
-        {
-            string Sql = string.Empty;
-            Sql = "SELECT * FROM product";
-
-            List<ProductModels> DataList = new List<ProductModels>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(Sql, conn);
-                try
-                {
-                    conn.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        ProductModels Data = new ProductModels();
-                        Data.product_id = (Guid)reader["product_id"];
-                        Data.product_num = reader["product_num"].ToString();
-                        Data.product_name = reader["product_name"].ToString();
-                        Data.product_eng = reader["product_eng"].ToString();
-                        Data.product_img = reader["product_img"].ToString();
-                        Data.brand_id = (Guid)reader["brand_id"];
-                        Data.product_price = (int)reader["product_price"];
-                        Data.place_id = (Guid)reader["place_id"];
-                        Data.product_ml = (int)reader["product_ml"];
-                        Data.product_content = reader["product_content"].ToString();
-                        Data.isdel = (bool)reader["isdel"];
-
-                        DataList.Add(Data);
-                    }
-                }
-                catch (Exception e)
-                {
-                    //丟出錯誤
-                    throw new Exception(e.Message.ToString());
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                return DataList.OrderBy(item => item.create_time).ToList();
-            }
-        }*/
-
-
         //搜尋商品(關鍵字)
         public List<ProductModels> SearchProduct(string name)
         {
@@ -195,7 +147,7 @@ namespace DI.Service
 
 
         //修改商品
-        public ProductUpdateViewModel PutProduct(ProductUpdateViewModel value)
+        public string PutProduct(ProductUpdateViewModel value)
         {
             string sql = $@"
             UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,place_id=@place_id,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
@@ -215,8 +167,15 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@product_id", value.product_id);
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     command.Parameters.AddWithValue("@update_id", "admin");
-                    command.ExecuteNonQuery();
-                    return value;
+                    int num = command.ExecuteNonQuery();
+                    if(num > 0)
+                    {
+                        return "修改成功！";
+                    }
+                    else
+                    {
+                        return "修改失敗，請重試！";
+                    }
                 }
                 catch (Exception e)
                 {
@@ -230,7 +189,7 @@ namespace DI.Service
         }
 
         //刪除商品
-        public Guid Deleteproduct(Guid product_id)
+        public string Deleteproduct(Guid product_id)
         {
             string sql = $@"
             UPDATE product SET isdel=@isdel WHERE product_id = @product_id";
@@ -242,8 +201,15 @@ namespace DI.Service
                     conn.Open();
                     command.Parameters.AddWithValue("@isdel", '1');
                     command.Parameters.AddWithValue("@product_id", product_id);
-                    command.ExecuteNonQuery();
-                    return product_id;
+                    int num = command.ExecuteNonQuery();
+                    if (num > 0)
+                    {
+                        return "修改成功！";
+                    }
+                    else
+                    {
+                        return "修改失敗，請重試！";
+                    }
                 }
                 catch (Exception e)
                 {

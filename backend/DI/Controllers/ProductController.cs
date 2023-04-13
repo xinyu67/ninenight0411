@@ -22,17 +22,6 @@ namespace DI.Controllers
             connectionString = _config.GetConnectionString("local");
         }
 
-/*
-        //商品總覽
-        [HttpGet]
-        public IActionResult Allproduct() {
-            var result=_productDBService.GetProducts();
-            if (result==null || result.Count<=0) {
-                return NotFound("找不到資源");
-            }
-            return Ok(result);
-        }*/
-
         
         //搜尋商品
         [HttpGet]
@@ -69,18 +58,14 @@ namespace DI.Controllers
 
 
         //軟刪除商品
-        [HttpPut("{product_id}")]
-        public IActionResult Deleteproduct([FromRoute] Guid product_id)
+        [HttpDelete]
+        public IActionResult Deleteproduct([FromBody] Guid product_id)
         {
-            Guid result = _productDBService.Deleteproduct(product_id);
-            /*if (result == null)
+            string result = _productDBService.Deleteproduct(product_id);
+            if (result == null)
             {
                 return NotFound("找不到資源");
             }
-            else if (result == 1)
-            {
-                return Ok($"成功刪除商品資料");
-            }*/
             return Ok(result);
         }
     }

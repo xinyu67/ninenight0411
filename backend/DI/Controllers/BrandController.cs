@@ -31,5 +31,43 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+
+        //產品品牌總覽
+        [HttpGet]
+        public IActionResult AllBrand()
+        {
+            var result = _brandDBService.SearchBrand();
+            if (result == null || result.Count <= 0)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+
+        //修改產品品牌
+        [HttpPut]
+        public IActionResult PutBrand([FromBody] BrandUpdateViewModel value)
+        {
+            var result = _brandDBService.PutBrand(value);
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+
+
+
+        //軟刪除
+        [HttpDelete]
+        public IActionResult DeleteBrand([FromBody] Guid brand_id)
+        {
+            string result = _brandDBService.DeleteBrand(brand_id);
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
     }
 }

@@ -21,6 +21,8 @@ var connectionString = configuration.GetConnectionString("local");
 builder.Services.AddSingleton<SqlConnection>(_ => new SqlConnection(connectionString));
 builder.Services.AddSingleton<ProductDBService>();
 builder.Services.AddSingleton<StoryDBService>();
+builder.Services.AddSingleton<BrandDBService>();
+builder.Services.AddSingleton<PlaceDBService>();
 
 
 var app = builder.Build();
