@@ -4,6 +4,7 @@ using DI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Data.SqlClient;
 
 namespace DI.Controllers
@@ -15,15 +16,17 @@ namespace DI.Controllers
         private readonly IConfiguration _config;
         private readonly ProductDBService _productDBService;
         private readonly string connectionString;
-        public ProductController(IConfiguration Configuration , ProductDBService productDBService)
+        private readonly IWebHostEnvironment _environment;
+        public ProductController(IConfiguration Configuration , ProductDBService productDBService, IWebHostEnvironment environment)
         {
             _config = Configuration;
             _productDBService = productDBService;
             connectionString = _config.GetConnectionString("local");
+            _environment = environment;
         }
 
-        
-        //搜尋商品
+
+        #region 全部商品 & 名稱搜尋
         [HttpGet]
         public IActionResult Allproduct(string name=null) {
             var result=_productDBService.SearchProduct(name);
@@ -32,19 +35,35 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
-        //新增商品
+        #region 單一商品總覽資料(id)
+        [HttpGet]
+        [Route("product_id")]
+        public IActionResult Allproduct_id([FromQuery] Guid product_id)
+        {
+            var result = _productDBService.Allproduct_id(product_id);
+            if (result == null || result.Count <= 0)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
+
+        #region 新增商品
         [HttpPost]
-        public IActionResult Createproduct([FromBody] ProductCreateViewModels value, IFormFile file1) {
-            var create = _productDBService.CreateproductAsync(value, file1);
+        public IActionResult Createproduct([FromForm] ProductCreateViewModels value) {
+            var create = _productDBService.CreateproductAsync(value);
             if (create == null)
             {
                 return NotFound("找不到資源");
             }
             return Ok(create);
         }
+        #endregion
 
-        //修改商品
+        #region 修改商品
         [HttpPut]
         public IActionResult Putproduct([FromBody] ProductUpdateViewModel value)
         {
@@ -55,9 +74,9 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
-
-        //軟刪除商品
+        #region 軟刪除商品
         [HttpDelete]
         public IActionResult Deleteproduct([FromBody] Guid product_id)
         {
@@ -68,5 +87,6 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
     }
 }

@@ -22,7 +22,7 @@ namespace DI.Controllers
         }
 
 
-        //新增產地
+        #region 新增產地
         [HttpPost]
         public IActionResult CreatePlace([FromBody] PlaceCreateViewModels value)
         {
@@ -33,21 +33,22 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
-
-        //產地總覽
+        #region 產地總覽
         [HttpGet]
-        public IActionResult AllPlace()
+        public IActionResult B_AllPlace()
         {
-            var result = _placeDBService.AllPlace();
+            var result = _placeDBService.B_AllPlace();
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
             }
             return Ok(result);
         }
+        #endregion
 
-        //修改產地
+        #region 修改產地
         [HttpPut]
         public IActionResult PutPlace([FromBody] PlaceUpdateViewModel value)
         {
@@ -58,9 +59,10 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
 
-        //軟刪除
+        #region 軟刪除
         [HttpDelete]
         public IActionResult DeletePlace([FromBody] Guid place_id)
         {
@@ -71,11 +73,12 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
-        //產地總覽(id搜尋)
+        #region 單筆產地資料(id查詢)
         [HttpGet]
         [Route("place_id")]
-        public IActionResult IdPlace([FromQuery] string place_id=null)
+        public IActionResult IdPlace([FromQuery] Guid place_id)
         {
             var result = _placeDBService.IdPlace(place_id);
             if (result == null || result.Count <= 0)
@@ -84,5 +87,6 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
     }
 }

@@ -18,22 +18,35 @@ namespace DI.Controllers
             _storyDBService = storyDBService;
             connectionString = _config.GetConnectionString("local");
         }
-
-
-        //品牌故事總覽
+        
+        #region 品牌故事總覽
         [HttpGet]
-        public IActionResult AllStory()
+        public IActionResult F_AllStory()
         {
-            var result = _storyDBService.AllStory();
+            var result = _storyDBService.F_AllStory();
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
             }
             return Ok(result);
         }
+        #endregion
 
+        #region 單筆品牌故事(id查詢)
+        [HttpGet]
+        [Route("story_id")]
+        public IActionResult IdAllStory([FromQuery] Guid story_id)
+        {
+            var result = _storyDBService.IdAllStory(story_id);
+            if (result == null || result.Count <= 0)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
 
-        //新增品牌故事
+        #region 新增品牌故事
         [HttpPost]
         public IActionResult CreateStory([FromBody] StoryCreateViewModels value) {
             var result = _storyDBService.CreateStory(value);
@@ -43,9 +56,9 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
+        #endregion
 
-
-        //修改品牌故事
+        #region 修改品牌故事
         [HttpPut]
         public IActionResult UpdStory([FromBody] StoryUpdateViewModels value)
         {
@@ -56,7 +69,20 @@ namespace DI.Controllers
             }
             return Ok(result);
         }
-
+        #endregion
+        
+        #region 刪除品牌故事
+        [HttpDelete]
+        public IActionResult DeleteStory([FromBody] Guid story_id)
+        {
+            var result = _storyDBService.DeleteStory(story_id);
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
 
     }
 }

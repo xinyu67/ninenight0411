@@ -23,6 +23,8 @@ builder.Services.AddSingleton<ProductDBService>();
 builder.Services.AddSingleton<StoryDBService>();
 builder.Services.AddSingleton<BrandDBService>();
 builder.Services.AddSingleton<PlaceDBService>();
+builder.Services.AddSingleton<NewDBService>();
+builder.Services.AddSingleton<StoreDBService>();
 
 
 var app = builder.Build();
@@ -35,6 +37,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5555").AllowAnyHeader().AllowAnyMethod());
 
 app.UseAuthorization();
 

@@ -1,27 +1,24 @@
 ﻿using DI.ViewModels;
-using System;
 using System.Data.SqlClient;
-using System.Xml.Linq;
 
 namespace DI.Service
 {
-    public class PlaceDBService
+    public class NewDBService
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
-        public PlaceDBService(IConfiguration Configuration)
+        public NewDBService(IConfiguration Configuration)
         {
             _config = Configuration;
             connectionString = _config.GetConnectionString("local");
         }
 
-
-        #region 新增產地
-        public string CreatePlace(PlaceCreateViewModels value)
+        #region 新增最新消息
+        public string CreateNew(NewCreateViewModels value,IFormFile image)
         {
-            string sql = $@"INSERT INTO place
-                        (place_id,place_name,place_eng,isdel,create_id,create_time) 
-                        VALUES (@place_id,@place_name,@place_eng,@isdel,@create_id,@create_time)";
+            string sql = $@"INSERT INTO new
+                        (new_id,new_title,new_content,isdel,create_id,create_time) 
+                        VALUES (@new_id,@new_title,@new_content,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -30,10 +27,13 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@place_id", NewGuid);
-                    command.Parameters.AddWithValue("@place_name", value.place_name);
-                    command.Parameters.AddWithValue("@place_eng", value.place_eng);
-                    command.Parameters.AddWithValue("@isdel", "0");
+                    command.Parameters.AddWithValue("@new_id", NewGuid);
+                    command.Parameters.AddWithValue("@new_title", value.new_title);
+                    command.Parameters.AddWithValue("@new_startdate", value.new_startdate);
+                    command.Parameters.AddWithValue("@new_enddate", value.new_enddate);
+                    command.Parameters.AddWithValue("@new_content", value.new_content);
+                    command.Parameters.AddWithValue("@new_img", image);
+                    command.Parameters.AddWithValue("@isdel", "false");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
@@ -58,12 +58,14 @@ namespace DI.Service
         }
         #endregion
 
-        #region 總覽產地
-        public List<PlaceAllViewModels> B_AllPlace()
-        {
-            string Sql = "SELECT * FROM place where isdel='false'";
 
-            List<PlaceAllViewModels> DataList = new List<PlaceAllViewModels>();
+
+        #region 總覽最新消息
+        public List<NewAllViewModels> AllNew()
+        {
+            string Sql = "SELECT * FROM new where isdel='false'";
+
+            List<NewAllViewModels> DataList = new List<NewAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -73,10 +75,14 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        PlaceAllViewModels Data = new PlaceAllViewModels();
-                        Data.place_id = (Guid)reader["place_id"];
-                        Data.place_name = reader["place_name"].ToString();
-                        Data.place_eng = reader["place_eng"].ToString();
+                        NewAllViewModels Data = new NewAllViewModels();
+                        Data.new_id = (Guid)reader["new_id"];
+                        Data.new_title = reader["new_title"].ToString();
+                        Data.new_startdate = (DateTime)reader["new_startdate"];
+                        Data.new_enddate = (DateTime)reader["new_enddate"];
+                        Data.new_content = reader["new_content"].ToString();
+                        Data.new_img = reader["new_img"].ToString();
+
                         DataList.Add(Data);
                     }
                 }
@@ -89,45 +95,48 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                return DataList.OrderBy(item => item.new_startdate).ToList();
             }
         }
         #endregion
 
-        #region 總覽產地(id搜尋)
-        public List<PlaceOneViewModels> IdPlace(Guid place_id)
+
+        #region 單一商品總覽資料
+        public List<NewAllViewModels> Allnew_id(Guid new_id)
         {
             string Sql = string.Empty;
-            if (place_id != Guid.Empty)
+            if (new_id != Guid.Empty)
             {
-                Sql = "SELECT * FROM place where place_id=@place_id and isdel='false'";
+                Sql = "SELECT * FROM new where new_id=@new_id and isdel='false'";
             }
             else
             {
-                Sql = "SELECT * FROM place where isdel='false'";
+                Sql = "SELECT * FROM new where isdel='false'";
             }
-
-            List<PlaceOneViewModels> DataList = new List<PlaceOneViewModels>();
+            List<NewAllViewModels> DataList = new List<NewAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
 
-                if (place_id != Guid.Empty)
+                if (new_id != Guid.Empty)
                 {
-                    command.Parameters.AddWithValue("@place_id", place_id);
+                    command.Parameters.AddWithValue("@new_id", new_id);
                 }
-
+                
                 try
                 {
                     conn.Open();
                     SqlDataReader reader = command.ExecuteReader();
-
                     while (reader.Read())
                     {
-                        PlaceOneViewModels Data = new PlaceOneViewModels();
-                        Data.place_id = (Guid)reader["place_id"];
-                        Data.place_name = reader["place_name"].ToString();
-                        Data.place_eng = reader["place_eng"].ToString();
+                        NewAllViewModels Data = new NewAllViewModels();
+                        Data.new_id = (Guid)reader["new_id"];
+                        Data.new_title = reader["new_title"].ToString();
+                        Data.new_startdate = (DateTime)reader["new_startdate"];
+                        Data.new_enddate = (DateTime)reader["new_enddate"];
+                        Data.new_content = reader["new_content"].ToString();
+                        Data.new_img = reader["new_img"].ToString();
+
 
                         DataList.Add(Data);
                     }
@@ -146,20 +155,23 @@ namespace DI.Service
         }
         #endregion
 
-        #region 修改產地
-        public string PutPlace(PlaceUpdateViewModel value)
+
+        #region 修改品牌
+        public string PutNew(NewUpdateViewModel value)
         {
             string sql = $@"
-            UPDATE place SET place_name=@place_name,place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
+            UPDATE new SET new_title=@new_title,new_startdate=@new_startdate,new_enddate=@new_enddate,new_content=@new_content,update_id=@update_id,update_time=@update_time WHERE new_id = @new_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@place_id", value.place_id);
-                    command.Parameters.AddWithValue("@place_name", value.place_name);
-                    command.Parameters.AddWithValue("@place_eng", value.place_eng);
+                    command.Parameters.AddWithValue("@new_id", value.new_id);
+                    command.Parameters.AddWithValue("@new_title", value.new_title);
+                    command.Parameters.AddWithValue("@new_startdate", value.new_startdate);
+                    command.Parameters.AddWithValue("@new_enddate", value.new_enddate);
+                    command.Parameters.AddWithValue("@new_content", value.new_content);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();
@@ -187,10 +199,10 @@ namespace DI.Service
 
 
         #region 軟刪除
-        public string DeletePlace(Guid place_id)
+        public string DeleteNew(Guid new_id)
         {
             string sql = $@"
-            UPDATE place SET isdel=@isdel WHERE place_id = @place_id";
+            UPDATE new SET isdel=@isdel WHERE new_id = @new_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -198,7 +210,7 @@ namespace DI.Service
                 {
                     conn.Open();
                     command.Parameters.AddWithValue("@isdel", '1');
-                    command.Parameters.AddWithValue("@place_id", place_id);
+                    command.Parameters.AddWithValue("@new_id", new_id);
                     int num = command.ExecuteNonQuery();
                     if (num > 0)
                     {
@@ -221,10 +233,5 @@ namespace DI.Service
             }
         }
         #endregion
-
-
-        
-
-
     }
 }

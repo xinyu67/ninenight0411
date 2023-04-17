@@ -3,42 +3,41 @@ using DI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace DI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class NewController : ControllerBase
     {
         private readonly IConfiguration _config;
-        private readonly BrandDBService _brandDBService;
+        private readonly NewDBService _newDBService;
         private readonly string connectionString;
-        public BrandController(IConfiguration Configuration, BrandDBService brandDBService)
+        public NewController(IConfiguration Configuration, NewDBService newDBService)
         {
             _config = Configuration;
-            _brandDBService = brandDBService;
+            _newDBService = newDBService;
             connectionString = _config.GetConnectionString("local");
         }
 
-
-        #region 新增產品品牌
+        #region 新增最新消息
         [HttpPost]
-        public IActionResult CreateBrand([FromBody] BrandCreateViewModels value)
+        public IActionResult CreateNew([FromBody] NewCreateViewModels value,IFormFile image)
         {
-            var result = _brandDBService.CreateBrand(value);
-            if (result == null)
+            var create = _newDBService.CreateNew(value,image);
+            if (create == null)
             {
                 return NotFound("找不到資源");
             }
-            return Ok(result);
+            return Ok(create);
         }
         #endregion
 
-        #region 後 - 產品品牌總覽
+
+        #region 全部最新消息
         [HttpGet]
-        public IActionResult B_AllBrand()
+        public IActionResult AllNew()
         {
-            var result = _brandDBService.B_AllBrand();
+            var result = _newDBService.AllNew();
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
@@ -47,12 +46,12 @@ namespace DI.Controllers
         }
         #endregion
 
-        #region 單筆品牌資料(id查詢)
+        #region 單一消息總覽資料(id)
         [HttpGet]
-        [Route("brand_id")]
-        public IActionResult IdBrand([FromQuery] Guid brand_id)
+        [Route("new_id")]
+        public IActionResult Allnew_id([FromQuery] Guid new_id)
         {
-            var result = _brandDBService.IdBrand(brand_id);
+            var result = _newDBService.Allnew_id(new_id);
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
@@ -61,11 +60,12 @@ namespace DI.Controllers
         }
         #endregion
 
-        #region 修改產品品牌
+
+        #region 修改最新消息
         [HttpPut]
-        public IActionResult PutBrand([FromBody] BrandUpdateViewModel value)
+        public IActionResult PutNew([FromBody] NewUpdateViewModel value)
         {
-            var result = _brandDBService.PutBrand(value);
+            var result = _newDBService.PutNew(value);
             if (result == null)
             {
                 return NotFound("找不到資源");
@@ -74,11 +74,11 @@ namespace DI.Controllers
         }
         #endregion
 
-        #region 軟刪除
+        #region 軟刪除最新消息
         [HttpDelete]
-        public IActionResult DeleteBrand([FromBody] Guid brand_id)
+        public IActionResult DeleteNew([FromBody] Guid new_id)
         {
-            string result = _brandDBService.DeleteBrand(brand_id);
+            string result = _newDBService.DeleteNew(new_id);
             if (result == null)
             {
                 return NotFound("找不到資源");
@@ -86,7 +86,5 @@ namespace DI.Controllers
             return Ok(result);
         }
         #endregion
-
-
     }
 }

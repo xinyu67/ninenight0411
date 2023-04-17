@@ -14,7 +14,7 @@ namespace DI.Service
             connectionString = _config.GetConnectionString("local");
         }
 
-        //新增品牌
+        #region 新增品牌
         public string CreateBrand(BrandCreateViewModels value)
         {
             string sql = $@"INSERT INTO brand
@@ -53,12 +53,12 @@ namespace DI.Service
                 }
             }
         }
+        #endregion
 
-
-        //總覽品牌
-        public List<BrandAllViewModels> SearchBrand()
+        #region 總覽品牌
+        public List<BrandAllViewModels> B_AllBrand()
         {
-            string Sql = "SELECT * FROM brand";
+            string Sql = "SELECT * FROM brand where isdel='false'";
 
             List<BrandAllViewModels> DataList = new List<BrandAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -74,7 +74,6 @@ namespace DI.Service
                         Data.brand_id = (Guid)reader["brand_id"];
                         Data.brand_name = reader["brand_name"].ToString();
                         Data.brand_eng = reader["brand_eng"].ToString();
-                        Data.isdel = (bool)reader["isdel"];
 
                         DataList.Add(Data);
                     }
@@ -91,8 +90,61 @@ namespace DI.Service
                 return DataList;
             }
         }
+        #endregion
 
-        //修改品牌
+        #region 單一品牌資料(id查詢)
+        public List<BrandOneViewModels> IdBrand(Guid brand_id)
+        {
+            string Sql = string.Empty;
+            if (brand_id != Guid.Empty)
+            {
+                Sql = "SELECT * FROM brand where brand_id=@brand_id and isdel='false'";
+            }
+            else
+            {
+                Sql = "SELECT * FROM brand";
+            }
+
+            List<BrandOneViewModels> DataList = new List<BrandOneViewModels>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(Sql, conn);
+
+                if (brand_id != Guid.Empty)
+                {
+                    command.Parameters.AddWithValue("@brand_id", brand_id);
+                }
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        BrandOneViewModels Data = new BrandOneViewModels();
+                        Data.brand_id = (Guid)reader["brand_id"];
+                        Data.brand_name = reader["brand_name"].ToString();
+                        Data.brand_eng = reader["brand_eng"].ToString();
+
+                        DataList.Add(Data);
+                    }
+                }
+                catch (Exception e)
+                {
+                    //丟出錯誤
+                    throw new Exception(e.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return DataList;
+            }
+        }
+        #endregion
+
+        #region 修改品牌
         public string PutBrand(BrandUpdateViewModel value)
         {
             string sql = $@"
@@ -129,9 +181,9 @@ namespace DI.Service
                 }
             }
         }
+        #endregion
 
-
-        //軟刪除
+        #region 軟刪除
         public string DeleteBrand(Guid brand_id)
         {
             string sql = $@"
@@ -165,58 +217,8 @@ namespace DI.Service
                 }
             }
         }
+        #endregion
 
-
-        //總覽品牌(id搜尋)
-        public List<BrandOneViewModels> IdBrand(string brand_id)
-        {
-            string Sql = string.Empty;
-            if (string.IsNullOrWhiteSpace(brand_id) == false)
-            {
-                Sql = "SELECT * FROM brand where brand_id LIKE '%' + @brand_id + '%'";
-            }
-            else
-            {
-                Sql = "SELECT * FROM brand";
-            }
-
-            List<BrandOneViewModels> DataList = new List<BrandOneViewModels>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(Sql, conn);
-
-                if (string.IsNullOrWhiteSpace(brand_id) == false)
-                {
-                    command.Parameters.AddWithValue("@brand_id", brand_id);
-                }
-
-                try
-                {
-                    conn.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        BrandOneViewModels Data = new BrandOneViewModels();
-                        Data.brand_id = (Guid)reader["brand_id"];
-                        Data.brand_name = reader["brand_name"].ToString();
-                        Data.brand_eng = reader["brand_eng"].ToString();
-                        Data.isdel = (bool)reader["isdel"];
-
-                        DataList.Add(Data);
-                    }
-                }
-                catch (Exception e)
-                {
-                    //丟出錯誤
-                    throw new Exception(e.Message.ToString());
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                return DataList;
-            }
-        }
+        
     }
 }

@@ -1,25 +1,26 @@
-﻿using DI.Models;
-using DI.ViewModels;
+﻿using DI.ViewModels;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace DI.Service
 {
-    public class StoryDBService
+    public class StoreDBService
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
-        public StoryDBService(IConfiguration configuration)
+        public StoreDBService(IConfiguration Configuration)
         {
-            _config = configuration;
+            _config = Configuration;
             connectionString = _config.GetConnectionString("local");
         }
 
-        #region 品牌故事總覽
-        public List<StoryAllViewModels> F_AllStory()
-        {
-            string Sql = "SELECT * FROM story where isdel='False'";
 
-            List<StoryAllViewModels> DataList = new List<StoryAllViewModels>();
+        #region 總覽門市
+        public List<StoreAllViewModels> AllStore()
+        {
+            string Sql = "SELECT * FROM store where isdel='false'";
+
+            List<StoreAllViewModels> DataList = new List<StoreAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -29,11 +30,14 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        StoryAllViewModels Data = new StoryAllViewModels();
-                        Data.story_id = (Guid)reader["story_id"];
-                        Data.story_title = reader["story_title"].ToString();
-                        Data.story_content = reader["story_content"].ToString();
-                        Data.story_img = reader["story_img"].ToString();
+                        StoreAllViewModels Data = new StoreAllViewModels();
+                        Data.store_id = (Guid)reader["store_id"];
+                        Data.store_name = reader["store_name"].ToString();
+                        Data.store_address = reader["store_address"].ToString();
+                        Data.store_phone = reader["store_phone"].ToString();
+                        Data.store_time = reader["store_time"].ToString();
+                        Data.store_img = reader["store_img"].ToString();
+
                         DataList.Add(Data);
                     }
                 }
@@ -49,43 +53,46 @@ namespace DI.Service
                 return DataList;
             }
         }
-
         #endregion
 
-
-        #region 單筆品牌故事(id查詢)
-        public List<StoryAllViewModels> IdAllStory(Guid story_id)
+        #region 單一門市資料(id查詢)
+        public List<StoreAllViewModels> IdStore(Guid store_id)
         {
             string Sql = string.Empty;
-            if (story_id != Guid.Empty)
+            if (store_id != Guid.Empty)
             {
-                Sql = "SELECT * FROM story where story_id=@story_id and isdel='false'";
+                Sql = "SELECT * FROM store where store_id=@store_id and isdel='false'";
             }
             else
             {
-                Sql = "SELECT * FROM story";
+                Sql = "SELECT * FROM store where isdel='false'";
             }
 
-            List<StoryAllViewModels> DataList = new List<StoryAllViewModels>();
+            List<StoreAllViewModels> DataList = new List<StoreAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
-                if (story_id != Guid.Empty)
+
+                if (store_id != Guid.Empty)
                 {
-                    command.Parameters.AddWithValue("@story_id", story_id);
+                    command.Parameters.AddWithValue("@store_id", store_id);
                 }
+
                 try
                 {
                     conn.Open();
                     SqlDataReader reader = command.ExecuteReader();
+
                     while (reader.Read())
                     {
-                        StoryAllViewModels Data = new StoryAllViewModels();
-                        Data.story_id = (Guid)reader["story_id"];
-                        Data.story_title = reader["story_title"].ToString();
-                        Data.story_content = reader["story_content"].ToString();
-                        Data.story_img = reader["story_img"].ToString();
-                        
+                        StoreAllViewModels Data = new StoreAllViewModels();
+                        Data.store_id = (Guid)reader["store_id"];
+                        Data.store_name = reader["store_name"].ToString();
+                        Data.store_address = reader["store_address"].ToString();
+                        Data.store_phone = reader["store_phone"].ToString();
+                        Data.store_time = reader["store_time"].ToString();
+                        Data.store_img = reader["store_img"].ToString();
+
                         DataList.Add(Data);
                     }
                 }
@@ -103,10 +110,10 @@ namespace DI.Service
         }
         #endregion
 
-
-        #region 新增品牌故事
-        public string CreateStory(StoryCreateViewModels value) {
-            string sql = $@"INSERT INTO story(story_id,story_title,story_content,story_img,isdel,create_id,create_time) VALUES (@story_id,@story_title,@story_content,@story_img,@isdel,@create_id,@create_time)";
+        #region 新增門市
+        public string CreateStore(StoreCreateViewModels value)
+        {
+            string sql = $@"INSERT INTO store(story_id,store_name,store_address,store_phone,store_time,store_img,isdel,create_id,create_time) VALUES (@story_id,@store_name,@store_address,@store_phone,@store_time,@store_img,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -115,10 +122,12 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@story_id", NewGuid);
-                    command.Parameters.AddWithValue("@story_title", value.story_title);
-                    command.Parameters.AddWithValue("@story_content", value.story_content);
-                    command.Parameters.AddWithValue("@story_img", value.story_img);
+                    command.Parameters.AddWithValue("@store_id", NewGuid);
+                    command.Parameters.AddWithValue("@store_name", value.store_name);
+                    command.Parameters.AddWithValue("@store_address", value.store_address);
+                    command.Parameters.AddWithValue("@store_phone", value.store_phone);
+                    command.Parameters.AddWithValue("@store_time", value.store_time);
+                    command.Parameters.AddWithValue("@store_img", value.store_img);
                     command.Parameters.AddWithValue("@isdel", "0");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
@@ -146,9 +155,9 @@ namespace DI.Service
 
 
         #region 修改品牌故事
-        public string UpdStory(StoryUpdateViewModels value)
+        public string UpdStore(StoreUpdateViewModels value)
         {
-            string sql = $@"UPDATE story SET story_title=@story_title,story_content=@story_content,story_img=@story_img,update_id=@update_id,update_time=@update_time WHERE story_id = @story_id";
+            string sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -156,10 +165,12 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@story_id", value.story_id);
-                    command.Parameters.AddWithValue("@story_title", value.story_title);
-                    command.Parameters.AddWithValue("@story_content", value.story_content);
-                    command.Parameters.AddWithValue("@story_img", value.story_img);
+                    command.Parameters.AddWithValue("@store_id", value.store_id);
+                    command.Parameters.AddWithValue("@store_name", value.store_name);
+                    command.Parameters.AddWithValue("@store_address", value.store_address);
+                    command.Parameters.AddWithValue("@store_phone", value.store_phone);
+                    command.Parameters.AddWithValue("@store_time", value.store_time);
+                    command.Parameters.AddWithValue("@store_img", value.store_img);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();
@@ -185,12 +196,11 @@ namespace DI.Service
         }
         #endregion
 
-
         #region 軟刪除
-        public string DeleteStory(Guid story_id)
+        public string DeleteStore(Guid store_id)
         {
             string sql = $@"
-            UPDATE story SET isdel=@isdel WHERE story_id = @story_id";
+            UPDATE store SET isdel=@isdel WHERE store_id = @store_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -198,7 +208,7 @@ namespace DI.Service
                 {
                     conn.Open();
                     command.Parameters.AddWithValue("@isdel", '1');
-                    command.Parameters.AddWithValue("@story_id", story_id);
+                    command.Parameters.AddWithValue("@store_id", store_id);
                     int num = command.ExecuteNonQuery();
                     if (num > 0)
                     {
@@ -221,7 +231,5 @@ namespace DI.Service
             }
         }
         #endregion
-
-
     }
 }

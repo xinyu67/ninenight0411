@@ -3,29 +3,55 @@ using DI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace DI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class StoreController : ControllerBase
     {
         private readonly IConfiguration _config;
-        private readonly BrandDBService _brandDBService;
+        private readonly StoreDBService _storeDBService;
         private readonly string connectionString;
-        public BrandController(IConfiguration Configuration, BrandDBService brandDBService)
+        public StoreController(IConfiguration Configuration, StoreDBService storeDBService)
         {
             _config = Configuration;
-            _brandDBService = brandDBService;
+            _storeDBService = storeDBService;
             connectionString = _config.GetConnectionString("local");
         }
 
+        
+        #region 全部門市
+        [HttpGet]
+        public IActionResult AllStore()
+        {
+            var result = _storeDBService.AllStore();
+            if (result == null || result.Count <= 0)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
 
-        #region 新增產品品牌
+        #region 單一門市總覽資料(id)
+        [HttpGet]
+        [Route("store_id")]
+        public IActionResult IdStore([FromQuery] Guid store_id)
+        {
+            var result = _storeDBService.IdStore(store_id);
+            if (result == null || result.Count <= 0)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
+
+        #region 新增門市
         [HttpPost]
-        public IActionResult CreateBrand([FromBody] BrandCreateViewModels value)
+        public IActionResult CreateStory([FromBody] StoreCreateViewModels value)
         {
-            var result = _brandDBService.CreateBrand(value);
+            var result = _storeDBService.CreateStore(value);
             if (result == null)
             {
                 return NotFound("找不到資源");
@@ -34,38 +60,11 @@ namespace DI.Controllers
         }
         #endregion
 
-        #region 後 - 產品品牌總覽
-        [HttpGet]
-        public IActionResult B_AllBrand()
-        {
-            var result = _brandDBService.B_AllBrand();
-            if (result == null || result.Count <= 0)
-            {
-                return NotFound("找不到資源");
-            }
-            return Ok(result);
-        }
-        #endregion
-
-        #region 單筆品牌資料(id查詢)
-        [HttpGet]
-        [Route("brand_id")]
-        public IActionResult IdBrand([FromQuery] Guid brand_id)
-        {
-            var result = _brandDBService.IdBrand(brand_id);
-            if (result == null || result.Count <= 0)
-            {
-                return NotFound("找不到資源");
-            }
-            return Ok(result);
-        }
-        #endregion
-
-        #region 修改產品品牌
+        #region 修改門市
         [HttpPut]
-        public IActionResult PutBrand([FromBody] BrandUpdateViewModel value)
+        public IActionResult UpdStore([FromBody] StoreUpdateViewModels value)
         {
-            var result = _brandDBService.PutBrand(value);
+            var result = _storeDBService.UpdStore(value);
             if (result == null)
             {
                 return NotFound("找不到資源");
@@ -74,11 +73,11 @@ namespace DI.Controllers
         }
         #endregion
 
-        #region 軟刪除
+        #region 刪除門市
         [HttpDelete]
-        public IActionResult DeleteBrand([FromBody] Guid brand_id)
+        public IActionResult DeleteStore([FromBody] Guid store_id)
         {
-            string result = _brandDBService.DeleteBrand(brand_id);
+            var result = _storeDBService.DeleteStore(store_id);
             if (result == null)
             {
                 return NotFound("找不到資源");
@@ -86,7 +85,6 @@ namespace DI.Controllers
             return Ok(result);
         }
         #endregion
-
 
     }
 }
