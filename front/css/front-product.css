@@ -206,7 +206,7 @@ header {
 .dropdown-container {
     display: none;
     overflow: auto;
-    height: 200px;
+    height: auto;
     background-color: #EBE8E3;
     border-bottom: 1.5px solid #5A3A29;
 }
