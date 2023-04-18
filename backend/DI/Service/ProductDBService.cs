@@ -24,24 +24,94 @@ namespace DI.Service
         }
 
         #region 全部商品 & 名稱搜尋
-        public List<ProductAllViewModels> SearchProduct(string name)
+        public List<ProductAllViewModels> SearchProduct(string search_brand, string search_place,string search_ml,string money,string search_product)
         {
             string Sql = string.Empty;
-            if (string.IsNullOrWhiteSpace(name) == false)
+            //如果搜尋都是空值
+            if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(money) == true & string.IsNullOrWhiteSpace(search_product) == true)
             {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product_name LIKE '%' + @name + '%'";
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+            }
+            else if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true  & string.IsNullOrWhiteSpace(search_product) == true & string.IsNullOrWhiteSpace(money) == false)
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+            }
+            else
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where ";
+            }
+
+            //如果只有search_brand有資料
+            if (string.IsNullOrWhiteSpace(search_brand) == false & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true )
+            {
+                Sql += "brand_name=@search_brand";
+            }
+            else if(string.IsNullOrWhiteSpace(search_brand) == false & (string.IsNullOrWhiteSpace(search_place) == false || string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false) )
+            {
+                Sql += "brand_name=@search_brand and ";
+            }
+
+            //如果只有search_place有資料
+            if (string.IsNullOrWhiteSpace(search_place) == false & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true )
+            {
+                Sql += "place_name=@search_place";
+            }else if (string.IsNullOrWhiteSpace(search_place) == false & (string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false ) )
+            {
+                Sql += "place_name=@search_place and ";
+            }
+
+            //如果只有search_ml有資料
+            if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == true )
+            {
+                //if () {
+                
+                //}
+                Sql += "product_ml=@search_ml";
+            }
+            else if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == false )
+            {
+                Sql += "product_ml=@search_ml and ";
+            }
+
+            //如果search_product有資料
+            if ( string.IsNullOrWhiteSpace(search_product) == false)
+            {
+                Sql += "product_name LIKE '%' + @search_product + '%'";
+            }
+
+            //如果money有排序
+            if (money == "ASC" )
+            {
+                Sql += " order by product_price ASC";
+            }
+            else if (money == "DESC")
+            {
+                Sql += " order by product_price DESC";
+            }
+
+            /*
+            string Sql = string.Empty;
+            if (string.IsNullOrWhiteSpace(search_product) == false)
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product_name LIKE '%' + @search_product + '%'";
             }
             else
             {
                 Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
-            }
+            }*/
 
             List<ProductAllViewModels> DataList = new List<ProductAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
-                if(name != null)
-                    command.Parameters.AddWithValue("@name", name);
+                if (search_brand != null)
+                    command.Parameters.AddWithValue("@search_brand", search_brand);
+                if (search_place != null)
+                    command.Parameters.AddWithValue("@search_place", search_place);
+                if (search_ml != null)
+                    command.Parameters.AddWithValue("@search_ml", search_ml);
+                if (search_product != null)
+                    command.Parameters.AddWithValue("@search_product", search_product);
                 try
                 {
                     conn.Open();
@@ -50,10 +120,10 @@ namespace DI.Service
                     {
                         ProductAllViewModels Data = new ProductAllViewModels();
                         Data.product_id = (Guid)reader["product_id"];
-                        Data.product_num = reader["product_num"].ToString();
+                        //Data.product_num = reader["product_num"].ToString();
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_img = reader["product_img"].ToString();
-                        Data.brand_name = reader["brand_name"].ToString();
+                        //Data.brand_name = reader["brand_name"].ToString();
                         Data.place_name = reader["place_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
                         Data.product_price = (int)reader["product_price"];

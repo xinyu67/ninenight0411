@@ -34,6 +34,7 @@ namespace DI.Service
                         Data.store_id = (Guid)reader["store_id"];
                         Data.store_name = reader["store_name"].ToString();
                         Data.store_address = reader["store_address"].ToString();
+                        Data.store_email = reader["store_email"].ToString();
                         Data.store_phone = reader["store_phone"].ToString();
                         Data.store_time = reader["store_time"].ToString();
                         Data.store_img = reader["store_img"].ToString();
@@ -89,6 +90,7 @@ namespace DI.Service
                         Data.store_id = (Guid)reader["store_id"];
                         Data.store_name = reader["store_name"].ToString();
                         Data.store_address = reader["store_address"].ToString();
+                        Data.store_email = reader["store_email"].ToString();
                         Data.store_phone = reader["store_phone"].ToString();
                         Data.store_time = reader["store_time"].ToString();
                         Data.store_img = reader["store_img"].ToString();
@@ -113,7 +115,7 @@ namespace DI.Service
         #region 新增門市
         public string CreateStore(StoreCreateViewModels value)
         {
-            string sql = $@"INSERT INTO store(story_id,store_name,store_address,store_phone,store_time,store_img,isdel,create_id,create_time) VALUES (@story_id,@store_name,@store_address,@store_phone,@store_time,@store_img,@isdel,@create_id,@create_time)";
+            string sql = $@"INSERT INTO store(story_id,store_name,store_address,store_email,store_phone,store_time,store_img,isdel,create_id,create_time) VALUES (@story_id,@store_name,@store_address,@store_email,@store_phone,@store_time,@store_img,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -125,6 +127,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@store_id", NewGuid);
                     command.Parameters.AddWithValue("@store_name", value.store_name);
                     command.Parameters.AddWithValue("@store_address", value.store_address);
+                    command.Parameters.AddWithValue("@store_email", value.store_email);
                     command.Parameters.AddWithValue("@store_phone", value.store_phone);
                     command.Parameters.AddWithValue("@store_time", value.store_time);
                     command.Parameters.AddWithValue("@store_img", value.store_img);
@@ -157,7 +160,7 @@ namespace DI.Service
         #region 修改品牌故事
         public string UpdStore(StoreUpdateViewModels value)
         {
-            string sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
+            string sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_email=@store_email,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -168,6 +171,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@store_id", value.store_id);
                     command.Parameters.AddWithValue("@store_name", value.store_name);
                     command.Parameters.AddWithValue("@store_address", value.store_address);
+                    command.Parameters.AddWithValue("@store_email", value.store_email);
                     command.Parameters.AddWithValue("@store_phone", value.store_phone);
                     command.Parameters.AddWithValue("@store_time", value.store_time);
                     command.Parameters.AddWithValue("@store_img", value.store_img);

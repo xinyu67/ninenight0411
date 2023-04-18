@@ -28,8 +28,8 @@ namespace DI.Controllers
 
         #region 全部商品 & 名稱搜尋
         [HttpGet]
-        public IActionResult Allproduct(string name=null) {
-            var result=_productDBService.SearchProduct(name);
+        public IActionResult Allproduct(string search_brand = null, string search_place = null, string search_ml = null, string money = null, string search_product= null) {
+            var result=_productDBService.SearchProduct(search_brand, search_place, search_ml, money,search_product);
             if (result==null || result.Count<=0) {
                 return NotFound("找不到資源");
             }
