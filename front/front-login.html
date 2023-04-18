@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/front-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <header>
+        <div class="header-content ">
+            <div class="logo">
+                <a href="./front-index.html" target="_self"><img src="./img/logo5.png "></a>
+            </div>
+            <div class="center-box ">
+                <nav class="menu ">
+                    <ul>
+                        <li>
+                            <a href="./front-story.html">品牌故事</a>
+                        </li>
+                        <li>
+                            <a href="./front-news.html">最新資訊</a>
+                        </li>
+                        <li class="this-page">
+                            <a href="./front-store.html">門市據點</a>
+                        </li>
+                        <li>
+                            <a href="./front-product.html">產品總覽</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-box " id="login1">
+                <ul>
+                    <li><a href="#">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display: none;">
+                <ul>
+                    <li><a href="./front-login.html"><i class="fa-regular fa-circle-user"></i>--------你好</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <form>
+        <div class="content">
+            <div class="content-body">
+                <div class="content-frame">
+                    <div class="content-title">
+                        <span id="chi">會員登入</span>
+                        <span id="eng">Login</span>
+                    </div>
+                    <div class="content-text">
+                        <div class="login-user all">帳號：&nbsp;<input type="text" id="user"></div>
+                        <div class="login-pwd all">密碼：&nbsp;<input type="password"></div>
+                        <div class="login-button all">
+                            <!--<input type="submit" class="login-button" value="登入">-->
+                            <li class="login-button" id="login">
+                                <a href="./front-login-index.html">登入</a>
+                            </li>
+                        </div>
+                        <div class="function">
+                            <a href="./forget.html">忘記密碼？</a>
+                            <a href="./signup.html">會員註冊</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <footer class="footer">
+        <div class="line">
+            版權所有 Copyright © 2023 Nine Night
+        </div>
+    </footer>
+
+    <div class="footer-slogan">
+        <div class="slogan-left">
+            禁止酒駕
+            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+            安全有保障&ensp;
+        </div>
+
+        <div class="slogan-right">
+            未滿十八歲者
+            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+            禁止飲酒
+        </div>
+
+    </div>
+
+</body>
+<script src="front-login.js"></script>
+
+</html>
