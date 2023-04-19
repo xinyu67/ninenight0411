@@ -25,6 +25,7 @@ builder.Services.AddSingleton<BrandDBService>();
 builder.Services.AddSingleton<PlaceDBService>();
 builder.Services.AddSingleton<NewDBService>();
 builder.Services.AddSingleton<StoreDBService>();
+builder.Services.AddSingleton<CartDBService>();
 
 
 var app = builder.Build();

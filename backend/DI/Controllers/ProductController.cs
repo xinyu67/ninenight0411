@@ -65,7 +65,7 @@ namespace DI.Controllers
 
         #region 修改商品
         [HttpPut]
-        public IActionResult Putproduct([FromBody] ProductUpdateViewModel value)
+        public IActionResult Putproduct([FromForm] ProductUpdateViewModel value)
         {
             var result = _productDBService.PutProduct(value);
             if (result == null)

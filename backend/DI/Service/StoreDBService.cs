@@ -8,9 +8,11 @@ namespace DI.Service
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
-        public StoreDBService(IConfiguration Configuration)
+        private readonly IWebHostEnvironment _environment;
+        public StoreDBService(IConfiguration Configuration, IWebHostEnvironment environment)
         {
             _config = Configuration;
+            _environment = environment;
             connectionString = _config.GetConnectionString("local");
         }
 
@@ -115,7 +117,21 @@ namespace DI.Service
         #region 新增門市
         public string CreateStore(StoreCreateViewModels value)
         {
-            string sql = $@"INSERT INTO store(story_id,store_name,store_address,store_email,store_phone,store_time,store_img,isdel,create_id,create_time) VALUES (@story_id,@store_name,@store_address,@store_email,@store_phone,@store_time,@store_img,@isdel,@create_id,@create_time)";
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.store_img.Length > 0)
+            {
+                filename = date + value.store_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.store_img.CopyTo(stream);
+                }
+            }
+
+
+            string sql = $@"INSERT INTO store(store_id,store_name,store_address,store_email,store_phone,store_time,store_img,isdel,create_id,create_time) VALUES (@store_id,@store_name,@store_address,@store_email,@store_phone,@store_time,@store_img,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -130,7 +146,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@store_email", value.store_email);
                     command.Parameters.AddWithValue("@store_phone", value.store_phone);
                     command.Parameters.AddWithValue("@store_time", value.store_time);
-                    command.Parameters.AddWithValue("@store_img", value.store_img);
+                    command.Parameters.AddWithValue("@store_img", filename);
                     command.Parameters.AddWithValue("@isdel", "0");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
@@ -160,6 +176,19 @@ namespace DI.Service
         #region 修改品牌故事
         public string UpdStore(StoreUpdateViewModels value)
         {
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.store_img.Length > 0)
+            {
+                filename = date + value.store_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.store_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_email=@store_email,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -174,7 +203,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@store_email", value.store_email);
                     command.Parameters.AddWithValue("@store_phone", value.store_phone);
                     command.Parameters.AddWithValue("@store_time", value.store_time);
-                    command.Parameters.AddWithValue("@store_img", value.store_img);
+                    command.Parameters.AddWithValue("@store_img", filename);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();

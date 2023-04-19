@@ -49,7 +49,7 @@ namespace DI.Controllers
 
         #region 新增門市
         [HttpPost]
-        public IActionResult CreateStory([FromBody] StoreCreateViewModels value)
+        public IActionResult CreateStory([FromForm] StoreCreateViewModels value)
         {
             var result = _storeDBService.CreateStore(value);
             if (result == null)
@@ -62,7 +62,7 @@ namespace DI.Controllers
 
         #region 修改門市
         [HttpPut]
-        public IActionResult UpdStore([FromBody] StoreUpdateViewModels value)
+        public IActionResult UpdStore([FromForm] StoreUpdateViewModels value)
         {
             var result = _storeDBService.UpdStore(value);
             if (result == null)

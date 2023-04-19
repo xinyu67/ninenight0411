@@ -30,11 +30,11 @@ namespace DI.Service
             //如果搜尋都是空值
             if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(money) == true & string.IsNullOrWhiteSpace(search_product) == true)
             {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
             }
             else if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true  & string.IsNullOrWhiteSpace(search_product) == true & string.IsNullOrWhiteSpace(money) == false)
             {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
             }
             else
             {
@@ -44,7 +44,7 @@ namespace DI.Service
             //如果只有search_brand有資料
             if (string.IsNullOrWhiteSpace(search_brand) == false & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true )
             {
-                Sql += "brand_name=@search_brand";
+                Sql += "brand_name=@search_brand ";
             }
             else if(string.IsNullOrWhiteSpace(search_brand) == false & (string.IsNullOrWhiteSpace(search_place) == false || string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false) )
             {
@@ -54,7 +54,7 @@ namespace DI.Service
             //如果只有search_place有資料
             if (string.IsNullOrWhiteSpace(search_place) == false & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true )
             {
-                Sql += "place_name=@search_place";
+                Sql += "place_name=@search_place ";
             }else if (string.IsNullOrWhiteSpace(search_place) == false & (string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false ) )
             {
                 Sql += "place_name=@search_place and ";
@@ -65,27 +65,27 @@ namespace DI.Service
             {
                 if (search_ml == "1")
                 {
-                    Sql += "(product_ml>=0 and product_ml<=300)";
+                    Sql += "(product_ml>=0 and product_ml<=300) ";
                 }
                 else if (search_ml == "2")
                 {
-                    Sql += "(product_ml>=300 and product_ml<=400)";
+                    Sql += "(product_ml>=300 and product_ml<=400) ";
                 }
                 else if (search_ml == "3")
                 {
-                    Sql += "(product_ml>=400 and product_ml<=500)";
+                    Sql += "(product_ml>=400 and product_ml<=500) ";
                 }
                 else if (search_ml == "4")
                 {
-                    Sql += "(product_ml>=500 and product_ml<=600)";
+                    Sql += "(product_ml>=500 and product_ml<=600) ";
                 }
                 else if (search_ml == "5")
                 {
-                    Sql += "(product_ml>=600 and product_ml<=700)";
+                    Sql += "(product_ml>=600 and product_ml<=700) ";
                 }
                 else if (search_ml == "6")
                 {
-                    Sql += "product_ml>=700";
+                    Sql += "product_ml>=700 ";
                 }
                 //Sql += "product_ml=@search_ml";
             }
@@ -121,17 +121,17 @@ namespace DI.Service
             //如果search_product有資料
             if ( string.IsNullOrWhiteSpace(search_product) == false)
             {
-                Sql += "product_name LIKE '%' + @search_product + '%'";
+                Sql += "product_name LIKE '%' + @search_product + '%' ";
             }
 
             //如果money有排序
             if (money == "ASC" )
             {
-                Sql += " order by product_price ASC";
+                Sql += " order by product_price ASC ";
             }
             else if (money == "DESC")
             {
-                Sql += " order by product_price DESC";
+                Sql += " order by product_price DESC ";
             }
 
             /*
@@ -270,8 +270,10 @@ namespace DI.Service
             //圖片存入資料夾
             string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
             if (value.product_img.Length > 0)
             {
+                filename = num_randomCode + "_" + date + "_" + value.product_img.FileName;
                 filename = num_randomCode + value.product_img.FileName;
                 using (var stream = System.IO.File.Create(rootRoot + filename))
                 {
@@ -279,6 +281,7 @@ namespace DI.Service
                 }
             }
 
+            var img = "http://localhost:7094/ninenight0411/backend/DI/wwwroot/image/" + filename;
 
             string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_like,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_like,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
@@ -295,7 +298,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@product_name", value.product_name);
                     command.Parameters.AddWithValue("@product_eng", value.product_eng);
                     command.Parameters.AddWithValue("@product_like", '0');
-                    command.Parameters.AddWithValue("@product_img", filename);
+                    command.Parameters.AddWithValue("@product_img", img);
                     command.Parameters.AddWithValue("@brand_id", value.brand_id);
                     command.Parameters.AddWithValue("@product_price", value.product_price);
                     command.Parameters.AddWithValue("@place_id", value.place_id);
@@ -306,7 +309,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
                     command.ExecuteNonQuery();
 
-                    int num = command.ExecuteNonQuery();
+                    int num = (Allproduct_id(NewGuid).Count == 1) ? 1 : 0;
                     if (num > 0)
                     {
                         return "新增成功！";
@@ -332,6 +335,20 @@ namespace DI.Service
         #region 修改商品
         public string PutProduct(ProductUpdateViewModel value)
         {
+
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.product_img.Length > 0)
+            {
+                filename = value.product_num + "_" + date + "+" + value.product_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.product_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"
             UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,brand_id=@brand_id,place_id=@place_id,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -342,7 +359,7 @@ namespace DI.Service
                     conn.Open();
                     command.Parameters.AddWithValue("@product_name", value.product_name);
                     command.Parameters.AddWithValue("@product_eng", value.product_eng);
-                    command.Parameters.AddWithValue("@product_img", value.product_img);
+                    command.Parameters.AddWithValue("@product_img", filename);
                     command.Parameters.AddWithValue("@product_price", value.product_price);
                     command.Parameters.AddWithValue("@brand_id", value.brand_id);
                     command.Parameters.AddWithValue("@place_id", value.place_id);

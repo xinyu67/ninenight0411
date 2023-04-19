@@ -1,4 +1,5 @@
 ﻿using DI.ViewModels;
+using System;
 using System.Data.SqlClient;
 
 namespace DI.Service
@@ -93,8 +94,8 @@ namespace DI.Service
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
-                        Data.new_startdate = (DateTime)reader["new_startdate"];
-                        Data.new_enddate = (DateTime)reader["new_enddate"];
+                        Data.new_startdate = (DateOnly)reader["new_startdate"];
+                        Data.new_enddate = (DateOnly)reader["new_enddate"];
                         Data.new_content = reader["new_content"].ToString();
                         Data.new_img = reader["new_img"].ToString();
 
@@ -147,8 +148,8 @@ namespace DI.Service
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
-                        Data.new_startdate = (DateTime)reader["new_startdate"];
-                        Data.new_enddate = (DateTime)reader["new_enddate"];
+                        Data.new_startdate = (DateOnly)reader["new_startdate"];
+                        Data.new_enddate = (DateOnly)reader["new_enddate"];
                         Data.new_content = reader["new_content"].ToString();
                         Data.new_img = reader["new_img"].ToString();
 
@@ -201,7 +202,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@new_startdate", value.new_startdate);
                     command.Parameters.AddWithValue("@new_enddate", value.new_enddate);
                     command.Parameters.AddWithValue("@new_content", value.new_content);
-                    command.Parameters.AddWithValue("@new_img", value.new_img);
+                    command.Parameters.AddWithValue("@new_img", filename);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();

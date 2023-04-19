@@ -8,10 +8,12 @@ namespace DI.Service
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
-        public StoryDBService(IConfiguration configuration)
+        private readonly IWebHostEnvironment _environment;
+        public StoryDBService(IConfiguration configuration, IWebHostEnvironment environment)
         {
             _config = configuration;
             connectionString = _config.GetConnectionString("local");
+            _environment = environment;
         }
 
         #region 品牌故事總覽
@@ -106,6 +108,20 @@ namespace DI.Service
 
         #region 新增品牌故事
         public string CreateStory(StoryCreateViewModels value) {
+
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.story_img.Length > 0)
+            {
+                filename = date + value.story_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.story_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"INSERT INTO story(story_id,story_title,story_content,story_img,isdel,create_id,create_time) VALUES (@story_id,@story_title,@story_content,@story_img,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
@@ -118,7 +134,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@story_id", NewGuid);
                     command.Parameters.AddWithValue("@story_title", value.story_title);
                     command.Parameters.AddWithValue("@story_content", value.story_content);
-                    command.Parameters.AddWithValue("@story_img", value.story_img);
+                    command.Parameters.AddWithValue("@story_img", filename);
                     command.Parameters.AddWithValue("@isdel", "0");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
@@ -148,6 +164,20 @@ namespace DI.Service
         #region 修改品牌故事
         public string UpdStory(StoryUpdateViewModels value)
         {
+
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.story_img.Length > 0)
+            {
+                filename = date + value.story_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.story_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"UPDATE story SET story_title=@story_title,story_content=@story_content,story_img=@story_img,update_id=@update_id,update_time=@update_time WHERE story_id = @story_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -159,7 +189,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@story_id", value.story_id);
                     command.Parameters.AddWithValue("@story_title", value.story_title);
                     command.Parameters.AddWithValue("@story_content", value.story_content);
-                    command.Parameters.AddWithValue("@story_img", value.story_img);
+                    command.Parameters.AddWithValue("@story_img", filename);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();

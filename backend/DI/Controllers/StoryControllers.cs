@@ -48,7 +48,7 @@ namespace DI.Controllers
 
         #region 新增品牌故事
         [HttpPost]
-        public IActionResult CreateStory([FromBody] StoryCreateViewModels value) {
+        public IActionResult CreateStory([FromForm] StoryCreateViewModels value) {
             var result = _storyDBService.CreateStory(value);
             if (result == null)
             {
@@ -60,7 +60,7 @@ namespace DI.Controllers
 
         #region 修改品牌故事
         [HttpPut]
-        public IActionResult UpdStory([FromBody] StoryUpdateViewModels value)
+        public IActionResult UpdStory([FromForm] StoryUpdateViewModels value)
         {
             var result = _storyDBService.UpdStory(value);
             if (result == null)

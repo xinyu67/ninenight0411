@@ -3,6 +3,7 @@
     public class ProductUpdateViewModel
     {
         public Guid product_id { get; set; }
+        public string product_num { get; set; }
         public string product_name { get; set; }
         public string product_eng { get; set; }
         public IFormFile product_img { get; set; }
