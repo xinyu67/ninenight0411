@@ -158,11 +158,10 @@ header {
 }
 
 .content-body .t1 {
-    width: 60%;
+    width: 54%;
     text-align: center;
     font-weight: bold;
-    margin: 0px auto;
-    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .function {

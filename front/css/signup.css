@@ -184,7 +184,7 @@ header {
 
 content {
     /* margin-bottom: -55px; */
-    height: 800px;
+    height: 850px;
     width: calc(100% - 600px);
     padding: 0px 300px;
     display: flex;
@@ -278,7 +278,6 @@ form {
 
 .button-bottom {
     display: flex;
-    justify-content: right;
     align-items: center;
     margin-top: 60px;
     padding-left: 150px;

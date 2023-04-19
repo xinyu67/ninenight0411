@@ -142,8 +142,6 @@ header {
 
 .content {
     width: 100%;
-    min-height: 800px;
-    max-height: 100%;
     position: relative;
     top: 70px;
     padding-bottom: 180px;
@@ -194,15 +192,14 @@ header {
 
 /*----content END----*/
 
-footer {
-    background-color: #5A3A29;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0px;
+.footer {
+    background-color: rgba(90, 58, 41, 1);
     width: 100%;
-    height: 50px;
-    margin-bottom: 54px;
-  }
+    height: 60px;
+    padding-top: 20px;
+    margin-top: -64px;
+    position: relative;
+}
 
 .footer-slogan {
     width: 100%;

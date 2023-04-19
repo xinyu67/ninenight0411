@@ -27,7 +27,7 @@
                         <li>
                             <a href="./front-news.html">最新資訊</a>
                         </li>
-                        <li>
+                        <li class="this-page">
                             <a href="./front-store.html">門市據點</a>
                         </li>
                         <li>
@@ -58,6 +58,58 @@
     <div class="content">
         <img src="./img/bannerpng7.png">
         <div class="content-body">
+            <table class="t2">
+                <tr>
+                    <th>產品圖片</th>
+                    <th>產品名稱</th>
+                    <th>產品價格</th>
+                    <th>產品數量</th>
+                    <th>總金額</th>
+                    <th>操作</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="table-img"><img src="./img/product/p1.png"></div>
+                    </td>
+                    <td>海尼根星銀啤酒&nbsp;650ml</td>
+                    <td>$75</td>
+                    <td>
+                        <!--<input id="dec" type="button" value="-">-->
+                        <input id="count" type="text" value="2" size="1" style="text-align:center; background-color:#d2d0d0;" readonly>
+                        <!--<input id="inc" type="button" value="+">-->
+                    </td>
+                    <td>$160</td>
+                    <td>
+                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="table-img"><img src="./img/product/p3.png"></div>
+                    </td>
+                    <td>虎牌1度C冰釀啤酒&nbsp;600ml</td>
+                    <td>$60</td>
+                    <td>
+                        <!--<input id="dec" type="button" value="-">-->
+                        <input id="count" type="text" value="2" size="1" style="text-align:center;background-color:#d2d0d0;" readonly>
+                        <!--<input id="inc" type="button" value="+">-->
+                    </td>
+                    <td>$120</td>
+                    <td>
+                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="total-content">
+                <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
+
+                <div class="total-money">$280</div>
+            </div>
+
+
             <table class="t1">
                 <tr>
                     <th>取貨人</th>
@@ -113,60 +165,12 @@
 
             </table>
 
-            <table class="t2">
-                <tr>
-                    <th>產品圖片</th>
-                    <th>產品名稱</th>
-                    <th>產品價格</th>
-                    <th>產品數量</th>
-                    <th>總金額</th>
-                    <th>操作</th>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="table-img"><img src="./img/product/p1.png"></div>
-                    </td>
-                    <td>海尼根星銀啤酒&nbsp;650ml</td>
-                    <td>$75</td>
-                    <td>
-                        <!--<input id="dec" type="button" value="-">-->
-                        <input id="count" type="text" value="2" size="1" style="text-align:center; background-color:#d2d0d0;" readonly>
-                        <!--<input id="inc" type="button" value="+">-->
-                    </td>
-                    <td>$160</td>
-                    <td>
-                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="table-img"><img src="./img/product/p3.png"></div>
-                    </td>
-                    <td>虎牌1度C冰釀啤酒&nbsp;600ml</td>
-                    <td>$60</td>
-                    <td>
-                        <!--<input id="dec" type="button" value="-">-->
-                        <input id="count" type="text" value="2" size="1" style="text-align:center;background-color:#d2d0d0;" readonly>
-                        <!--<input id="inc" type="button" value="+">-->
-                    </td>
-                    <td>$120</td>
-                    <td>
-                        <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="total-content">
-                <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
-
-                <div class="total-money">$280</div>
-            </div>
 
             <div class="next">
                 <!--<button>去結帳</button>-->
+                <li style="background-color:#d2d0d0;"><a href="./front-shopcart.html">返回</a></li>&ensp;&ensp;
                 <li><a href="./front-myorder.html">送出</a></li>
+
             </div>
         </div>
     </div>

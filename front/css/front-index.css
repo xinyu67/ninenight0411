@@ -109,7 +109,7 @@ header {
 
 .news {
     width: 80%;
-    margin: 15px auto;
+    margin: 50px auto;
     background-color: #C8BBAC;
 }
 
@@ -124,16 +124,19 @@ header {
 }
 
 .news-content {
-    padding: 10px 0px 30px 0px;
+    padding: 0px 0px 10px 0px;
     font-family: 'Inter';
 }
 
 .news-list {
-    border-bottom: 1px solid #B0B0B0;
+    border-bottom: 3px solid #EAE4DD;
     padding: 10px 70px;
     color: rgba(90, 58, 41, 1);
-    background-color: #EAE4DD;
-    margin: 5px 0px;
+    margin: 2px 0px;
+}
+
+.news-list:hover {
+    background-color: #ffffff67;
 }
 
 .news-list a {
