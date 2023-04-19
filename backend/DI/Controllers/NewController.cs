@@ -63,7 +63,7 @@ namespace DI.Controllers
 
         #region 修改最新消息
         [HttpPut]
-        public IActionResult PutNew([FromBody] NewUpdateViewModel value)
+        public IActionResult PutNew([FromForm] NewUpdateViewModel value)
         {
             var result = _newDBService.PutNew(value);
             if (result == null)

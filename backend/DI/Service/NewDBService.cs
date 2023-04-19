@@ -174,8 +174,22 @@ namespace DI.Service
         #region 修改品牌
         public string PutNew(NewUpdateViewModel value)
         {
+
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.new_img.Length > 0)
+            {
+                filename = date + value.new_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.new_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"
-            UPDATE new SET new_title=@new_title,new_startdate=@new_startdate,new_enddate=@new_enddate,new_content=@new_content,update_id=@update_id,update_time=@update_time WHERE new_id = @new_id";
+            UPDATE new SET new_title=@new_title,new_startdate=@new_startdate,new_enddate=@new_enddate,new_content=@new_content,new_img=@new_img,update_id=@update_id,update_time=@update_time WHERE new_id = @new_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -187,6 +201,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@new_startdate", value.new_startdate);
                     command.Parameters.AddWithValue("@new_enddate", value.new_enddate);
                     command.Parameters.AddWithValue("@new_content", value.new_content);
+                    command.Parameters.AddWithValue("@new_img", value.new_img);
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();
