@@ -7,18 +7,33 @@ namespace DI.Service
     {
         private readonly IConfiguration _config;
         private readonly string connectionString;
-        public NewDBService(IConfiguration Configuration)
+        private readonly IWebHostEnvironment _environment;
+        public NewDBService(IConfiguration Configuration, IWebHostEnvironment environment)
         {
             _config = Configuration;
+            _environment = environment;
             connectionString = _config.GetConnectionString("local");
         }
 
         #region 新增最新消息
-        public string CreateNew(NewCreateViewModels value,IFormFile image)
+        public string CreateNew(NewCreateViewModels value)
         {
+            //圖片存入資料夾
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+            var filename = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (value.new_img.Length > 0)
+            {
+                filename = date + value.new_img.FileName;
+                using (var stream = System.IO.File.Create(rootRoot + filename))
+                {
+                    value.new_img.CopyTo(stream);
+                }
+            }
+
             string sql = $@"INSERT INTO new
-                        (new_id,new_title,new_content,isdel,create_id,create_time) 
-                        VALUES (@new_id,@new_title,@new_content,@isdel,@create_id,@create_time)";
+                        (new_id,new_title,new_startdate,new_enddate,new_content,new_img,isdel,create_id,create_time) 
+                        VALUES (@new_id,@new_title,@new_startdate,@new_enddate,@new_content,@new_img,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -32,7 +47,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@new_startdate", value.new_startdate);
                     command.Parameters.AddWithValue("@new_enddate", value.new_enddate);
                     command.Parameters.AddWithValue("@new_content", value.new_content);
-                    command.Parameters.AddWithValue("@new_img", image);
+                    command.Parameters.AddWithValue("@new_img", filename);
                     command.Parameters.AddWithValue("@isdel", "false");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);

@@ -1,8 +1,52 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI\\DI\\wwwroot\\S__2981925.jpg",
-      "PackagePath": "staticwebassets\\S__2981925.jpg"
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419150828p0.png",
+      "PackagePath": "staticwebassets\\image\\20230419150828p0.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419151212p0.png",
+      "PackagePath": "staticwebassets\\image\\20230419151212p0.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\2unnamed2.jpg",
+      "PackagePath": "staticwebassets\\image\\2unnamed2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\9551f5f081962f2d6679caa795393a4a.png",
+      "PackagePath": "staticwebassets\\image\\9551f5f081962f2d6679caa795393a4a.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1234images (1).png",
+      "PackagePath": "staticwebassets\\image\\NN1234images (1).png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1641p3.png",
+      "PackagePath": "staticwebassets\\image\\NN1641p3.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1961p2.png",
+      "PackagePath": "staticwebassets\\image\\NN1961p2.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2614p5.png",
+      "PackagePath": "staticwebassets\\image\\NN2614p5.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2657p4.png",
+      "PackagePath": "staticwebassets\\image\\NN2657p4.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5361p2.png",
+      "PackagePath": "staticwebassets\\image\\NN5361p2.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7438p5.png",
+      "PackagePath": "staticwebassets\\image\\NN7438p5.png"
+    },
+    {
+      "Id": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN9435p5.png",
+      "PackagePath": "staticwebassets\\image\\NN9435p5.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.DI.Microsoft.AspNetCore.StaticWebAssets.props",

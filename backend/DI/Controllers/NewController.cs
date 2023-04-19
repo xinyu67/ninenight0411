@@ -21,9 +21,9 @@ namespace DI.Controllers
 
         #region 新增最新消息
         [HttpPost]
-        public IActionResult CreateNew([FromBody] NewCreateViewModels value,IFormFile image)
+        public IActionResult CreateNew([FromForm] NewCreateViewModels value)
         {
-            var create = _newDBService.CreateNew(value,image);
+            var create = _newDBService.CreateNew(value);
             if (create == null)
             {
                 return NotFound("找不到資源");

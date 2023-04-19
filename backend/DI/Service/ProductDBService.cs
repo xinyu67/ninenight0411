@@ -63,14 +63,59 @@ namespace DI.Service
             //如果只有search_ml有資料
             if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == true )
             {
-                //if () {
-                
-                //}
-                Sql += "product_ml=@search_ml";
+                if (search_ml == "1")
+                {
+                    Sql += "(product_ml>=0 and product_ml<=300)";
+                }
+                else if (search_ml == "2")
+                {
+                    Sql += "(product_ml>=300 and product_ml<=400)";
+                }
+                else if (search_ml == "3")
+                {
+                    Sql += "(product_ml>=400 and product_ml<=500)";
+                }
+                else if (search_ml == "4")
+                {
+                    Sql += "(product_ml>=500 and product_ml<=600)";
+                }
+                else if (search_ml == "5")
+                {
+                    Sql += "(product_ml>=600 and product_ml<=700)";
+                }
+                else if (search_ml == "6")
+                {
+                    Sql += "product_ml>=700";
+                }
+                //Sql += "product_ml=@search_ml";
             }
             else if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == false )
             {
-                Sql += "product_ml=@search_ml and ";
+                if (search_ml == "1")
+                {
+                    Sql += "(product_ml>=0 and product_ml<=300) and ";
+                }
+                else if (search_ml == "2")
+                {
+                    Sql += "(product_ml>=300 and product_ml<=400) and ";
+                }
+                else if (search_ml == "3")
+                {
+                    Sql += "(product_ml>=400 and product_ml<=500) and ";
+                }
+                else if (search_ml == "4")
+                {
+                    Sql += "(product_ml>=500 and product_ml<=600) and ";
+                }
+                else if (search_ml == "5")
+                {
+                    Sql += "(product_ml>=600 and product_ml<=700) and ";
+                }
+                else if (search_ml == "6")
+                {
+                    Sql += "product_ml>=700 and ";
+                }
+                //Sql += "product_ml=@search_ml and ";
             }
 
             //如果search_product有資料
@@ -197,37 +242,6 @@ namespace DI.Service
         #region 新增商品
         public string CreateproductAsync(ProductCreateViewModels value) {
 
-            //var filename = value.product_img.FileName;
-            //var filePath = Path.Combine(connectionString, filename);
-            //using (var stream = System.IO.File.Create(filename)) {
-            //await value.product_img.CopyToAsync(stream);
-            //}
-
-            //將檔案和伺服器上路徑合併
-            //string Url = Path.Combine(Server.MapPath("~/wwwroot/"), filename);
-            //把檔案儲存於伺服器上
-            //Data.Itemimage.saveAs(Url);
-            //設定路徑
-            //Data.NewData.Image = filename;
-
-            //string fileName = null;
-            //string fileRelativePath = null;
-            //if (value.product_img != null && value.product_img.Length > 0)
-            //{
-            //string uploadsFolder = Path.Combine(_environment.WebRootPath, "images");
-            //fileName = value.product_img.FileName;
-            //fileName = file1.FileName;
-            //fileRelativePath = Path.Combine("images", fileName);
-            //string filePath = Path.Combine(uploadsFolder, fileName);
-            //using (var stream = new FileStream(filePath, FileMode.Create))
-            //{
-            //await value.product_img.CopyToAsync(stream);
-            //}
-            //}
-            
-            
-
-
             //商品編號
             string allChar = "0,1,2,3,4,5,6,7,8,9";
             string[] allCharArray = allChar.Split(',');
@@ -254,7 +268,7 @@ namespace DI.Service
 
 
             //圖片存入資料夾
-            string rootRoot = _environment.ContentRootPath + @"\image\";
+            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
             if (value.product_img.Length > 0)
             {
@@ -292,7 +306,15 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
                     command.ExecuteNonQuery();
 
-                    return "123";
+                    int num = command.ExecuteNonQuery();
+                    if (num > 0)
+                    {
+                        return "新增成功！";
+                    }
+                    else
+                    {
+                        return "新增失敗，請重試！";
+                    }
                 }
                 catch (Exception e)
                 {
