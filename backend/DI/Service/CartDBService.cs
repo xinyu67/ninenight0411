@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DI.Service
 {
@@ -35,20 +36,24 @@ namespace DI.Service
                     while (reader.Read())
                     {
                         CartAllViewModels Data = new CartAllViewModels();
-                        List<ProductCartViewModels> DD = new List<ProductCartViewModels>();
+                        ProductCartViewModels DD = new ProductCartViewModels();
+                        List<ProductCartViewModels> product_list = new List<ProductCartViewModels>();
                         cart_product_amount = (int)reader["cart_product_amount"];
                         product_price = (int)reader["product_price"];
 
                         Data.cart_id = (Guid)reader["cart_id"];
+                        DD.product_name = reader["product_name"].ToString();
+                        DD.product_img = reader["product_img"].ToString();
+                        DD.product_price = (int)reader["product_price"];
+                        //product_list.Add();
+
                         //Data.product_id = (Guid)reader["product_id"];
-                        //Data.cart_product_amount = (int)reader["cart_product_amount"];
-                        //foreach (ProductCartViewModels Data2 in DD)
-                        //{
-                           // DD.Add(reader["product_name"].ToString());
-                            //Data2.product_name = reader["product_name"].ToString();
-                            //Data2.product_img = reader["product_img"].ToString();
-                            //Data2.product_price = (int)reader["product_price"];
-                        //}
+                        /*Data.cart_product_amount = (int)reader["cart_product_amount"];
+                       
+                        foreach (List<ProductCartViewModels> Data2 in product_list)
+                        {
+                            Data2.product_name = reader["product_name"].ToString();
+                        }*/
                         Data.money = cart_product_amount * product_price;
                         Data.total += Data.money;
                         DataList.Add(Data);

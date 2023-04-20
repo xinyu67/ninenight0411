@@ -15,36 +15,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\image\123_20230419155401+warnlogo1.png" />
-    <None Include="wwwroot\image\20230419150828p0.png" />
-    <None Include="wwwroot\image\20230419151212p0.png" />
-    <None Include="wwwroot\image\20230419152059p0.png" />
-    <None Include="wwwroot\image\20230419152825product.jpg" />
-    <None Include="wwwroot\image\20230419153908store2.jpg" />
-    <None Include="wwwroot\image\20230419154115product.jpg" />
-    <None Include="wwwroot\image\20230419160208product1.jpg" />
-    <None Include="wwwroot\image\20230419162658store2.jpg" />
-    <None Include="wwwroot\image\20230419162905store2.jpg" />
-    <None Include="wwwroot\image\20230419162938aboutus.png" />
-    <None Include="wwwroot\image\20230419163309aboutus.png" />
-    <None Include="wwwroot\image\20230419163401aboutus.png" />
-    <None Include="wwwroot\image\20230419212345p0.png" />
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\image\2unnamed2.jpg" />
     <None Include="wwwroot\image\9551f5f081962f2d6679caa795393a4a.png" />
     <None Include="wwwroot\image\NN1234images %281%29.png" />
-    <None Include="wwwroot\image\NN1358aboutus3.png" />
     <None Include="wwwroot\image\NN1641p3.png" />
     <None Include="wwwroot\image\NN1961p2.png" />
-    <None Include="wwwroot\image\NN2359_20230419154833_aboutus.png" />
     <None Include="wwwroot\image\NN2614p5.png" />
     <None Include="wwwroot\image\NN2657p4.png" />
-    <None Include="wwwroot\image\NN3723aboutus.png" />
-    <None Include="wwwroot\image\NN3943_20230419155039_warnlogo2.png" />
     <None Include="wwwroot\image\NN5361p2.png" />
-    <None Include="wwwroot\image\NN6204p2.png" />
-    <None Include="wwwroot\image\NN7438p5.png" />
-    <None Include="wwwroot\image\NN7822p5.png" />
-    <None Include="wwwroot\image\NN7863p12.png" />
     <None Include="wwwroot\image\NN9435p5.png" />
   </ItemGroup>
 

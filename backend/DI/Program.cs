@@ -1,5 +1,4 @@
 using DI.Service;
-using Microsoft.Extensions.FileProviders;
 using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,12 +39,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-    RequestPath = "/image"
-});
 
 app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5555").AllowAnyHeader().AllowAnyMethod());
 
