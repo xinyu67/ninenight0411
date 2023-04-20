@@ -1,4 +1,6 @@
 ﻿using DI.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
@@ -33,14 +35,20 @@ namespace DI.Service
                     while (reader.Read())
                     {
                         CartAllViewModels Data = new CartAllViewModels();
+                        List<ProductCartViewModels> DD = new List<ProductCartViewModels>();
                         cart_product_amount = (int)reader["cart_product_amount"];
                         product_price = (int)reader["product_price"];
+
                         Data.cart_id = (Guid)reader["cart_id"];
                         //Data.product_id = (Guid)reader["product_id"];
-                        Data.cart_product_amount = (int)reader["cart_product_amount"];
-                        Data.product_name = reader["product_name"].ToString();
-                        Data.product_img = reader["product_img"].ToString();
-                        Data.product_price = (int)reader["product_price"];
+                        //Data.cart_product_amount = (int)reader["cart_product_amount"];
+                        //foreach (ProductCartViewModels Data2 in DD)
+                        //{
+                           // DD.Add(reader["product_name"].ToString());
+                            //Data2.product_name = reader["product_name"].ToString();
+                            //Data2.product_img = reader["product_img"].ToString();
+                            //Data2.product_price = (int)reader["product_price"];
+                        //}
                         Data.money = cart_product_amount * product_price;
                         Data.total += Data.money;
                         DataList.Add(Data);

@@ -23,6 +23,278 @@ namespace DI.Service
             connectionString = _config.GetConnectionString("local");
         }
 
+        /*
+        #region 全部商品 & 名稱搜尋
+        public List<ProductAllViewModels> SearchProduct(ProductSearchViewModels search)
+        {/*
+            string Sql = string.Empty;
+            //如果搜尋都是空值
+            if (search.search_brand == Guid.Empty & search.search_place == Guid.Empty & string.IsNullOrWhiteSpace(search.search_ml) == true & string.IsNullOrWhiteSpace(search.money) == true & string.IsNullOrWhiteSpace(search.search_product) == true)
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
+            }
+            else if (search.search_brand == Guid.Empty & search.search_place == Guid.Empty & string.IsNullOrWhiteSpace(search.search_ml) == true & string.IsNullOrWhiteSpace(search.search_product) == true & string.IsNullOrWhiteSpace(search.money) == false)
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
+            }
+            else
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where ";
+            }
+            
+            //如果只有search_brand有資料
+            if (string.IsNullOrWhiteSpace(search_brand) == false & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true)
+            {
+                Sql += "brand_name=@search_brand ";
+            }
+            else if (string.IsNullOrWhiteSpace(search_brand) == false & (string.IsNullOrWhiteSpace(search_place) == false || string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false))
+            {
+                Sql += "brand_name=@search_brand and ";
+            }
+
+            //如果只有search_place有資料
+            if (string.IsNullOrWhiteSpace(search_place) == false & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(search_product) == true)
+            {
+                Sql += "place_name=@search_place ";
+            }
+            else if (string.IsNullOrWhiteSpace(search_place) == false & (string.IsNullOrWhiteSpace(search_ml) == false || string.IsNullOrWhiteSpace(search_product) == false))
+            {
+                Sql += "place_name=@search_place and ";
+            }
+
+            //如果只有search_ml有資料
+            if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == true)
+            {
+                if (search_ml == "1")
+                {
+                    Sql += "(product_ml>=0 and product_ml<=300) ";
+                }
+                else if (search_ml == "2")
+                {
+                    Sql += "(product_ml>=300 and product_ml<=400) ";
+                }
+                else if (search_ml == "3")
+                {
+                    Sql += "(product_ml>=400 and product_ml<=500) ";
+                }
+                else if (search_ml == "4")
+                {
+                    Sql += "(product_ml>=500 and product_ml<=600) ";
+                }
+                else if (search_ml == "5")
+                {
+                    Sql += "(product_ml>=600 and product_ml<=700) ";
+                }
+                else if (search_ml == "6")
+                {
+                    Sql += "product_ml>=700 ";
+                }
+                //Sql += "product_ml=@search_ml";
+            }
+            else if (string.IsNullOrWhiteSpace(search_ml) == false & string.IsNullOrWhiteSpace(search_product) == false)
+            {
+                if (search_ml == "1")
+                {
+                    Sql += "(product_ml>=0 and product_ml<=300) and ";
+                }
+                else if (search_ml == "2")
+                {
+                    Sql += "(product_ml>=300 and product_ml<=400) and ";
+                }
+                else if (search_ml == "3")
+                {
+                    Sql += "(product_ml>=400 and product_ml<=500) and ";
+                }
+                else if (search_ml == "4")
+                {
+                    Sql += "(product_ml>=500 and product_ml<=600) and ";
+                }
+                else if (search_ml == "5")
+                {
+                    Sql += "(product_ml>=600 and product_ml<=700) and ";
+                }
+                else if (search_ml == "6")
+                {
+                    Sql += "product_ml>=700 and ";
+                }
+                //Sql += "product_ml=@search_ml and ";
+            }
+
+            //如果search_product有資料
+            if (string.IsNullOrWhiteSpace(search_product) == false)
+            {
+                Sql += "product_name LIKE '%' + @search_product + '%' ";
+            }
+
+            //如果money有排序
+            if (money == "ASC")
+            {
+                Sql += " order by product_price ASC ";
+            }
+            else if (money == "DESC")
+            {
+                Sql += " order by product_price DESC ";
+            }*/
+        
+
+            //string Sql = string.Empty;
+            //if (string.IsNullOrWhiteSpace(search_product) == false)
+            //{
+            //Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product_name LIKE '%' + @search_product + '%'";
+            //}
+            //else
+            //{
+            //Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+            //}
+            /*
+            var img = "";
+
+            List<ProductAllViewModels> DataList = new List<ProductAllViewModels>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string Sql = string.Empty;
+                //如果搜尋都是空值
+                if (string.IsNullOrWhiteSpace(search.search_brand) == true & string.IsNullOrWhiteSpace(search.search_place) == true & string.IsNullOrWhiteSpace(search.search_ml) == true & string.IsNullOrWhiteSpace(search.money) == true & string.IsNullOrWhiteSpace(search.search_product) == true)
+                {
+                    Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
+                }
+                //只有money有資料
+                else if (string.IsNullOrWhiteSpace(search.search_brand) == true & string.IsNullOrWhiteSpace(search.search_place) == true & string.IsNullOrWhiteSpace(search.search_ml) == true & string.IsNullOrWhiteSpace(search.search_product) == true & string.IsNullOrWhiteSpace(search.money) == false)
+                {
+                    Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id @search_money";
+                }
+                else
+                {
+                    Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where @search_brand  @search_place  @search_ml  @search_product @search_money";
+                }
+
+                SqlCommand command = new SqlCommand(Sql, conn);
+
+                //brand_id
+                if (search.search_brand != null & (search.search_place != null || search.search_ml != null || search.search_product != null))
+                {
+                    command.Parameters.AddWithValue("@search_brand", "brand.brand_id=" + search.search_brand + " and ");
+                }
+                else if (search.search_brand != null & search.search_place == null & search.search_ml == null & search.search_product == null)
+                {
+                    command.Parameters.AddWithValue("@search_brand", "brand.brand_id=" + search.search_brand);
+                }
+                else {
+                    command.Parameters.AddWithValue("@search_brand", "");
+                }
+
+                //place_id
+                if (search.search_place != null & (search.search_ml != null || search.search_product != null))
+                {
+                    command.Parameters.AddWithValue("@search_place", "place.search_place=" + search.search_place + " and ");
+                }
+                else if (search.search_place != null & search.search_ml == null & search.search_product == null)
+                {
+                    command.Parameters.AddWithValue("@search_place", "place.search_place=" + search.search_place);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@search_place", "");
+                }
+
+
+                //product_ml
+                var Product_ML = "";
+                if (search.search_ml == "1")
+                {
+                    Product_ML=" product.product_ml<=300 ";
+                }
+                else if (search.search_ml == "2")
+                {
+                    Product_ML="(product.product_ml>=300 and product.product_ml<=400) ";
+                }
+                else if (search.search_ml == "3")
+                {
+                    Product_ML=" (product.product_ml>=400 and product.product_ml<=500) ";
+                }
+                else if (search.search_ml == "4")
+                {
+                    Product_ML=" (product.product_ml>=500 and product.product_ml<=600) ";
+                }
+                else if (search.search_ml == "5")
+                {
+                    Product_ML=" (product.product_ml>=600 and product.product_ml<=700) ";
+                }
+                else
+                {
+                    Product_ML=" (product.product_ml>=700) ";
+                }
+
+                if (search.search_ml != null & search.search_product != null)
+                {
+                    command.Parameters.AddWithValue("@search_ml", Product_ML + " and ");
+                }
+                else if (search.search_ml != null & search.search_product == null)
+                {
+                    command.Parameters.AddWithValue("@search_ml", Product_ML);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@search_ml", "");
+                }
+
+                //product_name
+                if (search.search_product != null)
+                {
+                    command.Parameters.AddWithValue("@search_product", "product.product_name LIKE '%' + " + search.search_product + " + '%'");
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@search_product", "");
+                }
+
+                //money
+                if (search.money == "DESC")
+                {
+                    command.Parameters.AddWithValue("@search_money", " order by product.product_price DESC");
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@search_money", " order by product.product_price ASC");
+                }
+
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
+                        ProductAllViewModels Data = new ProductAllViewModels();
+                        Data.product_id = (Guid)reader["product_id"];
+                        //Data.product_num = reader["product_num"].ToString();
+                        Data.product_name = reader["product_name"].ToString();
+                        Data.product_img = img;
+                        //Data.brand_name = reader["brand_name"].ToString();
+                        Data.place_name = reader["place_name"].ToString();
+                        Data.product_ml = (int)reader["product_ml"];
+                        Data.product_price = (int)reader["product_price"];
+
+                        DataList.Add(Data);
+                    }
+                }
+                catch (Exception e)
+                {
+                    //丟出錯誤
+                    throw new Exception(e.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return DataList.OrderBy(item => item.product_name).ToList();
+            }
+        }
+        #endregion */
+
+
+        
         #region 全部商品 & 名稱搜尋
         public List<ProductAllViewModels> SearchProduct(string search_brand, string search_place,string search_ml,string money,string search_product)
         {
@@ -134,16 +406,18 @@ namespace DI.Service
                 Sql += " order by product_price DESC ";
             }
 
-            /*
-            string Sql = string.Empty;
-            if (string.IsNullOrWhiteSpace(search_product) == false)
-            {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product_name LIKE '%' + @search_product + '%'";
-            }
-            else
-            {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
-            }*/
+            
+            //string Sql = string.Empty;
+            //if (string.IsNullOrWhiteSpace(search_product) == false)
+            //{
+                //Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product_name LIKE '%' + @search_product + '%'";
+            //}
+            //else
+            //{
+                //Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id";
+            //}
+
+            var img = "";
 
             List<ProductAllViewModels> DataList = new List<ProductAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -163,11 +437,12 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
                         ProductAllViewModels Data = new ProductAllViewModels();
                         Data.product_id = (Guid)reader["product_id"];
                         //Data.product_num = reader["product_num"].ToString();
                         Data.product_name = reader["product_name"].ToString();
-                        Data.product_img = reader["product_img"].ToString();
+                        Data.product_img = img;
                         //Data.brand_name = reader["brand_name"].ToString();
                         Data.place_name = reader["place_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
@@ -188,7 +463,7 @@ namespace DI.Service
                 return DataList.OrderBy(item => item.product_name).ToList();
             }
         }
-        #endregion
+        #endregion 
 
         #region 單一商品總覽資料
         public List<ProductIdViewModels> Allproduct_id(Guid product_id)
@@ -281,8 +556,6 @@ namespace DI.Service
                 }
             }
 
-            var img = "http://localhost:7094/ninenight0411/backend/DI/wwwroot/image/" + filename;
-
             string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_like,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_like,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();
 
@@ -298,7 +571,7 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@product_name", value.product_name);
                     command.Parameters.AddWithValue("@product_eng", value.product_eng);
                     command.Parameters.AddWithValue("@product_like", '0');
-                    command.Parameters.AddWithValue("@product_img", img);
+                    command.Parameters.AddWithValue("@product_img", filename);
                     command.Parameters.AddWithValue("@brand_id", value.brand_id);
                     command.Parameters.AddWithValue("@product_price", value.product_price);
                     command.Parameters.AddWithValue("@place_id", value.place_id);

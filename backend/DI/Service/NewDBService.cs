@@ -94,8 +94,8 @@ namespace DI.Service
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
-                        Data.new_startdate = (DateOnly)reader["new_startdate"];
-                        Data.new_enddate = (DateOnly)reader["new_enddate"];
+                        Data.new_startdate = reader["new_startdate"].ToString();
+                        Data.new_enddate = reader["new_enddate"].ToString();
                         Data.new_content = reader["new_content"].ToString();
                         Data.new_img = reader["new_img"].ToString();
 
@@ -148,8 +148,8 @@ namespace DI.Service
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
-                        Data.new_startdate = (DateOnly)reader["new_startdate"];
-                        Data.new_enddate = (DateOnly)reader["new_enddate"];
+                        Data.new_startdate = reader["new_startdate"].ToString();
+                        Data.new_enddate = reader["new_enddate"].ToString();
                         Data.new_content = reader["new_content"].ToString();
                         Data.new_img = reader["new_img"].ToString();
 
