@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r3E2IYsfosTmDvbyjtMIe7guLrgSFF1/dpoMfMq0cGU=",
+  "Hash": "zaV9xOd3wgmL0amCGWv8k6WC+xUzmg89uIK5isZbPwA=",
   "Source": "DI",
   "BasePath": "_content/DI",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "DI\\wwwroot",
       "Source": "DI",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\123_20230419155401+warnlogo1.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\123_20230419155401+warnlogo1.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/123_20230419155401+warnlogo1.png",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\image\\123_20230419155401+warnlogo1.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419150828p0.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419150828p0.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419150828p0.png",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419150828p0.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419151212p0.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419151212p0.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419151212p0.png",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419151212p0.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419152059p0.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419152059p0.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419152059p0.png",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419152059p0.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419152825product.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419152825product.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419152825product.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419152825product.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419153908store2.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419153908store2.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419153908store2.jpg",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419153908store2.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419154115product.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419154115product.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419154115product.jpg",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419154115product.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419160208product1.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419160208product1.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419160208product1.jpg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419160208product1.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162658store2.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162658store2.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419162658store2.jpg",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419162658store2.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162905store2.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162905store2.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419162905store2.jpg",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419162905store2.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162938aboutus.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419162938aboutus.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419162938aboutus.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419162938aboutus.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419163309aboutus.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419163309aboutus.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419163309aboutus.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419163309aboutus.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419163401aboutus.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419163401aboutus.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419163401aboutus.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419163401aboutus.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419212345p0.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230419212345p0.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/20230419212345p0.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\image\\20230419212345p0.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\2unnamed2.jpg",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\2unnamed2.jpg",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/2unnamed2.jpg",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\image\\2unnamed2.jpg"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\9551f5f081962f2d6679caa795393a4a.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\9551f5f081962f2d6679caa795393a4a.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/9551f5f081962f2d6679caa795393a4a.png",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\image\\9551f5f081962f2d6679caa795393a4a.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1234images (1).png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1234images (1).png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN1234images (1).png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN1234images (1).png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1358aboutus3.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1358aboutus3.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN1358aboutus3.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN1358aboutus3.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1641p3.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1641p3.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN1641p3.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN1641p3.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1961p2.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN1961p2.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN1961p2.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN1961p2.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2359_20230419154833_aboutus.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2359_20230419154833_aboutus.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN2359_20230419154833_aboutus.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN2359_20230419154833_aboutus.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2614p5.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2614p5.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN2614p5.png",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN2614p5.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2657p4.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN2657p4.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN2657p4.png",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN2657p4.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN3723aboutus.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN3723aboutus.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN3723aboutus.png",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN3723aboutus.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN3943_20230419155039_warnlogo2.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN3943_20230419155039_warnlogo2.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN3943_20230419155039_warnlogo2.png",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN3943_20230419155039_warnlogo2.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5361p2.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5361p2.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN5361p2.png",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN5361p2.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN6204p2.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN6204p2.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN6204p2.png",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN6204p2.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7438p5.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7438p5.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN7438p5.png",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN7438p5.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7822p5.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7822p5.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN7822p5.png",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN7822p5.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7863p12.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN7863p12.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN7863p12.png",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\image\\NN7863p12.png"
     },
     {
-      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN9435p5.png",
+      "Identity": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN9435p5.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\yiqin\\Desktop\\ninenight0411\\backend\\DI\\wwwroot\\",
       "BasePath": "_content/DI",
       "RelativePath": "image/NN9435p5.png",
       "AssetKind": "All",

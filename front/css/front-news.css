@@ -142,7 +142,7 @@ header {
 }
 
 .content-title {
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 0.15em;
     font-weight: 600;
 }
@@ -157,7 +157,7 @@ header {
 .content-title-in2 {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 .content-title-in3 {
@@ -174,7 +174,7 @@ header {
 
 #p2 {
     letter-spacing: 0.15em;
-    font-size: 20px;
+    font-size: 16px;
     color: rgb(48, 83, 134);
 }
 
