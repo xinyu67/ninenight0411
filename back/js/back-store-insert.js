@@ -1,4 +1,3 @@
-var editor = CKEDITOR.replace('editorDemo');
 
 window.onload = function(){
 

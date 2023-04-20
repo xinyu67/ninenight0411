@@ -22,23 +22,23 @@ window.onload = function(){
 	);
 
 
-    var insertplace = document.getElementById('insertplace')
-    var insertbutton = document.getElementById('insertbutton')
-    var placeselect = document.getElementById('place-select')
+    // var insertplace = document.getElementById('insertplace')
+    // var insertbutton = document.getElementById('insertbutton')
+    // var placeselect = document.getElementById('place-select')
 
-        insertplace.style.display = "none";
+    //     insertplace.style.display = "none";
 
-        placeselect.addEventListener("change",function(){
-            if(placeselect.value === "change"){
-                placeselect.style.display = "none";
-                insertplace.style.display = "block";
-            }
-        });
+    //     placeselect.addEventListener("change",function(){
+    //         if(placeselect.value === "change"){
+    //             placeselect.style.display = "none";
+    //             insertplace.style.display = "block";
+    //         }
+    //     });
 
-        insertbutton.addEventListener("click",function(){
-                placeselect.style.display = "block";
-                insertplace.style.display = "none";
-                placeselect.value = "";
-        });
+    //     insertbutton.addEventListener("click",function(){
+    //             placeselect.style.display = "block";
+    //             insertplace.style.display = "none";
+    //             placeselect.value = "";
+    //     });
 
 	}

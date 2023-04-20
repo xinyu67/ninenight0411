@@ -31,34 +31,39 @@
     <form>
         <div class="product-content">
             <div class="product-top">
-                <div class="product-top-left"><img id="blah" src="./img/product/p1.png" /></div>
+                <div class="product-top-left"><img id="blah" src="./img/product/p1.png" /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
                 <div class="product-top-right">
-                    <div class="title-top">
-                        <input type="text" value="海尼根星銀啤酒" placeholder="請輸入產品中文名" required>
-                        <input type="text" value="HEINEKEN SILVER BEER" placeholder="請輸入產品英文名" required>
-                    </div>
-                    <div class="price-place">
-                        <div class="place">
-                            產地：<input type="text" class="readonly" value="荷蘭" readonly>
+                    <div class="top">
+                        <div class="title-left">
+                            <div class="chinese">
+                                產品中文：<input type="text" id="chinese" class="toppp" value="" placeholder="請輸入產品中文名" required>
+                            </div>
+                            <div class="place">
+                                產地：<input type="text" id="place" class="readonly" value="" readonly>
+                            </div>
+                            <div class="brand">
+                                品牌：<input type="text" id="brand" class="readonly" value="" readonly>
+                            </div>
                         </div>
-                        <div class="brand">
-                            品牌：<input type="text" class="readonly" value="海尼根" readonly>
-                        </div>
-                        <div class="ml">
-                            容量：<input type="number" value="650" placeholder="容量(數字/毫升)" required>
-                        </div>
-                        <div class="price">
-                            價格：<input type="number" value="75" placeholder="價格(數字)" required>
+                        <div class="title-right">
+                            <div class="english">
+                                產品英文：<input type="text" id="english" class="toppp" value="" placeholder="請輸入產品英文名" required>
+                            </div>
+                            <div class="ml">
+                                容量：<input type="number" id="ml" class="num" value="" placeholder="容量(數字/毫升)" required>
+                            </div>
+                            <div class="price">
+                                價格：<input type="number" id="price" class="num" value="" placeholder="價格(數字)" required>
+                            </div>
                         </div>
                     </div>
                         <div class="productcontent">
-                            內容：<textarea name="editorDemo" style="white-space:pre-wrap;" class="textarea">順飲型啤酒市場近年持續擴大，帶有鮮明的麥芽香氣、啤酒花的微苦、爽快的氣泡感，<br>讓清爽型拉格啤酒在市場佔比逐年成長。<br> 海尼根啤酒近日推出全新口味「Silver星銀啤酒」，以不顯苦味、滑順的全新風味，搶攻夏日商機。<br>新款海尼根Silver星銀啤酒，使用特定醣化製程，因而降低苦澀感、同時帶出滑順口感；<br> 瓶身更一改品牌經典綠色印象，以銀色瓶身搭配紅色星芒，帶出愉悅、時髦的視覺印象。</textarea>
+                            內容：　<textarea name="editorDemo" id="htmll" style="white-space:pre-wrap;" class="textarea"></textarea>
                         </div>
                 </div>
             </div>
             <div class="product-bottom">
-                <input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" />
-                <a href="#"><input type="reset" class="cancel-btn mouse" value="清除"></a>
+                <a href="#"><input type="button" id="reset" class="cancel-btn mouse" value="清除"></a>
                 <a href="#"><input type="submit" class="yes-btn mouse" value="確認"></a>
             </div>
         </div>
@@ -83,6 +88,7 @@
         </div>
     </footer>
     <script src="./ckeditor/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/back-product-edit.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </body>

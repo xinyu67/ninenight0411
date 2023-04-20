@@ -192,7 +192,7 @@ header {
 
 .content{
     width: calc(100% - 600px);
-    min-height: 800px;
+    min-height: 707px;
     max-height: 100%;
     padding: 0px 300px;
 }
@@ -228,11 +228,17 @@ header {
 .news-top-right{
     width: 70%;
     background-color: #D9D9D9;
-    height: 70%;
+    height: 75%;
     margin-left: 60px;
     align-items: center;
     padding: 0px 20px;
     border-radius: 5px;
+}
+.news-time{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-bottom: 10px;
 }
 .news-bottom{
     width: 80%;
@@ -254,6 +260,7 @@ header {
 }
 .newscontent{
     font-size: 18px;
+    height: 100px;
     color: #000;
     margin-top: 10px;
     margin-bottom: 10px;

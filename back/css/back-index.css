@@ -148,7 +148,7 @@ body {
   content {
     /*padding: 82px 0px 0px 0px;*/
     width: calc(100% - 500px);
-    min-height: 500px;
+    min-height: 705px;
     max-height: 100%;
     padding: 0px 250px;
     display:block;

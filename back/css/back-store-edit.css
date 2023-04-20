@@ -28,6 +28,9 @@ body {
   input[type=text]:focus {
     background-color: #b8b6b6;
   }
+  input[type=file] {
+    width: 87%;
+}
 
 
 
@@ -89,7 +92,8 @@ body {
 
 .content{
     width: calc(100% - 600px);
-    height: 100%;
+    min-height: 705px;
+    max-height: 100%;
     padding: 0px 300px;
 }
 .stronghold-content{
@@ -107,20 +111,19 @@ body {
     margin: 0px auto;
     padding: 0px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .stronghold-top-left{
-    width: 30%;
-    /*background-color: aqua;*/
-    height: 80%;
+    height: 90%;
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .stronghold-top-left img{
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border: 2px solid #5A3A29
 }
 .stronghold-top-right{
@@ -137,7 +140,7 @@ body {
     /*background-color: #A28360;*/
     margin: 0px auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 .stronghold-bottom a{

@@ -173,7 +173,29 @@ header {
     border: 0px;
     padding: 2px 30px;
 }
-
+/* .placebrand{
+    background-color: #c0bab4;
+    padding: 5px 5px;
+    border-radius: 5px;
+} */
+.placebrand-btn{
+    background-color: #EAE4DD;
+    color: #5A3A29;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.placebrand-btn:hover{
+    background-color: #5A3A29;
+    color: #EAE4DD;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 30px;
+}
 /*banner2結束*/
 
 
@@ -181,7 +203,8 @@ header {
 
 .content{
     width: calc(100% - 40px);
-    height: 100%;
+    min-height: 705px;
+    max-height: 100%;
     padding: 0px 20px;
 }
 .product-content{
@@ -239,6 +262,9 @@ header {
 }
 .p-text{
     font-size: 16px;
+}
+.button{
+    margin-bottom: 2px;
 }
 .edit-btn{
     background-color: #5a3a29;

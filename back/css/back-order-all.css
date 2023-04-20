@@ -99,7 +99,7 @@ input[type=text] {
     align-items: center;
     font-size: 18px;
     background-color: #b8b6b660;
-    padding: 5px 0px;
+    padding: 8px 0px;
 }
 .num-left{
     width: 50%;
@@ -129,7 +129,7 @@ input[type=text] {
     align-items: center;
     font-size: 18px;
     background-color: #b8b6b660;
-    padding: 5px 0px;
+    padding: 8px 0px;
 }
 .other-left{
     width: 33%;
@@ -171,7 +171,7 @@ table{
 table th{
     border: 1px solid #000;
     border-collapse: collapse;
-    padding: 0px 5px;
+    padding: 3px 5px;
     background-color: #A28360;
     width: 25%;
     height: 30px;
@@ -179,11 +179,12 @@ table th{
 table td{
     border: 1px solid #000;
     border-collapse: collapse;
-    padding: 0px 5px;
+    padding: 3px 5px;
     height: 30px;
 }
 #total{
     background-color: #b8b6b6;
+    font-weight: bold;
 }
 
 
