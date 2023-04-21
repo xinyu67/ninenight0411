@@ -64,7 +64,7 @@ namespace DI.Controllers
 
         #region 軟刪除
         [HttpDelete]
-        public IActionResult DeletePlace([FromBody] Guid place_id)
+        public IActionResult DeletePlace([FromQuery] Guid place_id)
         {
             string result = _placeDBService.DeletePlace(place_id);
             if (result == null)

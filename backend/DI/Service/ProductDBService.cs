@@ -182,11 +182,11 @@ namespace DI.Service
             //如果搜尋都是空值
             if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(money) == true & string.IsNullOrWhiteSpace(search_product) == true)
             {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id ";
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product.isdel='false' ";
             }
             else
             {
-                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where ";
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product.isdel='false' and ";
             }
 
             //如果只有search_brand有資料
@@ -292,7 +292,7 @@ namespace DI.Service
                     {
                         img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
                         ProductAllViewModels Data = new ProductAllViewModels();
-                        Data.product_id = (Guid)reader["product_id"];
+                        Data.product_id = reader["product_id"].ToString();
                         //Data.product_num = reader["product_num"].ToString();
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_img = img;
@@ -545,7 +545,7 @@ namespace DI.Service
                     }
                     else
                     {
-                        return "修改失敗，請重試！";
+                        return "修改失敗，請重試！" + product_id;
                     }
                 }
                 catch (Exception e)

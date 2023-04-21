@@ -75,7 +75,7 @@ namespace DI.Controllers
 
         #region 刪除門市
         [HttpDelete]
-        public IActionResult DeleteStore([FromBody] Guid store_id)
+        public IActionResult DeleteStore([FromQuery] Guid store_id)
         {
             var result = _storeDBService.DeleteStore(store_id);
             if (result == null)

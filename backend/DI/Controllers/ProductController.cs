@@ -89,7 +89,7 @@ namespace DI.Controllers
 
         #region 軟刪除商品
         [HttpDelete]
-        public IActionResult Deleteproduct([FromBody] Guid product_id)
+        public IActionResult Deleteproduct([FromQuery] Guid product_id)
         {
             string result = _productDBService.Deleteproduct(product_id);
             if (result == null)

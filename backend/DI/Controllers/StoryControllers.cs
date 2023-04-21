@@ -73,7 +73,7 @@ namespace DI.Controllers
         
         #region 刪除品牌故事
         [HttpDelete]
-        public IActionResult DeleteStory([FromBody] Guid story_id)
+        public IActionResult DeleteStory([FromQuery] Guid story_id)
         {
             var result = _storyDBService.DeleteStory(story_id);
             if (result == null)

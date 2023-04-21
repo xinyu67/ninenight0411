@@ -76,7 +76,7 @@ namespace DI.Controllers
 
         #region 軟刪除
         [HttpDelete]
-        public IActionResult DeleteBrand([FromBody] Guid brand_id)
+        public IActionResult DeleteBrand([FromQuery] Guid brand_id)
         {
             string result = _brandDBService.DeleteBrand(brand_id);
             if (result == null)

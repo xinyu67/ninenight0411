@@ -76,7 +76,7 @@ namespace DI.Controllers
 
         #region 軟刪除最新消息
         [HttpDelete]
-        public IActionResult DeleteNew([FromBody] Guid new_id)
+        public IActionResult DeleteNew([FromQuery] Guid new_id)
         {
             string result = _newDBService.DeleteNew(new_id);
             if (result == null)

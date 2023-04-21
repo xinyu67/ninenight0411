@@ -18,11 +18,11 @@ namespace DI.Service
         }
 
         #region 購物車總覽
-        public List<CartAllViewModels> Allcart()
+        public List<CartViewModels> Allcart()
         {
             string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\"";
 
-            List<CartAllViewModels> DataList = new List<CartAllViewModels>();
+            List<CartViewModels> DataList = new List<CartViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -33,27 +33,34 @@ namespace DI.Service
                     int cart_product_amount;
                     int product_price;
                     int total;
-                    while (reader.Read())
+                    /*
+
+                    CartAllViewModels ProductList = DataList.GroupBy(x => new { x.cart_id })
+                          .Select(n => new CartAllViewModels
+                          {
+                              cart_id = n.Key.cart_id,
+                              product_list = n.GroupBy(x => x.new { x.product_name, x.product_img, x.product_price })
+                                             .Select(n => new ProductCartViewModels
+                                             {
+                                                 product_name = n.Key.product_name,
+                                                 product_img = n.Key.product_img,
+                                                 product_price = n.Key.product_price
+                                             }).Tolist();
+                            }).FirstOrDefault();
+                    */
+
+
+                while (reader.Read())
                     {
-                        CartAllViewModels Data = new CartAllViewModels();
-                        ProductCartViewModels DD = new ProductCartViewModels();
-                        List<ProductCartViewModels> product_list = new List<ProductCartViewModels>();
+                        CartViewModels Data = new CartViewModels();
+
                         cart_product_amount = (int)reader["cart_product_amount"];
                         product_price = (int)reader["product_price"];
 
                         Data.cart_id = (Guid)reader["cart_id"];
-                        DD.product_name = reader["product_name"].ToString();
-                        DD.product_img = reader["product_img"].ToString();
-                        DD.product_price = (int)reader["product_price"];
-                        //product_list.Add();
-
-                        //Data.product_id = (Guid)reader["product_id"];
-                        /*Data.cart_product_amount = (int)reader["cart_product_amount"];
-                       
-                        foreach (List<ProductCartViewModels> Data2 in product_list)
-                        {
-                            Data2.product_name = reader["product_name"].ToString();
-                        }*/
+                        Data.product_name = reader["product_name"].ToString();
+                        Data.product_img = reader["product_img"].ToString();
+                        Data.product_price = (int)reader["product_price"];
                         Data.money = cart_product_amount * product_price;
                         Data.total += Data.money;
                         DataList.Add(Data);
