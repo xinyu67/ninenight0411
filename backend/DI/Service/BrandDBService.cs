@@ -17,6 +17,8 @@ namespace DI.Service
         #region 新增品牌
         public string CreateBrand(BrandCreateViewModels value)
         {
+            string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
+
             string sql = $@"INSERT INTO brand
                         (brand_id,brand_name,brand_eng,isdel,create_id,create_time) 
                         VALUES (@brand_id,@brand_name,@brand_eng,@isdel,@create_id,@create_time)";
@@ -25,23 +27,49 @@ namespace DI.Service
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
+                SqlCommand command_repeat = new SqlCommand(Sql_repeat, conn);
+
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@brand_id", NewGuid);
-                    command.Parameters.AddWithValue("@brand_name", value.brand_name);
-                    command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
-                    command.Parameters.AddWithValue("@isdel", "0");
-                    command.Parameters.AddWithValue("@create_id", "admin");
-                    command.Parameters.AddWithValue("@create_time", DateTime.Now);
-                    int num=command.ExecuteNonQuery();
-                    if (num > 0)
+
+                    SqlDataReader reader = command_repeat.ExecuteReader();
+                    int no_create = 0;
+                    while (reader.Read())
                     {
-                        return "新增成功！";
+                        if (value.brand_name == reader["brand_name"].ToString())
+                        {
+                            no_create = 1;
+                            break;
+                        }
+                        else
+                        {
+                            no_create = 0;
+                        }
                     }
-                    else {
-                        return "新增失敗，請重試！";
+
+                    if (no_create == 0)
+                    {
+                        command.Parameters.AddWithValue("@brand_id", NewGuid);
+                        command.Parameters.AddWithValue("@brand_name", value.brand_name);
+                        command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
+                        command.Parameters.AddWithValue("@isdel", "0");
+                        command.Parameters.AddWithValue("@create_id", "admin");
+                        command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        int num=command.ExecuteNonQuery();
+                        if (num > 0)
+                        {
+                            return "新增成功！";
+                        }
+                        else {
+                            return "新增失敗，請重試！";
+                        }
                     }
+                    else
+                    {
+                        return "已新增過此品牌";
+                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -147,29 +175,55 @@ namespace DI.Service
         #region 修改品牌
         public string PutBrand(BrandUpdateViewModel value)
         {
+            string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
+
             string sql = $@"
             UPDATE brand SET brand_name=@brand_name,brand_eng=@brand_eng,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
+                SqlCommand command_repeat = new SqlCommand(Sql_repeat, conn);
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@brand_id", value.brand_id);
-                    command.Parameters.AddWithValue("@brand_name", value.brand_name);
-                    command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
-                    command.Parameters.AddWithValue("@update_id", "admin");
-                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
-                    int row=command.ExecuteNonQuery();
-                    if(row > 0)
+
+                    SqlDataReader reader = command_repeat.ExecuteReader();
+                    int no_create = 0;
+                    while (reader.Read())
                     {
-                        return "修改成功！";
+                        if (value.brand_name == reader["brand_name"].ToString())
+                        {
+                            no_create = 1;
+                            break;
+                        }
+                        else
+                        {
+                            no_create = 0;
+                        }
+                    }
+
+                    if (no_create == 0)
+                    {
+                        command.Parameters.AddWithValue("@brand_id", value.brand_id);
+                        command.Parameters.AddWithValue("@brand_name", value.brand_name);
+                        command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
+                        command.Parameters.AddWithValue("@update_id", "admin");
+                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
+                        int row = command.ExecuteNonQuery();
+                        if (row > 0)
+                        {
+                            return "修改成功！";
+                        }
+                        else
+                        {
+                            return "修改失敗，請重試！";
+                        }
                     }
                     else
                     {
-                        return "修改失敗，請重試！";
+                        return "已新增過此品牌";
                     }
-                    
+
                 }
                 catch (Exception e)
                 {

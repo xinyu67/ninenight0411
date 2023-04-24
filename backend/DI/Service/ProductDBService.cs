@@ -178,9 +178,13 @@ namespace DI.Service
         #region 全部商品 & 名稱搜尋
         public List<ProductAllViewModels> SearchProduct(string search_brand, string search_place,string search_ml,string money,string search_product)
         {
+
             string Sql = string.Empty;
             //如果搜尋都是空值
             if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(money) == true & string.IsNullOrWhiteSpace(search_product) == true)
+            {
+                Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product.isdel='false' ";
+            }else if (string.IsNullOrWhiteSpace(search_brand) == true & string.IsNullOrWhiteSpace(search_place) == true & string.IsNullOrWhiteSpace(search_ml) == true & string.IsNullOrWhiteSpace(money) == false & string.IsNullOrWhiteSpace(search_product) == true)
             {
                 Sql = "SELECT * FROM (product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id where product.isdel='false' ";
             }
@@ -317,9 +321,13 @@ namespace DI.Service
                 {
                     return DataList.OrderByDescending(item => item.product_price).ToList();
                 }
-                else
+                else if (money == "ASC")
                 {
                     return DataList.OrderBy(item => item.product_price).ToList();
+                }
+                else
+                {
+                    return DataList.OrderBy(item => item.product_name).ToList();
                 }
                 
                 
@@ -470,7 +478,6 @@ namespace DI.Service
         #region 修改商品
         public string PutProduct(ProductUpdateViewModel value)
         {
-
             //圖片存入資料夾
             string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
@@ -485,7 +492,7 @@ namespace DI.Service
             }
 
             string sql = $@"
-            UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,brand_id=@brand_id,place_id=@place_id,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
+            UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -496,8 +503,8 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@product_eng", value.product_eng);
                     command.Parameters.AddWithValue("@product_img", filename);
                     command.Parameters.AddWithValue("@product_price", value.product_price);
-                    command.Parameters.AddWithValue("@brand_id", value.brand_id);
-                    command.Parameters.AddWithValue("@place_id", value.place_id);
+                    //command.Parameters.AddWithValue("@brand_id", value.brand_id);
+                    //command.Parameters.AddWithValue("@place_id", value.place_id);
                     command.Parameters.AddWithValue("@product_ml", value.product_ml);
                     command.Parameters.AddWithValue("@product_content", value.product_content);
                     command.Parameters.AddWithValue("@product_id", value.product_id);

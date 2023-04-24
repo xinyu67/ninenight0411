@@ -19,6 +19,9 @@ namespace DI.Service
         #region 新增產地
         public string CreatePlace(PlaceCreateViewModels value)
         {
+            string Sql_repeat = "SELECT place_name FROM place where isdel='false'";
+
+
             string sql = $@"INSERT INTO place
                         (place_id,place_name,place_eng,isdel,create_id,create_time) 
                         VALUES (@place_id,@place_name,@place_eng,@isdel,@create_id,@create_time)";
@@ -27,24 +30,46 @@ namespace DI.Service
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
+                SqlCommand command_repeat = new SqlCommand(Sql_repeat, conn);
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@place_id", NewGuid);
-                    command.Parameters.AddWithValue("@place_name", value.place_name);
-                    command.Parameters.AddWithValue("@place_eng", value.place_eng);
-                    command.Parameters.AddWithValue("@isdel", "0");
-                    command.Parameters.AddWithValue("@create_id", "admin");
-                    command.Parameters.AddWithValue("@create_time", DateTime.Now);
-                    int num = command.ExecuteNonQuery();
-                    if (num > 0)
+                    SqlDataReader reader = command_repeat.ExecuteReader();
+                    int no_create = 0;
+                    while(reader.Read()){
+                        if ( value.place_name == reader["place_name"].ToString())
+                        {
+                            no_create = 1;
+                            break;
+                        }
+                        else
+                        {
+                            no_create = 0;
+                        }
+                    }
+                    if (no_create == 0)
                     {
-                        return "新增成功！";
+                        command.Parameters.AddWithValue("@place_id", NewGuid);
+                        command.Parameters.AddWithValue("@place_name", value.place_name);
+                        command.Parameters.AddWithValue("@place_eng", value.place_eng);
+                        command.Parameters.AddWithValue("@isdel", "0");
+                        command.Parameters.AddWithValue("@create_id", "admin");
+                        command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        int num = command.ExecuteNonQuery();
+                        if (num > 0)
+                        {
+                            return "新增成功！";
+                        }
+                        else
+                        {
+                            return "新增失敗，請重試！";
+                        }
                     }
                     else
                     {
-                        return "新增失敗，請重試！";
+                        return "已新增過此地點";
                     }
+                    
                 }
                 catch (Exception e)
                 {
@@ -62,6 +87,7 @@ namespace DI.Service
         public List<PlaceAllViewModels> B_AllPlace()
         {
             string Sql = "SELECT * FROM place where isdel='false'";
+
 
             List<PlaceAllViewModels> DataList = new List<PlaceAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -149,27 +175,51 @@ namespace DI.Service
         #region 修改產地
         public string PutPlace(PlaceUpdateViewModel value)
         {
+            string Sql_repeat = "SELECT place_name FROM place where isdel='false'";
+
             string sql = $@"
             UPDATE place SET place_name=@place_name,place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
+                SqlCommand command_repeat = new SqlCommand(Sql_repeat, conn);
                 try
                 {
                     conn.Open();
-                    command.Parameters.AddWithValue("@place_id", value.place_id);
-                    command.Parameters.AddWithValue("@place_name", value.place_name);
-                    command.Parameters.AddWithValue("@place_eng", value.place_eng);
-                    command.Parameters.AddWithValue("@update_id", "admin");
-                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
-                    int row = command.ExecuteNonQuery();
-                    if (row > 0)
+                    SqlDataReader reader = command_repeat.ExecuteReader();
+                    int no_create = 0;
+                    while (reader.Read())
                     {
-                        return "修改成功！";
+                        if (value.place_name == reader["place_name"].ToString())
+                        {
+                            no_create = 1;
+                            break;
+                        }
+                        else
+                        {
+                            no_create = 0;
+                        }
+                    }
+                    if (no_create == 0)
+                    {
+                        command.Parameters.AddWithValue("@place_id", value.place_id);
+                        command.Parameters.AddWithValue("@place_name", value.place_name);
+                        command.Parameters.AddWithValue("@place_eng", value.place_eng);
+                        command.Parameters.AddWithValue("@update_id", "admin");
+                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
+                        int row = command.ExecuteNonQuery();
+                        if (row > 0)
+                        {
+                            return "修改成功！";
+                        }
+                        else
+                        {
+                            return "修改失敗，請重試！";
+                        }
                     }
                     else
                     {
-                        return "修改失敗，請重試！";
+                        return "已新增過此地點";
                     }
 
                 }
