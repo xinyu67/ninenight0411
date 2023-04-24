@@ -7,6 +7,6 @@
         public string new_startdate { get; set; }
         public string new_enddate { get; set; }
         public string new_content { get; set; }
-        public IFormFile new_img { get; set; }
+        public IFormFile? new_img { get; set; }
     }
 }

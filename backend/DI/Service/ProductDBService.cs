@@ -294,7 +294,9 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["product_img"].ToString());
+                        //img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
                         ProductAllViewModels Data = new ProductAllViewModels();
                         Data.product_id = reader["product_id"].ToString();
                         //Data.product_num = reader["product_num"].ToString();
@@ -478,21 +480,33 @@ namespace DI.Service
         #region 修改商品
         public string PutProduct(ProductUpdateViewModel value)
         {
-            //圖片存入資料夾
-            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
-            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
-            if (value.product_img.Length > 0)
+            if (value.product_img != null)
             {
-                filename = value.product_num + "_" + date + "+" + value.product_img.FileName;
-                using (var stream = System.IO.File.Create(rootRoot + filename))
+                //圖片存入資料夾
+                string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+                string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+                if (value.product_img.Length > 0)
                 {
-                    value.product_img.CopyTo(stream);
+                    filename = value.product_num + "_" + date + "+" + value.product_img.FileName;
+                    using (var stream = System.IO.File.Create(rootRoot + filename))
+                    {
+                        value.product_img.CopyTo(stream);
+                    }
                 }
             }
 
-            string sql = $@"
-            UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
+            string sql = "";
+            if (value.product_img != null)
+            { 
+                sql = $@"UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_img=@product_img,product_price=@product_price,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
+            }
+            else
+            {
+                sql = $@"UPDATE product SET product_name=@product_name,product_eng=@product_eng,product_price=@product_price,product_ml=@product_ml,product_content=@product_content,update_id=@update_id,update_time=@update_time WHERE product_id = @product_id";
+            }
+
+            
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -501,7 +515,10 @@ namespace DI.Service
                     conn.Open();
                     command.Parameters.AddWithValue("@product_name", value.product_name);
                     command.Parameters.AddWithValue("@product_eng", value.product_eng);
-                    command.Parameters.AddWithValue("@product_img", filename);
+                    if (value.product_img != null)
+                    {
+                        command.Parameters.AddWithValue("@product_img", filename);
+                    }
                     command.Parameters.AddWithValue("@product_price", value.product_price);
                     //command.Parameters.AddWithValue("@brand_id", value.brand_id);
                     //command.Parameters.AddWithValue("@place_id", value.place_id);

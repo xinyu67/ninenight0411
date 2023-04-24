@@ -1,5 +1,6 @@
 ﻿using DI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 using System.Collections.Generic;
@@ -96,13 +97,14 @@ namespace DI.Service
         }
         #endregion
 
-            #region 購物車總覽
-            public List<CartViewModels> Allcart()
+        #region 購物車總覽
+        public List<CartAllViewModels> Allcart()
         {
-            //string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\"";
-            string Sql = "SELECT C.cart_id,C.\"user_id\",C.cart_states,C.isdel,CART_P.cart_product_id,CART_P.product_id,CART_P.cart_product_amount,P.product_name,P.product_img,P.product_price FROM \r\n\t((cart AS C inner join cart_product AS CART_P on C.cart_id = CART_P.cart_id)\r\n\tinner join product AS P on CART_P.product_id=P.product_id) where P.isdel='false'";
+            string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\"";
+            //string Sql = "SELECT C.cart_id,C.\"user_id\",C.cart_states,C.isdel,CART_P.cart_product_id,CART_P.product_id,CART_P.cart_product_amount,P.product_name,P.product_img,P.product_price FROM \r\n\t((cart AS C inner join cart_product AS CART_P on C.cart_id = CART_P.cart_id)\r\n\tinner join product AS P on CART_P.product_id=P.product_id) where P.isdel='false'";
 
-            List<CartViewModels> DataList = new List<CartViewModels>();
+            List<CartProductViewModels> DataList = new List<CartProductViewModels>();
+            List<CartAllViewModels> ProductList=new List<CartAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -110,40 +112,36 @@ namespace DI.Service
                 {
                     conn.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    int total;
-
-
-                    /*CartAllViewModels ProductList = DataList.GroupBy(x => new { x.cart_id }).Select(n => new CartAllViewModels
-                    {
-                        cart_id = n.Key.cart_id,
-                        product_list = n.GroupBy(x => new { x.product_name, x.product_img, x.product_price })
-                                             .Select(n => new ProductCartViewModels
-                                             {
-                                                 product_name = n.Key.product_name,
-                                                 product_img = n.Key.product_img,
-                                                 product_price = n.Key.product_price
-                                             }).ToList()
-                    }).FirstOrDefault();*/
-
-
+                    int cart_product_amount, product_price,total;
 
             
                     while (reader.Read())
                     {
-                        CartViewModels Data = new CartViewModels();
+                        CartProductViewModels Data = new CartProductViewModels();
 
-                        //cart_product_amount = (int)reader["cart_product_amount"];
-                        //product_price = (int)reader["product_price"];
+                        cart_product_amount = (int)reader["cart_product_amount"];
+                        product_price = (int)reader["product_price"];
 
                         Data.cart_id = (Guid)reader["cart_id"];
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_img = reader["product_img"].ToString();
                         Data.product_price = (int)reader["product_price"];
 
-                        //Data.money = cart_product_amount * product_price;
-                        //Data.total += Data.money;
+                        Data.money = cart_product_amount * product_price;
+                        Data.total += Data.money;
                         DataList.Add(Data);
                     }
+                    ProductList = DataList.GroupBy(x => new { x.cart_id }).Select(n => new CartAllViewModels
+                    {
+                        cart_id = n.Key.cart_id,
+                        product_list = n.GroupBy(x => new { x.product_name, x.product_img, x.product_price })
+                         .Select(n => new CartProductViewModels
+                         {
+                             product_name = n.Key.product_name,
+                             product_img = n.Key.product_img,
+                             product_price = n.Key.product_price
+                         }).ToList()
+                    }).ToList();
                 }
                 catch (Exception e)
                 {
@@ -154,19 +152,51 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                return ProductList;
             }
         }
         #endregion
 
 
         #region 購物車修改(商品數量)
+        public string PutCart_P(CartUpdatePViewModels value)
+        {
+            string sql = $@"UPDATE cart_product SET cart_product_amount=@cart_product_amount WHERE cart_product_id=@cart_product_id";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sql, conn);
+                try
+                {
+                    conn.Open();
+                    command.Parameters.AddWithValue("@store_id", value.cart_id);
+                    command.Parameters.AddWithValue("@store_name", value.cart_product_id);
+                    command.Parameters.AddWithValue("@store_address", value.cart_product_amount);
+                    int row = command.ExecuteNonQuery();
+                    if (row > 0)
+                    {
+                        return "修改成功！";
+                    }
+                    else
+                    {
+                        return "修改失敗，請重試！";
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
         #endregion
 
 
-        #region 刪除購物車產品
-        public string DeleteCart_P(Guid cart_product_id)
+            #region 刪除購物車產品
+            public string DeleteCart_P(Guid cart_product_id)
         {
             string sql = $@"DELETE FROM cart_product WHERE cart_product_id = @cart_product_id";
             using (SqlConnection conn = new SqlConnection(connectionString))

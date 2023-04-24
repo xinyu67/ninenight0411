@@ -37,7 +37,20 @@ namespace DI.Controllers
         public IActionResult Allcart()
         {
             var result = _cartDBService.Allcart();
-            if (result == null || result.Count <= 0)
+            if (result == null)
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
+
+        #region 修改購物車商品數量
+        [HttpPut]
+        public IActionResult PutCart_P([FromForm] CartUpdatePViewModels value)
+        {
+            var result = _cartDBService.PutCart_P(value);
+            if (result == null)
             {
                 return NotFound("找不到資源");
             }

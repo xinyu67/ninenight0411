@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MmaT6tbfVQ4CwKl7KNK9Y5onNtAqNGgY/bI3lPtftks=",
+  "Hash": "brmfONwdyh43+a0wol3A2DRmLzdh3yaYjXrsdEPaP08=",
   "Source": "DI",
   "BasePath": "_content/DI",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\20230419212345p0.png"
+    },
+    {
+      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230424221133p1.png",
+      "SourceId": "DI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "BasePath": "_content/DI",
+      "RelativePath": "image/20230424221133p1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\20230424221133p1.png"
     },
     {
       "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\2unnamed2.jpg",

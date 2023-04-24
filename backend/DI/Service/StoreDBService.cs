@@ -176,20 +176,32 @@ namespace DI.Service
         #region 修改品牌故事
         public string UpdStore(StoreUpdateViewModels value)
         {
-            //圖片存入資料夾
-            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
-            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
-            if (value.store_img.Length > 0)
+            if (value.store_img != null)
             {
-                filename = date + value.store_img.FileName;
-                using (var stream = System.IO.File.Create(rootRoot + filename))
+                //圖片存入資料夾
+                string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+                string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+                if (value.store_img.Length > 0)
                 {
-                    value.store_img.CopyTo(stream);
+                    filename = date + value.store_img.FileName;
+                    using (var stream = System.IO.File.Create(rootRoot + filename))
+                    {
+                        value.store_img.CopyTo(stream);
+                    }
                 }
             }
 
-            string sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_email=@store_email,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
+            string sql = "";
+            if (value.store_img != null)
+            {
+                sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_email=@store_email,store_phone=@store_phone,store_time=@store_time,store_img=@store_img,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
+            }
+            else
+            {
+                sql = $@"UPDATE store SET store_name=@store_name,store_address=@store_address,store_email=@store_email,store_phone=@store_phone,store_time=@store_time,update_id=@update_id,update_time=@update_time WHERE store_id = @store_id";
+            }
+
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -203,7 +215,10 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@store_email", value.store_email);
                     command.Parameters.AddWithValue("@store_phone", value.store_phone);
                     command.Parameters.AddWithValue("@store_time", value.store_time);
-                    command.Parameters.AddWithValue("@store_img", filename);
+                    if (value.store_img != null)
+                    {
+                        command.Parameters.AddWithValue("@store_img", filename);
+                    }
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();

@@ -165,20 +165,32 @@ namespace DI.Service
         public string UpdStory(StoryUpdateViewModels value)
         {
 
-            //圖片存入資料夾
-            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
             var filename = "";
-            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
-            if (value.story_img.Length > 0)
+            if (value.story_img != null)
             {
-                filename = date + value.story_img.FileName;
-                using (var stream = System.IO.File.Create(rootRoot + filename))
+                //圖片存入資料夾
+                string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+                string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+                if (value.story_img.Length > 0)
                 {
-                    value.story_img.CopyTo(stream);
+                    filename = date + value.story_img.FileName;
+                    using (var stream = System.IO.File.Create(rootRoot + filename))
+                    {
+                        value.story_img.CopyTo(stream);
+                    }
                 }
             }
 
-            string sql = $@"UPDATE story SET story_title=@story_title,story_content=@story_content,story_img=@story_img,update_id=@update_id,update_time=@update_time WHERE story_id = @story_id";
+            string sql = "";
+            if (value.story_img != null)
+            {
+                sql = $@"UPDATE story SET story_title=@story_title,story_content=@story_content,story_img=@story_img,update_id=@update_id,update_time=@update_time WHERE story_id = @story_id";
+            }
+            else
+            {
+                sql = $@"UPDATE story SET story_title=@story_title,story_content=@story_content,update_id=@update_id,update_time=@update_time WHERE story_id = @story_id";
+            }
+
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -189,7 +201,10 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@story_id", value.story_id);
                     command.Parameters.AddWithValue("@story_title", value.story_title);
                     command.Parameters.AddWithValue("@story_content", value.story_content);
-                    command.Parameters.AddWithValue("@story_img", filename);
+                    if (value.story_img != null)
+                    {
+                        command.Parameters.AddWithValue("@story_img", filename);
+                    }
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();

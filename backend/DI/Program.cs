@@ -1,4 +1,5 @@
 using DI.Service;
+using Microsoft.Extensions.FileProviders;
 using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,13 +8,20 @@ var builder = WebApplication.CreateBuilder(args);
 var configurationBuilder = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-var configuration=configurationBuilder.Build();
+var configuration = configurationBuilder.Build();
 
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+// goose
+builder.Services.AddSingleton<IFileProvider>
+(
+    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))
+);
 
 //連接appsrttings的local連線字串
 var connectionString = configuration.GetConnectionString("local");
@@ -38,9 +46,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// goose
+app.UseStaticFiles
+(
+    new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "image")),
+        RequestPath = new PathString("/image")
+    }
+);
+
 app.UseHttpsRedirection();
 
-app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5555").AllowAnyHeader().AllowAnyMethod());
+// goose
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+// app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5555").AllowAnyHeader().AllowAnyMethod());
 
 app.UseAuthorization();
 
