@@ -123,23 +123,29 @@ namespace DI.Service
                         product_price = (int)reader["product_price"];
 
                         Data.cart_id = (Guid)reader["cart_id"];
+                        Data.cart_product_id = (Guid)reader["cart_product_id"];
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_img = reader["product_img"].ToString();
                         Data.product_price = (int)reader["product_price"];
+                        Data.cart_product_amount = (int)reader["cart_product_amount"];
 
-                        Data.money = cart_product_amount * product_price;
+                        Data.money = (cart_product_amount * product_price);
                         Data.total += Data.money;
                         DataList.Add(Data);
                     }
                     ProductList = DataList.GroupBy(x => new { x.cart_id }).Select(n => new CartAllViewModels
                     {
                         cart_id = n.Key.cart_id,
-                        product_list = n.GroupBy(x => new { x.product_name, x.product_img, x.product_price })
+                        product_list = n.GroupBy(x => new { x.cart_product_id,x.product_name, x.product_img, x.product_price })
                          .Select(n => new CartProductViewModels
                          {
+                             cart_product_id = n.Key.cart_product_id,
                              product_name = n.Key.product_name,
                              product_img = n.Key.product_img,
                              product_price = n.Key.product_price
+                             //cart_product_amount=n.Key.cart_product_amount,
+                             //money=n.Key.money
+
                          }).ToList()
                     }).ToList();
                 }

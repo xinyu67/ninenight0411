@@ -177,8 +177,23 @@ namespace DI.Service
         {
             string Sql_repeat = "SELECT place_name FROM place where isdel='false'";
 
-            string sql = $@"
+            string sql = "";
+            if (value.place_name == null)
+            {
+                sql = $@"
+            UPDATE place SET place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
+            }
+            else if (value.place_eng == null)
+            {
+                sql = $@"
+            UPDATE place SET place_name=@place_name,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
+            }
+            else
+            {
+                sql = $@"
             UPDATE place SET place_name=@place_name,place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -203,8 +218,10 @@ namespace DI.Service
                     if (no_create == 0)
                     {
                         command.Parameters.AddWithValue("@place_id", value.place_id);
-                        command.Parameters.AddWithValue("@place_name", value.place_name);
-                        command.Parameters.AddWithValue("@place_eng", value.place_eng);
+                        if (value.place_name != null)
+                            command.Parameters.AddWithValue("@place_name", value.place_name);
+                        if (value.place_eng != null)
+                            command.Parameters.AddWithValue("@place_eng", value.place_eng);
                         command.Parameters.AddWithValue("@update_id", "admin");
                         command.Parameters.AddWithValue("@update_time", DateTime.Now);
                         int row = command.ExecuteNonQuery();
@@ -219,7 +236,7 @@ namespace DI.Service
                     }
                     else
                     {
-                        return "已新增過此地點";
+                        return "已有此產地名稱";
                     }
 
                 }

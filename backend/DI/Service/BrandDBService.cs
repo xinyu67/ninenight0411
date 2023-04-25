@@ -177,8 +177,22 @@ namespace DI.Service
         {
             string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
 
-            string sql = $@"
+            string sql = "";
+            if (value.brand_name == null)
+            {
+                sql = $@"
+            UPDATE brand SET brand_eng=@brand_eng,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
+            }
+            else if (value.brand_eng == null)
+            {
+                sql = $@"
+            UPDATE brand SET brand_name=@brand_name,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
+            }
+            else {
+                sql = $@"
             UPDATE brand SET brand_name=@brand_name,brand_eng=@brand_eng,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
+            }
+            
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sql, conn);
@@ -205,8 +219,10 @@ namespace DI.Service
                     if (no_create == 0)
                     {
                         command.Parameters.AddWithValue("@brand_id", value.brand_id);
-                        command.Parameters.AddWithValue("@brand_name", value.brand_name);
-                        command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
+                        if (value.brand_name != null)
+                            command.Parameters.AddWithValue("@brand_name", value.brand_name);
+                        if (value.brand_eng != null)
+                            command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
                         command.Parameters.AddWithValue("@update_id", "admin");
                         command.Parameters.AddWithValue("@update_time", DateTime.Now);
                         int row = command.ExecuteNonQuery();
@@ -221,7 +237,7 @@ namespace DI.Service
                     }
                     else
                     {
-                        return "已新增過此品牌";
+                        return "已有此品牌名稱";
                     }
 
                 }
