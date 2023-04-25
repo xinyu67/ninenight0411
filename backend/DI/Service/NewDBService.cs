@@ -82,6 +82,9 @@ namespace DI.Service
             string Sql = "SELECT * FROM new where isdel='false'";
 
             List<NewAllViewModels> DataList = new List<NewAllViewModels>();
+
+            var img = "";
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -91,13 +94,15 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["new_img"].ToString());
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
                         Data.new_startdate = reader["new_startdate"].ToString();
                         Data.new_enddate = reader["new_enddate"].ToString();
                         Data.new_content = reader["new_content"].ToString();
-                        Data.new_img = reader["new_img"].ToString();
+                        Data.new_img = img;
 
                         DataList.Add(Data);
                     }
@@ -130,6 +135,7 @@ namespace DI.Service
                 Sql = "SELECT * FROM new where isdel='false'";
             }
             List<NewAllViewModels> DataList = new List<NewAllViewModels>();
+            var img = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -145,13 +151,15 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["new_img"].ToString());
                         NewAllViewModels Data = new NewAllViewModels();
                         Data.new_id = (Guid)reader["new_id"];
                         Data.new_title = reader["new_title"].ToString();
                         Data.new_startdate = reader["new_startdate"].ToString();
                         Data.new_enddate = reader["new_enddate"].ToString();
                         Data.new_content = reader["new_content"].ToString();
-                        Data.new_img = reader["new_img"].ToString();
+                        Data.new_img = img;
 
 
                         DataList.Add(Data);

@@ -21,7 +21,7 @@ namespace DI.Service
         public List<StoreAllViewModels> AllStore()
         {
             string Sql = "SELECT * FROM store where isdel='false'";
-
+            var img = "";
             List<StoreAllViewModels> DataList = new List<StoreAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -32,6 +32,8 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["store_img"].ToString());
                         StoreAllViewModels Data = new StoreAllViewModels();
                         Data.store_id = (Guid)reader["store_id"];
                         Data.store_name = reader["store_name"].ToString();
@@ -39,7 +41,7 @@ namespace DI.Service
                         Data.store_email = reader["store_email"].ToString();
                         Data.store_phone = reader["store_phone"].ToString();
                         Data.store_time = reader["store_time"].ToString();
-                        Data.store_img = reader["store_img"].ToString();
+                        Data.store_img = img;
 
                         DataList.Add(Data);
                     }
@@ -70,7 +72,7 @@ namespace DI.Service
             {
                 Sql = "SELECT * FROM store where isdel='false'";
             }
-
+            var img = "";
             List<StoreAllViewModels> DataList = new List<StoreAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -88,6 +90,8 @@ namespace DI.Service
 
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["store_img"].ToString());
                         StoreAllViewModels Data = new StoreAllViewModels();
                         Data.store_id = (Guid)reader["store_id"];
                         Data.store_name = reader["store_name"].ToString();
@@ -95,7 +99,7 @@ namespace DI.Service
                         Data.store_email = reader["store_email"].ToString();
                         Data.store_phone = reader["store_phone"].ToString();
                         Data.store_time = reader["store_time"].ToString();
-                        Data.store_img = reader["store_img"].ToString();
+                        Data.store_img = img;
 
                         DataList.Add(Data);
                     }

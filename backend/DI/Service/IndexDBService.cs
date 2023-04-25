@@ -28,7 +28,8 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        img = "http://127.0.0.1:7094/backend/DI/wwwroot/image/" + reader["product_img"].ToString();
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["product_img"].ToString());
                         IndexProductViewModels Data = new IndexProductViewModels();
                         Data.product_id = (Guid)reader["product_id"];
                         Data.product_name = reader["product_name"].ToString();

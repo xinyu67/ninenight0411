@@ -20,7 +20,7 @@ namespace DI.Service
         public List<StoryAllViewModels> F_AllStory()
         {
             string Sql = "SELECT * FROM story where isdel='False'";
-
+            var img = "";
             List<StoryAllViewModels> DataList = new List<StoryAllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -31,11 +31,13 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["story_img"].ToString());
                         StoryAllViewModels Data = new StoryAllViewModels();
                         Data.story_id = (Guid)reader["story_id"];
                         Data.story_title = reader["story_title"].ToString();
                         Data.story_content = reader["story_content"].ToString();
-                        Data.story_img = reader["story_img"].ToString();
+                        Data.story_img = img;
                         DataList.Add(Data);
                     }
                 }
@@ -69,6 +71,7 @@ namespace DI.Service
             }
 
             List<StoryAllViewModels> DataList = new List<StoryAllViewModels>();
+            var img = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -82,11 +85,13 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["story_img"].ToString());
                         StoryAllViewModels Data = new StoryAllViewModels();
                         Data.story_id = (Guid)reader["story_id"];
                         Data.story_title = reader["story_title"].ToString();
                         Data.story_content = reader["story_content"].ToString();
-                        Data.story_img = reader["story_img"].ToString();
+                        Data.story_img = img;
                         
                         DataList.Add(Data);
                     }

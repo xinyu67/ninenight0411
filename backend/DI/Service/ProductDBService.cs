@@ -343,6 +343,7 @@ namespace DI.Service
             string Sql = string.Empty;
             Sql = "SELECT * FROM ((product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id) where product_id=@product_id";
             List<ProductIdViewModels> DataList = new List<ProductIdViewModels>();
+            var img = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(Sql, conn);
@@ -353,6 +354,8 @@ namespace DI.Service
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        var FilePeth = Path.Combine($"https://localhost:7094", "image");
+                        img = Path.Combine(FilePeth, reader["product_img"].ToString());
                         ProductIdViewModels Data = new ProductIdViewModels();
                         Data.product_id = (Guid)reader["product_id"];
                         Data.product_num = reader["product_num"].ToString();
@@ -365,7 +368,7 @@ namespace DI.Service
                         Data.place_eng = reader["place_eng"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
                         Data.product_price = (int)reader["product_price"];
-                        Data.product_img = reader["product_img"].ToString();
+                        Data.product_img = img;
                         Data.product_content = reader["product_content"].ToString();
 
 
