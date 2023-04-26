@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "brmfONwdyh43+a0wol3A2DRmLzdh3yaYjXrsdEPaP08=",
+  "Hash": "rC4UnRQFQ+RX2fmx4RJGXbYnQAFbwYn/UCb+DYC74OI=",
   "Source": "DI",
   "BasePath": "_content/DI",
   "Mode": "Default",
@@ -493,6 +493,23 @@
       "OriginalItemSpec": "wwwroot\\image\\NN4413p1.png"
     },
     {
+      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5205p1.png",
+      "SourceId": "DI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "BasePath": "_content/DI",
+      "RelativePath": "image/NN5205p1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\NN5205p1.png"
+    },
+    {
       "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5361p2.png",
       "SourceId": "DI",
       "SourceType": "Discovered",
@@ -508,6 +525,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\NN5361p2.png"
+    },
+    {
+      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN5577p1.png",
+      "SourceId": "DI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "BasePath": "_content/DI",
+      "RelativePath": "image/NN5577p1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\NN5577p1.png"
     },
     {
       "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\NN6204p2.png",

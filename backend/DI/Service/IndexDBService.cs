@@ -13,7 +13,7 @@ namespace DI.Service
             connectionString = _config.GetConnectionString("local");
         }
 
-        #region 總覽品牌
+        #region 隨機跑4筆推薦商品
         public List<IndexProductViewModels> LikeProduct()
         {
             string Sql = "SELECT TOP 4 * FROM product where isdel='false' ORDER BY NEWID()";

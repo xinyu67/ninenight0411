@@ -108,7 +108,7 @@ namespace DI.Service
         #region 購物車總覽
         public List<CartAllViewModels> Allcart()
         {
-            string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\" where cart.cart_states='0' ";
+            string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\" where cart.cart_states='0' and isdel='false'";
             //string Sql = "SELECT C.cart_id,C.\"user_id\",C.cart_states,C.isdel,CART_P.cart_product_id,CART_P.product_id,CART_P.cart_product_amount,P.product_name,P.product_img,P.product_price FROM \r\n\t((cart AS C inner join cart_product AS CART_P on C.cart_id = CART_P.cart_id)\r\n\tinner join product AS P on CART_P.product_id=P.product_id) where P.isdel='false'";
 
             List<CartViewModels> DataList = new List<CartViewModels>();

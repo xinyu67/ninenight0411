@@ -67,7 +67,7 @@ namespace DI.Service
             }
             else
             {
-                Sql = "SELECT * FROM story";
+                Sql = "SELECT * FROM story where isdel='false'";
             }
 
             List<StoryAllViewModels> DataList = new List<StoryAllViewModels>();

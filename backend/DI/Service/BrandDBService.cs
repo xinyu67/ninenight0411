@@ -130,7 +130,7 @@ namespace DI.Service
             }
             else
             {
-                Sql = "SELECT * FROM brand";
+                Sql = "SELECT * FROM brand where isdel='false'";
             }
 
             List<BrandOneViewModels> DataList = new List<BrandOneViewModels>();

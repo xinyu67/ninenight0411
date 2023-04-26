@@ -341,7 +341,7 @@ namespace DI.Service
         public List<ProductIdViewModels> Allproduct_id(Guid product_id)
         {
             string Sql = string.Empty;
-            Sql = "SELECT * FROM ((product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id) where product_id=@product_id";
+            Sql = "SELECT * FROM ((product inner join place on product.place_id=place.place_id) inner join brand on product.brand_id=brand.brand_id) where product_id=@product_id and product.isdel='false'";
             List<ProductIdViewModels> DataList = new List<ProductIdViewModels>();
             var img = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -391,91 +391,106 @@ namespace DI.Service
         
         #region 新增商品
         public string CreateproductAsync(ProductCreateViewModels value) {
+            
+            //判斷是否新增過此商品
+            SqlConnection conn_P_num = new SqlConnection(connectionString);
+            conn_P_num.Open();
+            string yesno_product_sql = $"SELECT COUNT(*) AS yesno_num FROM product where product_name='{value.product_name}' and product_ml={value.product_ml}";
+            SqlCommand command_P_num = new SqlCommand(yesno_product_sql, conn_P_num);
+            int P_num = (int)command_P_num.ExecuteScalar();
 
-            //商品編號
-            string allChar = "0,1,2,3,4,5,6,7,8,9";
-            string[] allCharArray = allChar.Split(',');
-            string randomCode = "";
-            bool yesno = false;
-
-            Random rand = new Random();
-            SqlConnection conn_num = new SqlConnection(connectionString);
-            conn_num.Open();
-            var sql_num = "SELECT COUNT(*) FROM product where product_num='@num'";
-            SqlCommand command_num = new SqlCommand(sql_num, conn_num);
-            command_num.Parameters.AddWithValue("@num", randomCode);
-            Int32 count = (Int32)command_num.ExecuteScalar();
-            do
+            if (P_num == 0)
             {
-                for (int i = 0; i < 4; i++)
+
+                //商品編號
+                string allChar = "0,1,2,3,4,5,6,7,8,9";
+                string[] allCharArray = allChar.Split(',');
+                string randomCode = "";
+                bool yesno = false;
+
+                Random rand = new Random();
+                SqlConnection conn_num = new SqlConnection(connectionString);
+                conn_num.Open();
+                var sql_num = "SELECT COUNT(*) FROM product where product_num='@num'";
+                SqlCommand command_num = new SqlCommand(sql_num, conn_num);
+                command_num.Parameters.AddWithValue("@num", randomCode);
+                Int32 count = (Int32)command_num.ExecuteScalar();
+                do
                 {
-                    int t = rand.Next(10);
-                    randomCode += allCharArray[t];
-                }
-            } while (count == '0');
-            string num_randomCode = "NN" + randomCode;
-            conn_num.Close();
-
-
-            //圖片存入資料夾
-            string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
-            var filename = "";
-            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
-            if (value.product_img.Length > 0)
-            {
-                filename = num_randomCode + "_" + date + "_" + value.product_img.FileName;
-                filename = num_randomCode + value.product_img.FileName;
-                using (var stream = System.IO.File.Create(rootRoot + filename))
-                {
-                    value.product_img.CopyTo(stream);
-                }
-            }
-
-            string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_like,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_like,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
-            Guid NewGuid = Guid.NewGuid();
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(sql, conn);
-
-                try
-                {
-                    conn.Open();
-                    command.Parameters.AddWithValue("@product_id", NewGuid);
-                    command.Parameters.AddWithValue("@product_num", num_randomCode);
-                    command.Parameters.AddWithValue("@product_name", value.product_name);
-                    command.Parameters.AddWithValue("@product_eng", value.product_eng);
-                    command.Parameters.AddWithValue("@product_like", '0');
-                    command.Parameters.AddWithValue("@product_img", filename);
-                    command.Parameters.AddWithValue("@brand_id", value.brand_id);
-                    command.Parameters.AddWithValue("@product_price", value.product_price);
-                    command.Parameters.AddWithValue("@place_id", value.place_id);
-                    command.Parameters.AddWithValue("@product_ml", value.product_ml);
-                    command.Parameters.AddWithValue("@product_content", value.product_content);
-                    command.Parameters.AddWithValue("@isdel", '0');
-                    command.Parameters.AddWithValue("@create_id", "admin");
-                    command.Parameters.AddWithValue("@create_time", DateTime.Now);
-                    command.ExecuteNonQuery();
-
-                    int num = (Allproduct_id(NewGuid).Count == 1) ? 1 : 0;
-                    if (num > 0)
+                    for (int i = 0; i < 4; i++)
                     {
-                        return "新增成功！";
+                        int t = rand.Next(10);
+                        randomCode += allCharArray[t];
                     }
-                    else
+                } while (count == '0');
+                string num_randomCode = "NN" + randomCode;
+                conn_num.Close();
+
+
+                //圖片存入資料夾
+                string rootRoot = _environment.ContentRootPath + @"\wwwroot\image\";
+                var filename = "";
+                string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+                if (value.product_img.Length > 0)
+                {
+                    filename = num_randomCode + "_" + date + "_" + value.product_img.FileName;
+                    filename = num_randomCode + value.product_img.FileName;
+                    using (var stream = System.IO.File.Create(rootRoot + filename))
                     {
-                        return "新增失敗，請重試！";
+                        value.product_img.CopyTo(stream);
                     }
                 }
-                catch (Exception e)
+
+                string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_like,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_like,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
+                Guid NewGuid = Guid.NewGuid();
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    throw new Exception(e.Message.ToString());
-                }
-                finally
-                {
-                    conn.Close();
+                    SqlCommand command = new SqlCommand(sql, conn);
+
+                    try
+                    {
+                        conn.Open();
+                        command.Parameters.AddWithValue("@product_id", NewGuid);
+                        command.Parameters.AddWithValue("@product_num", num_randomCode);
+                        command.Parameters.AddWithValue("@product_name", value.product_name);
+                        command.Parameters.AddWithValue("@product_eng", value.product_eng);
+                        command.Parameters.AddWithValue("@product_like", '0');
+                        command.Parameters.AddWithValue("@product_img", filename);
+                        command.Parameters.AddWithValue("@brand_id", value.brand_id);
+                        command.Parameters.AddWithValue("@product_price", value.product_price);
+                        command.Parameters.AddWithValue("@place_id", value.place_id);
+                        command.Parameters.AddWithValue("@product_ml", value.product_ml);
+                        command.Parameters.AddWithValue("@product_content", value.product_content);
+                        command.Parameters.AddWithValue("@isdel", '0');
+                        command.Parameters.AddWithValue("@create_id", "admin");
+                        command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        command.ExecuteNonQuery();
+
+                        int num = (Allproduct_id(NewGuid).Count == 1) ? 1 : 0;
+                        if (num > 0)
+                        {
+                            return "新增成功！";
+                        }
+                        else
+                        {
+                            return "新增失敗，請重試！";
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception(e.Message.ToString());
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 }
             }
+            else {
+                return "已新增過此商品！";
+            }
+            conn_P_num.Close();
         }
         #endregion
 

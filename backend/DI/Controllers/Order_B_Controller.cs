@@ -21,9 +21,9 @@ namespace DI.Controllers
         
         #region 訂單總覽
         [HttpGet]
-        public IActionResult AllB_Order(string search_phone=null, string search_name=null)
+        public IActionResult AllB_Order(string search=null)
         {
-            var result = _orderBDBService.AllB_Order(search_phone, search_name);
+            var result = _orderBDBService.AllB_Order(search);
             if (result == null)
             {
                 return NotFound("找不到資源");

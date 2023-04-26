@@ -16,24 +16,17 @@ namespace DI.Service
         }
 
         #region 總覽訂單
-        public List<Order_B_AllViewModels> AllB_Order(string search_phone, string search_name)
+        public List<Order_B_AllViewModels> AllB_Order(string search)
         {
             string Sql = string.Empty;
             //如果搜尋都是空值
-            if (string.IsNullOrWhiteSpace(search_phone) == true & string.IsNullOrWhiteSpace(search_name) == true)
+            if (string.IsNullOrWhiteSpace(search) == true)
             {
                 Sql = "SELECT * FROM \"order\" where isdel='0'";
             }
-            else if (string.IsNullOrWhiteSpace(search_phone) == false & string.IsNullOrWhiteSpace(search_name) == true)
+            else if (string.IsNullOrWhiteSpace(search) == false )
             {
-                Sql = $"SELECT * FROM \"order\" where order_phone LIKE '%{search_phone}%' and isdel='0'";
-            } 
-            else if (string.IsNullOrWhiteSpace(search_phone) == true & string.IsNullOrWhiteSpace(search_name) == false) {
-                Sql = $"SELECT * FROM \"order\" where order_name LIKE '%{search_name}%' and isdel='0'";
-            }
-            else
-            {
-                Sql = $"SELECT * FROM \"order\" where order_phone LIKE '%{search_phone}%' and order_name LIKE '%{search_name}%' and isdel='0'";
+                Sql = $"SELECT * FROM \"order\" where (order_phone LIKE '%{search}%' or order_name LIKE '%{search}%') and isdel='0'";
             }
 
             List<Order_B_AllViewModels> DataList = new List<Order_B_AllViewModels>();
