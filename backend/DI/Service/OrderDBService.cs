@@ -88,6 +88,7 @@ namespace DI.Service
                         Data.order_price = (int)reader["order_price"];
                         Data.order_picktime = reader["order_picktime"].ToString();
                         Data.order_pick = (bool)reader["order_pick"];
+                        Data.order_address = reader["order_address"].ToString();
                         Data.order_state = (int)reader["order_state"];
                         DataList.Add(Data);
                     }
