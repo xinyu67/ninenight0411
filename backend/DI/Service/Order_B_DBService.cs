@@ -98,6 +98,7 @@ namespace DI.Service
                         Data.order_date = (DateTime)reader["order_date"];
                         Data.product_id = (Guid)reader["product_id"];
                         Data.product_name = reader["product_name"].ToString();
+                        Data.product_ml = (int)reader["product_ml"];
                         Data.cart_product_amount = (int)reader["cart_product_amount"];
                         Data.order_price = (int)reader["order_price"];
 

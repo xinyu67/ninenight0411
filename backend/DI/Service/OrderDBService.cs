@@ -127,6 +127,7 @@ namespace DI.Service
                         Order_F_OneIdAllViewModels Data = new Order_F_OneIdAllViewModels();
                         Data.product_img = img;
                         Data.product_name = reader["product_name"].ToString();
+                        Data.product_ml = (int)reader["product_ml"];
                         Data.product_price = (int)reader["product_price"];
                         Data.cart_product_amount = (int)reader["cart_product_amount"];
                         Data.money = (int)reader["product_price"] * (int)reader["cart_product_amount"];

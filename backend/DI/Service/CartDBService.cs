@@ -138,6 +138,7 @@ namespace DI.Service
                         Data.cart_product_id = (Guid)reader["cart_product_id"];
                         Data.product_id = (Guid)reader["product_id"];
                         Data.product_name = reader["product_name"].ToString();
+                        Data.product_ml = (int)reader["product_ml"];
                         Data.product_img = img;
                         Data.product_price = (int)reader["product_price"];
                         Data.cart_product_amount = (int)reader["cart_product_amount"];
@@ -149,12 +150,13 @@ namespace DI.Service
                     ProductList = DataList.GroupBy(x => new { x.cart_id }).Select(n => new CartAllViewModels
                     {
                         cart_id = n.Key.cart_id,
-                        product_list = n.GroupBy(x => new { x.cart_product_id,x.product_id,x.product_name, x.product_img, x.product_price})
+                        product_list = n.GroupBy(x => new { x.cart_product_id,x.product_id,x.product_name, x.product_ml, x.product_img, x.product_price})
                          .Select(n => new CartProductViewModels
                          {
                              cart_product_id=n.Key.cart_product_id,
                              product_id = n.Key.product_id,
                              product_name = n.Key.product_name,
+                             product_ml = n.Key.product_ml,
                              product_img = n.Key.product_img,
                              product_price = n.Key.product_price,
                              cart_product_amount = n.Sum(y => y.cart_product_amount),
@@ -215,9 +217,9 @@ namespace DI.Service
         #endregion
 
 
-            #region 刪除購物車產品
-            public string DeleteCart_P(Guid cart_product_id)
-        {
+       #region 刪除購物車產品
+       public string DeleteCart_P(Guid cart_product_id)
+       {
             string sql = $@"DELETE FROM cart_product WHERE cart_product_id = @cart_product_id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
