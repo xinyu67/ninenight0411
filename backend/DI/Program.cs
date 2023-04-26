@@ -36,6 +36,7 @@ builder.Services.AddSingleton<StoreDBService>();
 builder.Services.AddSingleton<CartDBService>();
 builder.Services.AddSingleton<OrderDBService>();
 builder.Services.AddSingleton<Order_B_DBService>();
+builder.Services.AddSingleton<UserDBService>();
 builder.Services.AddSingleton<IndexDBService>();
 
 
