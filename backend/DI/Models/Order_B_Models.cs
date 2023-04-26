@@ -1,6 +1,6 @@
 ﻿namespace DI.Models
 {
-    public class OrderModels
+    public class Order_B_Models
     {
         public Guid order_id { get; set; }
         public Guid cart_id { get; set; }
@@ -18,6 +18,5 @@
         public DateTime create_time { get; set; }
         public string? update_id { get; set; }
         public DateTime? update_time { get; set; }
-
     }
 }

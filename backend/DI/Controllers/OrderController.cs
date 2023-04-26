@@ -31,13 +31,27 @@ namespace DI.Controllers
             return Ok(create);
         }
         #endregion
-
+        
         #region 訂單總覽
         [HttpGet]
         public IActionResult AllOrder()
         {
             var result = _orderDBService.AllOrder();
             if (result == null )
+            {
+                return NotFound("找不到資源");
+            }
+            return Ok(result);
+        }
+        #endregion
+
+        #region 單一訂單總覽資料(id)
+        [HttpGet]
+        [Route("order_id")]
+        public IActionResult Allorder_id([FromQuery] Guid order_id)
+        {
+            var result = _orderDBService.Allorder_id(order_id);
+            if (result == null)
             {
                 return NotFound("找不到資源");
             }
