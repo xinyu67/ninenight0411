@@ -178,12 +178,12 @@ namespace DI.Service
             string Sql_repeat = "SELECT place_name FROM place where isdel='false'";
 
             string sql = "";
-            if (value.place_name == null)
+            if (value.place_name == "null")
             {
                 sql = $@"
             UPDATE place SET place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
             }
-            else if (value.place_eng == null)
+            else if (value.place_eng == "null")
             {
                 sql = $@"
             UPDATE place SET place_name=@place_name,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";

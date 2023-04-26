@@ -16,7 +16,7 @@ namespace DI.Service
         #region 總覽品牌
         public List<IndexProductViewModels> LikeProduct()
         {
-            string Sql = "SELECT TOP 4 * FROM product ORDER BY NEWID()";
+            string Sql = "SELECT TOP 4 * FROM product where isdel='false' ORDER BY NEWID()";
             var img = "";
             List<IndexProductViewModels> DataList = new List<IndexProductViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -56,7 +56,7 @@ namespace DI.Service
         #region 最新消息
         public List<IndexNewViewModels> LatestNews()
         {
-            string Sql = "SELECT TOP 4 * FROM new order by create_time DESC";
+            string Sql = "SELECT TOP 4 * FROM new  where isdel='false' order by create_time DESC";
             List<IndexNewViewModels> DataList = new List<IndexNewViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

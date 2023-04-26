@@ -175,15 +175,16 @@ namespace DI.Service
         #region 修改品牌
         public string PutBrand(BrandUpdateViewModel value)
         {
+            //是否存在
             string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
 
             string sql = "";
-            if (value.brand_name == null)
+            if (value.brand_name == "null")
             {
                 sql = $@"
             UPDATE brand SET brand_eng=@brand_eng,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
             }
-            else if (value.brand_eng == null)
+            else if (value.brand_eng == "null")
             {
                 sql = $@"
             UPDATE brand SET brand_name=@brand_name,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
