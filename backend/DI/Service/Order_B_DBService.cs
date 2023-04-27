@@ -1,5 +1,6 @@
 ﻿using DI.ViewModels;
 using System.Data.SqlClient;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DI.Service
 {
@@ -71,7 +72,7 @@ namespace DI.Service
         public List<Order_B_ID_ViewModels> All_ID_B_Order(Guid order_id)
         {
             string Sql = string.Empty;
-            Sql = @"SELECT * FROM ((""order"" AS O inner join cart_product AS C on O.cart_id=C.cart_id) inner join product AS P on C.product_id=P.product_id) inner join cart AS CART on C.cart_id=CART.cart_id where O.order_id=@order_id and O.isdel='false'";
+            Sql = @"SELECT * FROM (((""order"" AS O inner join cart_product AS C on O.cart_id=C.cart_id) inner join product AS P on C.product_id=P.product_id) inner join cart AS CART on C.cart_id=CART.cart_id ) inner join ""user"" AS U on CART.""user_id""=U.""user_id"" where O.order_id=@order_id and O.isdel='false'";
             List<Order_B_ID_ViewModels> DataList = new List<Order_B_ID_ViewModels>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -87,10 +88,10 @@ namespace DI.Service
                         Order_B_ID_ViewModels Data = new Order_B_ID_ViewModels();
                         Data.cart_id = (Guid)reader["cart_id"];
                         Data.order_id = (Guid)reader["order_id"];
-                        Data.user_id = (Guid)reader["user_id"];
+                        Data.user_account = reader["user_account"].ToString();
                         Data.order_pick = (bool)reader["order_pick"];
                         Data.order_address = reader["order_address"].ToString();
-                        Data.order_date = (DateTime)reader["order_date"];
+                        Data.order_date = string.Format("{0:yyyy/MM/dd HH:mm:ss}", (DateTime)reader["order_date"]);
                         Data.product_id = (Guid)reader["product_id"];
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
