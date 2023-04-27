@@ -16,6 +16,8 @@ namespace DI.Service
         #region 建立訂單(購物車送出後)
         public string CreateOrder(Order_F_CreateViewModels value)
         {
+            string cart_sql = $@"UPDATE cart SET cart_states='5' WHERE cart_id = '{value.cart_id}'";
+
             string product_num = "SELECT SUM(cart_product.cart_product_amount) AS num FROM (cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id where cart.cart_id=@P_cart_id";
 
             string sql = $@"INSERT INTO ""order""(order_id,cart_id,order_name,order_num,order_price,order_date,order_picktime,order_pick,order_address,order_phone,order_state,isdel,create_id,create_time) VALUES (@order_id,@cart_id,@order_name,@order_num,@order_price,@order_date,@order_picktime,@order_pick,@order_address,@order_phone,@order_state,@isdel,@create_id,@create_time)";
@@ -25,6 +27,7 @@ namespace DI.Service
             {
                 SqlCommand command = new SqlCommand(sql, conn);
                 SqlCommand command_num = new SqlCommand(product_num, conn);
+                SqlCommand command_cart_sql = new SqlCommand(cart_sql, conn);
                 try
                 {
                     conn.Open();
@@ -40,12 +43,13 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@order_picktime", value.order_picktime);
                     command.Parameters.AddWithValue("@order_pick", value.order_pick);
                     command.Parameters.AddWithValue("@order_address", value.order_address);
-                    command.Parameters.AddWithValue("@order_phone", "0937377323");
+                    command.Parameters.AddWithValue("@order_phone", value.order_phone);
                     command.Parameters.AddWithValue("@order_state", '0');
                     command.Parameters.AddWithValue("@isdel", "false");
                     command.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
+                    command_cart_sql.ExecuteNonQuery();
                     if (num > 0)
                     {
                         return "新增成功！";

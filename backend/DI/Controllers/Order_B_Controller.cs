@@ -34,7 +34,7 @@ namespace DI.Controllers
         
         #region 單一訂單總覽(id)
         [HttpGet]
-        [Route("product_id")]
+        [Route("order_id")]
         public IActionResult All_ID_B_Order([FromQuery] Guid order_id)
         {
             var result = _orderBDBService.All_ID_B_Order(order_id);

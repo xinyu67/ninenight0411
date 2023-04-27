@@ -441,7 +441,7 @@ namespace DI.Service
                     }
                 }
 
-                string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_like,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_like,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
+                string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
                 Guid NewGuid = Guid.NewGuid();
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -455,7 +455,6 @@ namespace DI.Service
                         command.Parameters.AddWithValue("@product_num", num_randomCode);
                         command.Parameters.AddWithValue("@product_name", value.product_name);
                         command.Parameters.AddWithValue("@product_eng", value.product_eng);
-                        command.Parameters.AddWithValue("@product_like", '0');
                         command.Parameters.AddWithValue("@product_img", filename);
                         command.Parameters.AddWithValue("@brand_id", value.brand_id);
                         command.Parameters.AddWithValue("@product_price", value.product_price);

@@ -84,7 +84,7 @@
     }
   }).then(response => {
     console.log('Response:', response);
-    // location.reload();
+    location.reload();
     alert('編輯品牌\n您編輯品牌為：'+ chi+eng)
   }).catch(error => {
     console.error('Error:', error);

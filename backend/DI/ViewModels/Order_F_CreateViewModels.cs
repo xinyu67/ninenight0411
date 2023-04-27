@@ -8,6 +8,7 @@
         public string order_name { get; set; }
         public bool order_pick { get; set;}
         public string order_address { get; set; }
+        public string order_phone { get; set; }
         public string order_picktime { get; set;}
     }
 }

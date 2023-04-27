@@ -112,8 +112,8 @@ var button1 = document.getElementById('insert1')
           alert('請勿輸入空值!!')
       } else {
 
-        console.log(chi);
-        console.log(eng);
+        console.log(chi1);
+        console.log(eng1);
         
         const formData = new FormData();
         // 添加文本字段
