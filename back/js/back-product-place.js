@@ -1,36 +1,12 @@
-// window.onload = function(){
+// //  用getItem抓login的資料存入login裡
+// var login = localStorage.getItem('login');
+// console.log(login);
+// //  如果login是null就跳轉到登入畫面(會是null是因為登出時清空了所有在localStorage裡的資料)
+// if(login === null){
+//     window.location.href = "../front/login.html";
+// }else{
 
-//   var hidden1 = document.getElementById('hidden1')
-//   var insert1button = document.getElementById('insert1')
-//   var okbutton = document.getElementById('ok')
-//   var reset = document.getElementById('reset')
 
-//       hidden1.style.display = "none";
-//       // hiddentext.style.display = "none";
-      
-//       insert1button.addEventListener("click",function(){
-//           hidden1.style.display = "table-row";
-//       });
-      
-//       // update.addEventListener("click",function(){
-//       //   hiddentext.style.display = "flex";
-//       // });
-
-//       reset.addEventListener("click",function(){
-//           if(hidden1.style.display = "table-row"){
-//               hidden1.style.display = "none";
-//           }else if(hidden1.style.display = "table-row"){
-//               hidden1.style.display = "none";
-//           }
-//       });
-
-//       okbutton.addEventListener("click",function(){
-//           if(hidden1.style.display == "table-row", place.value != ""){
-//               alert(place.value);
-//           }
-//       });
-
-//   }
 
 
 //JSON 檔案網址
@@ -57,11 +33,12 @@ function title(arr) {
         <tr align="center">
             <td>
             <div class="show">${data.place_name}</div>
+            <div class="show">${data.place_eng}</div>
             </td>
             <td>
             <div class="buttonflex">
             <input type="button" id="update${data.place_id}" class="update mouse" value="修改"></a>
-            <input type="button" id="delete" class="delete mouse" value="刪除"></a>
+            
             </div>
             </td>
         </tr>
@@ -69,33 +46,99 @@ function title(arr) {
   })
   p_title.innerHTML = str;
 
-  arr.forEach(function(data){
+ 
+
+
+arr.forEach(function(data){
     var button = document.getElementById('update'+`${data.place_id}`)
-    var show = document.getElementById('show')
     console.log(`${data.place_name}`)
     function popup3(e) {
-        var guest = window.prompt('編輯產地',`${data.place_name}`);
-        if (guest == null || "") {
-            alert('您已取消編輯')
+        var chi = window.prompt('編輯產地(中文名)',`${data.place_name}`);
+        var eng = window.prompt('編輯產地(英文名)',`${data.place_eng}`);
+        if (chi === null || chi === "" || eng === null || eng === "") {
+            alert('請勿輸入空值!!')
         } else {
-          alert('您編輯產地為：'+ guest)
-          show.innerHTML =  guest 
+
+
+var id = `${data.place_id}`;
+console.log(chi);
+console.log(eng);
+console.log(id);
+
+const formData = new FormData();
+// 添加文本字段
+formData.append('place_id', id);
+// formData.append('place_name', chi);
+// formData.append('place_eng', eng);
+
+if(chi == `${data.place_name}`){
+  formData.append('place_name', null);
+}else if(chi != `${data.place_name}`){
+  formData.append('place_name', chi);
+}
+
+if(eng == `${data.place_eng}`){
+  formData.append('place_eng', null);
+}else if(eng != `${data.place_eng}`){
+  formData.append('place_eng', eng);
+}
+
+axios.put(url, formData, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}).then(response => {
+  console.log('Response:', response);
+  location.reload();
+  alert('編輯成功\n您編輯產地為：'+ chi+eng)
+}).catch(error => {
+  console.error('Error:', error);
+});
         }
+
+
+
     }
     button.addEventListener('click', popup3);
   })
-}
+
+
 
 var button1 = document.getElementById('insert1')
-  var show = document.getElementById('show')
-  function popup3(e) {
-      var guest = window.prompt('新增產地',);
-      if (guest == null || "") {
-          alert('您已取消產地')
+  function popup4(e) {
+      var chi1 = window.prompt('新增產地(中文)',);
+      var eng1 = window.prompt('新增產地(英文)',);
+      if (chi1 === null || chi1 === "" || eng1 === null || eng1 === "") {
+          alert('請勿輸入空值!!')
       } else {
-          alert('您新增產地為：'+ guest)
-          location.reload();
-      }
-  }
-  button1.addEventListener('click', popup3);   
 
+        console.log(chi);
+        console.log(eng);
+        
+        const formData = new FormData();
+        // 添加文本字段
+        formData.append('place_name', chi1);
+        formData.append('place_eng', eng1);
+        
+        axios.post(url, formData, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          console.log('Response:', response);
+          location.reload();
+          alert('新增成功\n您新增產地為：'+ chi1+eng1)
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+                }
+            }
+            button1.addEventListener('click', popup4);
+
+
+          }
+
+
+
+
+        // }

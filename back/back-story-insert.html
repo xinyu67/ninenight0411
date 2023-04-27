@@ -27,18 +27,20 @@
     <div class="content">
         <div class="story-content">
             <div class="story-top">
-                <div class="story-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="story-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" required/>
+                <input type="hidden" id="imged">
+                </div>
                 <div class="story-top-right">
-                    <div class="title">標題：<input type="text" value="" placeholder="請輸入活動標題" required></div>
+                    <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入活動標題" required/></div>
                     <div class="storycontent">
-                        內容：　<textarea name="editorDemo" style="white-space:pre-wrap;" required></textarea>
+                        內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="story-bottom">
                 
-                <input type="reset" class="cancel-btn mouse noline" value="清除">
-                <a href="#"><input type="submit" class="yes-btn mouse noline" value="確認修改"></a>
+                <input type="reset" id="reset" class="cancel-btn mouse noline" value="清除">
+                <input type="button" id="button" class="yes-btn mouse noline" value="確認新增">
             </div>
         </div>
     </div>
@@ -63,5 +65,6 @@
     </footer>
 </body>
 <script src="./ckeditor/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-story-insert.js"></script>
 </html>

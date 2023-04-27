@@ -26,21 +26,26 @@
     <div class="content">
         <div class="news-content">
             <div class="news-top">
-                <div class="news-top-left"><img id="blah" src="./img/product.jpg"><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="news-top-left"><img id="blah" src=""><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                <!-- 上傳圖片時才會有的檔名 -->
+                <input type="hidden" id="imgsrc">
+                <!-- 本來圖片的檔名 -->
+                <input type="hidden" id="imgsrc1">
+                </div>
                 <div class="news-top-right">
                     <div class="news-time">
-                        開始：　<input type="datetime-local" id="startdate" value="2023-04-01" min="2023-04-01" max="2023-12-31">　-　
-                        結束：　<input type="datetime-local" id="enddate" value="2023-04-30" min="2023-04-01" max="2023-12-31">
+                        開始：　<input type="date" id="startdate" value="" min="" max="2023-12-31" onkeydown="return false">　-　
+                        結束：　<input type="date" id="enddate" value="" min="" max="2023-12-31" onkeydown="return false">
                     </div>
                     <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入活動標題"></div>
                     <div class="newscontent">
-                        內容：　<textarea name="editorDemo" id="htmll" style="white-space:pre-wrap;"></textarea>
+                        內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;"></textarea>
                     </div>
                 </div>
             </div>
             <div class="news-bottom">
-                <a href="#"><input type="button" class="cancel-btn mouse noline" value="取消"></a>
-                <a href="#"><input type="submit" class="yes-btn mouse noline" value="確認修改"></a>
+                <input type="button" id="reset" class="cancel-btn mouse noline" value="取消">
+                <input type="button" id="button" class="yes-btn mouse noline" value="確認修改">
             </div>
         </div>
     </div>

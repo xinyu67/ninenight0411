@@ -173,6 +173,13 @@ header {
     padding: 0px 150px;
 
 }
+#error{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    font-size: 28px;
+    color:#5A3A29;
+}
 .search{
     margin-top: 50px;
     width: 100%;

@@ -49,15 +49,16 @@
         </div>
     </header>
     <div class="banner1">
-        <div class="change"><a href="#"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
+        <div class="change"><a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
         <div class="logout"><a href="#"><input type="button" class="logout-btn mouse" value="登出"></a></div>
     </div>
     <div class="content">
         <div class="search">
-            <input type="text" placeholder="輸入欲查詢的 '電話' 或 '姓名'">
-            <input type="button" class="search-btn mouse" value="搜尋">
+            <input type="text" id="search" placeholder="輸入欲查詢的 '電話' 或 '姓名'">
+            <input type="button" id="search_btn" class="search-btn mouse" value="搜尋">
         </div>
-        <table>
+        <div id="error"></div>
+        <table id="table">
             <tr align="center">
                 <th>訂單編號</th>
                 <th>取貨姓名</th>
@@ -70,21 +71,17 @@
                 <th>詳細資料</th>
             </tr>
             <tr align="center">
-                <td>GTS569HX50USXKT6</td>
-                <td>邱郁珊</td>
-                <td>0912345679</td>
-                <td>345</td>
-                <td>2023-03-02 PM 15:00-18:00</td>
-                <td>自取</td>
-                <td>訂單可取貨</td>
-                <td>
-                    <input type="button" class="fin-btn mouse" value="完成">
-                </td>
-                <td>
-                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>
-                </td>
+                <td id="num"></td>
+                <td id="name"></td>
+                <td id="phone"></td>
+                <td id="price"></td>
+                <td id="time"></td>
+                <td id="take"></td>
+                <td id="state"></td>
+                <td id="more"></td>
+                <td id="detail"></td>
             </tr>
-            <tr align="center">
+            <!--<tr align="center">
                 <td>GTS569HX50USXKT6</td>
                 <td>邱郁珊</td>
                 <td>0912345679</td>
@@ -153,8 +150,8 @@
                     <input type="button" class="delete-btn mouse" value="刪除">
                 </td>
                 <td>
-                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a>                </td>
-            </tr>
+                    <a href="./back-order-all.html"><input type="button" class="detail-btn mouse" value="詳細資料"></a></td>
+            </tr> -->
         </table>
     </div>
     <div class="footer-slogan">
@@ -176,5 +173,6 @@
         </div>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-order.js"></script>
 </html>

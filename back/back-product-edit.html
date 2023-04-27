@@ -31,7 +31,13 @@
     <form>
         <div class="product-content">
             <div class="product-top">
-                <div class="product-top-left"><img id="blah" src="./img/product/p1.png" /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="product-top-left"><img id="blah" src="" /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" required/>
+                <!-- 上傳圖片時才會有的檔名 -->
+                <input type="hidden" id="imgsrc">
+                <!-- 本來圖片的檔名 -->
+                <input type="hidden" id="imgsrc1">
+                <input type="hidden" id="product_num">
+                </div>
                 <div class="product-top-right">
                     <div class="top">
                         <div class="title-left">
@@ -58,13 +64,13 @@
                         </div>
                     </div>
                         <div class="productcontent">
-                            內容：　<textarea name="editorDemo" id="htmll" style="white-space:pre-wrap;" class="textarea"></textarea>
+                            內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;" class="textarea"></textarea>
                         </div>
                 </div>
             </div>
             <div class="product-bottom">
-                <a href="#"><input type="button" id="reset" class="cancel-btn mouse" value="清除"></a>
-                <a href="#"><input type="submit" class="yes-btn mouse" value="確認"></a>
+                <input type="button" id="reset" class="cancel-btn mouse" value="重設"></a>
+                <input type="button" id="button" class="yes-btn mouse" value="確認"></a>
             </div>
         </div>
     </form>

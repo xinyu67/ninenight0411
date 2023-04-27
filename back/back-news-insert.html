@@ -31,21 +31,23 @@
     <form>
         <div class="news-content">
             <div class="news-top">
-                <div class="news-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="news-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" required/>
+                <input type="hidden" id="imged">
+                </div>
                 <div class="news-top-right">
                     <div class="news-time">
-                        開始：　<input type="date" class="" value="" min="2023-04-01" max="2023-12-31">　-　
-                        結束：　<input type="date" class="" value="" min="2023-04-01" max="2023-12-31">
+                        開始：　<input type="date" id="start" value="" min="" max="2023-12-31" onkeydown="return false">　-　
+                        結束：　<input type="date" id="end" value="" min="" max="2023-12-31" onkeydown="return false">
                     </div>
-                    <div class="title">標題：<input type="text" value="" placeholder="請輸入活動標題" required></div>
+                    <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入活動標題" required></div>
                     <div class="newscontent">
-                        內容：　<textarea name="editorDemo" style="white-space:pre-wrap;" required></textarea>
+                        內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="news-bottom">
-                <input type="reset" class="cancel-btn mouse" value="清除">
-                <a href="#"><input type="submit" class="yes-btn mouse" value="確認新增"></a>
+                <input type="reset" id="reset" class="cancel-btn mouse" value="清除">
+                <input type="button" id="button" class="yes-btn mouse" value="確認新增">
             </div>
         </div>
     </form>

@@ -31,43 +31,44 @@
     <form>
         <div class="product-content">
             <div class="product-top">
-                <div class="product-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="product-top-left"><img id="blah" src=" " /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" required />
+                <input type="hidden" id="imged">
+                </div>
                 <div class="product-top-right">
                     <div class="top">
                         <div class="title-left">
                             <div class="chinese">
-                                產品中文：<input type="text" class="toppp" value="" placeholder="請輸入產品中文名" required>
+                                產品中文：<input type="text" id="product_name" class="toppp" placeholder="請輸入產品中文名" required>
                             </div>
                             <div class="place">
                                 產地：<select name="place-select" id="place-select" class="select readonly">
-                                    <option value="">--請選擇產地--</option>
+                                    <!-- <option value="">--請選擇產地--</option>
                                     <option>台灣</option>
-                                    <option>荷蘭</option>
-                                    <option value="change">新增產地</option>
+                                    <option>荷蘭</option> -->
                                     </select>
                             </div>
                             <div class="brand">
-                                品牌：<select name="brand-select" class="select1 readonly">
-                                    <option>--請選擇品牌--</option>
+                                品牌：<select name="brand-select" id="brand-select" class="select1 readonly">
+                                    <!-- <option>--請選擇品牌--</option>
                                     <option>海尼根</option>
-                                    <option>柏克金</option>
+                                    <option>柏克金</option> -->
                                     </select>
                             </div>
                         </div>
                         <div class="title-right">
                             <div class="english">
-                                產品英文：<input type="text" class="toppp" value="" placeholder="請輸入產品英文名" required>
+                                產品英文：<input type="text" id="product_eng" class="toppp" placeholder="請輸入產品英文名" required>
                             </div>
                             <div class="ml">
-                                容量：<input type="number" class="num" value="" placeholder="容量(數字/毫升)" required>
+                                容量：<input type="number" id="product_ml" class="num" placeholder="容量(數字/毫升)" required>
                             </div>
                             <div class="price">
-                                價格：<input type="number" class="num" value="" placeholder="價格(數字)" required>
+                                價格：<input type="number" id="product_price" class="num" placeholder="價格(數字)" required>
                             </div>
                         </div>
                     </div>
                         <div class="productcontent">
-                            內容：　<textarea name="editorDemo" style="white-space:pre-wrap;" class="textarea"></textarea>
+                            內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;" class="textarea"></textarea>
                             <div class="insert-place">
                                 
                             </div>
@@ -75,8 +76,8 @@
                 </div>
             </div>
             <div class="product-bottom">
-                <a href="#"><input type="reset" class="cancel-btn mouse" value="清除"></a>
-                <a href="#"><input type="submit" class="yes-btn mouse" value="確認新增"></a>
+                <input type="reset" id="reset" class="cancel-btn mouse" value="清除">
+                <input type="button" id="button" class="yes-btn mouse" value="確認新增">
             </div>
         </div>
     </form>
@@ -100,6 +101,7 @@
         </div>
     </footer>
     <script src="./ckeditor/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/back-product-insert.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </body>

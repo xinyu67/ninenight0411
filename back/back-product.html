@@ -50,8 +50,8 @@
         </div>
     </header>
     <div class="banner1">
-        <div class="change"><a href="#"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
-        <div class="logout"><a href="#"><input type="button" class="logout-btn mouse" value="登出"></a></div>
+        <div class="change"><a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
+        <div class="logout"><input type="button" id="logout" class="logout-btn mouse" value="登出"></div>
     </div>
     <div class="banner2">
         <div class="placebrand">
@@ -61,7 +61,7 @@
         <div class="insert"><a href="./back-product-insert.html"><input type="button" class="insert-btn mouse" value="新增內容"></a></div>
     </div>
     <div class="content">
-        <div class="product-content">
+        <div class="product-content" id="product-content">
             <!-- <div class="pro">
                 <div class="pro-top"><img class="head" src="./img/product/p1.png"></div>
                 <div class="pro-bottom">
@@ -295,6 +295,9 @@
             </div> -->
         </div>
     </div>
+    
+    <div id="pagination-container"></div>
+    <div id="thispage"></div>
     <div class="footer-slogan">
         <div class="slogan-left">
             禁止酒駕
@@ -315,5 +318,6 @@
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="./js/back-product.js"></script>
+<!-- <script src="./js/back-product-nopage.js"></script> -->
+<script src="./js/back-product-page.js"></script>
 </html>

@@ -27,18 +27,23 @@
     <div class="content">
         <div class="story-content">
             <div class="story-top">
-                <div class="story-top-left"><img id="blah" src="./img/story.jpg" /><input id="img-ing" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" /></div>
+                <div class="story-top-left"><img id="blah" src="" /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                <!-- 上傳圖片時才會有的檔名 -->
+                <input type="hidden" id="imgsrc">
+                <!-- 本來圖片的檔名 -->
+                <input type="hidden" id="imgsrc1">
+                </div>
                 <div class="story-top-right">
-                    <div class="title">標題：<input type="text" value="Nine Night - 品牌起源" placeholder="請輸入活動標題"></div>
+                    <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入活動標題" required/></div>
                     <div class="storycontent">
-                        內容：　<textarea name="editorDemo" style="white-space:pre-wrap;">ninenight啤酒買賣店的品牌起源源自於一次經歷了很多熱情和歡樂的派對。在這個派對中，我們的九位好友齊聚一堂，品嚐了許多美味的啤酒，並且分享了許多關於啤酒的故事和文化。在這個歡樂的晚上，我們開始討論，如何將這份熱情和對啤酒的熱愛分享給更多人。<br><br>最終，我們決定開設一間啤酒買賣店，並且將其命名為ninenight。這個名字代表著我們的九個好友，也代表了我們的熱情和對夜晚派對文化的喜愛。我們希望將這種熱情和喜愛帶給更多人，並且通過我們店內的各種啤酒選擇，讓顧客們感受到不同品牌和口味的啤酒帶來的樂趣和美好體驗。<br><br>在ninenight啤酒買賣店，我們注重品質和服務，我們的店員將會提供專業的建議和啤酒知識，並且帶領顧客們一同品嚐各種美味的啤酒。我們相信，ninenight啤酒買賣店將會成為一個充滿熱情和歡樂的地方，讓人們在繁忙的生活中，放下壓力，享受一杯好啤酒所帶來的美好時光。</textarea>
+                        內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;"></textarea>
                     </div>
                 </div>
             </div>
             <div class="story-bottom">
                 
-                <a href="#"><input type="button" class="cancel-btn mouse noline" value="取消"></a>
-                <a href="#"><input type="submit" class="yes-btn mouse noline" value="確認修改"></a>
+                <input type="button" id="reset" class="cancel-btn mouse noline" value="重設">
+                <input type="button" id="button" class="yes-btn mouse noline" value="確認修改">
             </div>
         </div>
     </div>
@@ -63,5 +68,6 @@
     </footer>
 </body>
 <script src="./ckeditor/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-story-edit.js"></script>
 </html>
