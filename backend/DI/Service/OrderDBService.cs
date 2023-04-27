@@ -18,7 +18,7 @@ namespace DI.Service
         {
             string cart_sql = $@"UPDATE cart SET cart_states='5' WHERE cart_id = '{value.cart_id}'";
 
-            string product_num = "SELECT SUM(cart_product.cart_product_amount) AS num FROM (cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id where cart.cart_id=@P_cart_id";
+            string product_num = "SELECT SUM(cart_product.cart_product_amount) AS num FROM (cart inner join cart_product on cart.cart_id = cart_product.cart_id)  where cart.cart_id=@P_cart_id and cart.cart_states=0";
 
             string sql = $@"INSERT INTO ""order""(order_id,cart_id,order_name,order_num,order_price,order_date,order_picktime,order_pick,order_address,order_phone,order_state,isdel,create_id,create_time) VALUES (@order_id,@cart_id,@order_name,@order_num,@order_price,@order_date,@order_picktime,@order_pick,@order_address,@order_phone,@order_state,@isdel,@create_id,@create_time)";
             Guid NewGuid = Guid.NewGuid();

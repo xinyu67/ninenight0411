@@ -55,7 +55,8 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                //return DataList;
+                return DataList.OrderBy(item => item.user_start).ThenBy(e => e.user_name).ToList();
             }
         }
         #endregion
