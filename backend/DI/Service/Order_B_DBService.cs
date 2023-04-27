@@ -95,6 +95,7 @@ namespace DI.Service
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
                         Data.cart_product_amount = (int)reader["cart_product_amount"];
+                        Data.product_price = (int)reader["product_price"];
                         Data.order_price = (int)reader["order_price"];
 
                         DataList.Add(Data);
