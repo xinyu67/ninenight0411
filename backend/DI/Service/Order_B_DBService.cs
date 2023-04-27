@@ -88,6 +88,7 @@ namespace DI.Service
                         Data.cart_id = (Guid)reader["cart_id"];
                         Data.order_id = (Guid)reader["order_id"];
                         Data.user_id = (Guid)reader["user_id"];
+                        Data.order_pick = (bool)reader["order_pick"];
                         Data.order_address = reader["order_address"].ToString();
                         Data.order_date = (DateTime)reader["order_date"];
                         Data.product_id = (Guid)reader["product_id"];
