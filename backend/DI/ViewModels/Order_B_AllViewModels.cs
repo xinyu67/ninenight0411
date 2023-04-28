@@ -10,6 +10,6 @@
         public bool order_pick { get; set; }
         public string order_address { get; set; }
         public int order_state { get; set; }
-        public DateTime create_time { get; set; }
+        public DateTime update_time { get; set; }
     }
 }

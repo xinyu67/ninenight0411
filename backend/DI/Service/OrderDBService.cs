@@ -16,11 +16,11 @@ namespace DI.Service
         #region 建立訂單(購物車送出後)
         public string CreateOrder(Order_F_CreateViewModels value)
         {
-            string cart_sql = $@"UPDATE cart SET cart_states='5' WHERE cart_id = '{value.cart_id}'";
+            string cart_sql = $@"UPDATE cart SET cart_states='5',update_id='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003',update_time='{DateTime.Now}' WHERE cart_id = '{value.cart_id}'";
 
             string product_num = "SELECT SUM(cart_product.cart_product_amount) AS num FROM (cart inner join cart_product on cart.cart_id = cart_product.cart_id)  where cart.cart_id=@P_cart_id and cart.cart_states=0";
 
-            string sql = $@"INSERT INTO ""order""(order_id,cart_id,order_name,order_num,order_price,order_date,order_picktime,order_pick,order_address,order_phone,order_state,isdel,create_id,create_time) VALUES (@order_id,@cart_id,@order_name,@order_num,@order_price,@order_date,@order_picktime,@order_pick,@order_address,@order_phone,@order_state,@isdel,@create_id,@create_time)";
+            string sql = $@"INSERT INTO ""order""(order_id,cart_id,order_name,order_num,order_price,order_date,order_picktime,order_pick,order_address,order_phone,order_state,isdel,create_id,create_time,update_id,update_time) VALUES (@order_id,@cart_id,@order_name,@order_num,@order_price,@order_date,@order_picktime,@order_pick,@order_address,@order_phone,@order_state,@isdel,@create_id,@create_time,@update_id,@update_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -48,6 +48,8 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@isdel", "false");
                     command.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                    command.Parameters.AddWithValue("@update_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
                     command_cart_sql.ExecuteNonQuery();
                     if (num > 0)
@@ -90,9 +92,9 @@ namespace DI.Service
                         Data.order_id = (Guid)reader["order_id"];
                         Data.order_num = (int)reader["order_num"];
                         Data.order_price = (int)reader["order_price"];
-                        Data.order_picktime = reader["order_picktime"].ToString();
-                        Data.order_pick = (bool)reader["order_pick"];
-                        Data.order_address = reader["order_address"].ToString();
+                        //Data.order_picktime = reader["order_picktime"].ToString();
+                        //Data.order_pick = (bool)reader["order_pick"];
+                        //Data.order_address = reader["order_address"].ToString();
                         Data.order_state = (int)reader["order_state"];
                         DataList.Add(Data);
                     }
@@ -130,6 +132,9 @@ namespace DI.Service
                         var FilePeth = Path.Combine($"https://localhost:7094", "image");
                         img = Path.Combine(FilePeth, reader["product_img"].ToString());
                         Order_F_OneIdAllViewModels Data = new Order_F_OneIdAllViewModels();
+                        Data.order_picktime = reader["order_picktime"].ToString();
+                        Data.order_pick = (bool)reader["order_pick"];
+                        Data.order_address = reader["order_address"].ToString();
                         Data.product_img = img;
                         Data.product_name = reader["product_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];

@@ -127,7 +127,7 @@ namespace DI.Service
                 }
             }
 
-            string sql = $@"INSERT INTO story(story_id,story_title,story_content,story_img,isdel,create_id,create_time) VALUES (@story_id,@story_title,@story_content,@story_img,@isdel,@create_id,@create_time)";
+            string sql = $@"INSERT INTO story(story_id,story_title,story_content,story_img,isdel,create_id,create_time,update_id,update_time) VALUES (@story_id,@story_title,@story_content,@story_img,@isdel,@create_id,@create_time,@update_id,@update_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -143,6 +143,8 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@isdel", "0");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                    command.Parameters.AddWithValue("@update_id", "admin");
+                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
                     if (num > 0)
                     {

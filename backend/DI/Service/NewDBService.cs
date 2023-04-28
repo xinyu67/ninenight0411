@@ -33,8 +33,8 @@ namespace DI.Service
             }
 
             string sql = $@"INSERT INTO new
-                        (new_id,new_title,new_startdate,new_enddate,new_content,new_img,isdel,create_id,create_time) 
-                        VALUES (@new_id,@new_title,@new_startdate,@new_enddate,@new_content,@new_img,@isdel,@create_id,@create_time)";
+                        (new_id,new_title,new_startdate,new_enddate,new_content,new_img,isdel,create_id,create_time,update_id,update_time) 
+                        VALUES (@new_id,@new_title,@new_startdate,@new_enddate,@new_content,@new_img,@isdel,@create_id,@create_time,@update_id,@update_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -52,6 +52,8 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@isdel", "false");
                     command.Parameters.AddWithValue("@create_id", "admin");
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                    command.Parameters.AddWithValue("@update_id", "admin");
+                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
                     if (num > 0)
                     {

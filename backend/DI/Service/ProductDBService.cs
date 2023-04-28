@@ -441,7 +441,7 @@ namespace DI.Service
                     }
                 }
 
-                string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time)";
+                string sql = $@"INSERT INTO product(product_id,product_num,product_name,product_eng,product_img,brand_id,product_price,place_id,product_ml,product_content,isdel,create_id,create_time,update_id,update_time) VALUES (@product_id,@product_num,@product_name,@product_eng,@product_img,@brand_id,@product_price,@place_id,@product_ml,@product_content,@isdel,@create_id,@create_time,@update_id,@update_time)";
                 Guid NewGuid = Guid.NewGuid();
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -464,6 +464,8 @@ namespace DI.Service
                         command.Parameters.AddWithValue("@isdel", '0');
                         command.Parameters.AddWithValue("@create_id", "admin");
                         command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        command.Parameters.AddWithValue("@update_id", "admin");
+                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
                         command.ExecuteNonQuery();
 
                         int num = (Allproduct_id(NewGuid).Count == 1) ? 1 : 0;

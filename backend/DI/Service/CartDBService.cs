@@ -27,7 +27,7 @@ namespace DI.Service
             string yesno_cart = "SELECT count(*) AS COUNT FROM cart where \"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and cart_states='0'";
 
             //新增cart
-            string sql_cart = $@"INSERT INTO cart(cart_id,user_id,cart_states,isdel,create_id,create_time) VALUES (@cart_id,@user_id,@cart_states,@isdel,@create_id,@create_time)";
+            string sql_cart = $@"INSERT INTO cart(cart_id,user_id,cart_states,isdel,create_id,create_time,update_id,update_time) VALUES (@cart_id,@user_id,@cart_states,@isdel,@create_id,@create_time,@update_id,@update_time)";
             //新增cart_product
             string sql_cart_product = $@"INSERT INTO cart_product(cart_product_id,cart_id,product_id,cart_product_amount) VALUES (@cart_product_id,@cart_id,@product_id,@cart_product_amount)";
             
@@ -57,6 +57,8 @@ namespace DI.Service
                         comm_cart.Parameters.AddWithValue("@isdel", "0");
                         comm_cart.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
                         comm_cart.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        comm_cart.Parameters.AddWithValue("@update_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                        comm_cart.Parameters.AddWithValue("@update_time", DateTime.Now);
                         comm_cart.ExecuteNonQuery();
                     }
                     else {

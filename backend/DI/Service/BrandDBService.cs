@@ -20,8 +20,8 @@ namespace DI.Service
             string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
 
             string sql = $@"INSERT INTO brand
-                        (brand_id,brand_name,brand_eng,isdel,create_id,create_time) 
-                        VALUES (@brand_id,@brand_name,@brand_eng,@isdel,@create_id,@create_time)";
+                        (brand_id,brand_name,brand_eng,isdel,create_id,create_time,update_id,update_time) 
+                        VALUES (@brand_id,@brand_name,@brand_eng,@isdel,@create_id,@create_time,@update_id,@update_time)";
             Guid NewGuid = Guid.NewGuid();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -56,6 +56,8 @@ namespace DI.Service
                         command.Parameters.AddWithValue("@isdel", "0");
                         command.Parameters.AddWithValue("@create_id", "admin");
                         command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                        command.Parameters.AddWithValue("@update_id", "admin");
+                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
                         int num=command.ExecuteNonQuery();
                         if (num > 0)
                         {
