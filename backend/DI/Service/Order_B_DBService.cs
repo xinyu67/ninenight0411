@@ -141,13 +141,16 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@update_id", "admin");
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
 
-                    if (value.order_state == 1) {
+                    if (value.order_state == 1)
+                    {
                         cart_states = 1;
                         command_cart_sql.Parameters.AddWithValue("@cart_id", cart_id);
                         command_cart_sql.Parameters.AddWithValue("@cart_states", cart_states);
                         command_cart_sql.Parameters.AddWithValue("@update_id", "admin");
                         command_cart_sql.Parameters.AddWithValue("@update_time", DateTime.Now);
-                    } else if (value.order_state == 2) {
+                    }
+                    else if (value.order_state == 2 || value.order_state == 3 || value.order_state == 4)
+                    {
                         cart_states = 2;
                         command_cart_sql.Parameters.AddWithValue("@cart_id", cart_id);
                         command_cart_sql.Parameters.AddWithValue("@cart_states", cart_states);
