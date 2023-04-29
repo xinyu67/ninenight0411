@@ -4,6 +4,8 @@
     {
         //public Guid order_id { get; set; }
         //public Guid cart_id { get; set; }
+        public string order_name { get; set; }
+        public string order_phone { get; set; }
         public bool order_pick { get; set; }
         public string order_picktime { get; set; }
         public string order_address { get; set; }

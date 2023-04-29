@@ -132,6 +132,8 @@ namespace DI.Service
                         var FilePeth = Path.Combine($"https://localhost:7094", "image");
                         img = Path.Combine(FilePeth, reader["product_img"].ToString());
                         Order_F_OneIdAllViewModels Data = new Order_F_OneIdAllViewModels();
+                        Data.order_name = reader["order_name"].ToString();
+                        Data.order_phone = reader["order_phone"].ToString();
                         Data.order_picktime = reader["order_picktime"].ToString();
                         Data.order_pick = (bool)reader["order_pick"];
                         Data.order_address = reader["order_address"].ToString();
