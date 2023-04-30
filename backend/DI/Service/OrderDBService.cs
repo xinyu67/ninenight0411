@@ -16,7 +16,7 @@ namespace DI.Service
         #region 建立訂單(購物車送出後)
         public string CreateOrder(Order_F_CreateViewModels value)
         {
-            string cart_sql = $@"UPDATE cart SET cart_states='5',update_id='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003',update_time='{DateTime.Now}' WHERE cart_id = '{value.cart_id}'";
+            string cart_sql = $@"UPDATE cart SET cart_states='5',update_id='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003',update_time=@cart_upd_time WHERE cart_id = '{value.cart_id}'";
 
             string product_num = "SELECT SUM(cart_product.cart_product_amount) AS num FROM (cart inner join cart_product on cart.cart_id = cart_product.cart_id)  where cart.cart_id=@P_cart_id and cart.cart_states=0";
 
@@ -31,7 +31,7 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-
+                    command_cart_sql.Parameters.AddWithValue("@cart_upd_time", DateTime.Now);
                     command_num.Parameters.AddWithValue("@P_cart_id", value.cart_id);
                     int P_num = (int)command_num.ExecuteScalar();
                     command.Parameters.AddWithValue("@order_id", NewGuid);

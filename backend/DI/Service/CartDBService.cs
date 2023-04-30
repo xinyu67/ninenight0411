@@ -1,8 +1,13 @@
 ﻿using DI.Models;
 using DI.ViewModels;
+using JWT.Algorithms;
+using JWT.Exceptions;
+using JWT.Serializers;
+using JWT;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization.IdGenerators;
 using System;
@@ -30,6 +35,34 @@ namespace DI.Service
     #region 新增購物車
     public string CreateCart(Guid product_id)
         {
+            //token解碼
+            //製作金鑰
+            /*var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetValue<string>("Jwt:SecretKey")));
+            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEyMyIsIm5hbWVpZCI6IjNhNDVkZDk2LWFkY2ItNDc2OC1hMTkxLTU0ODU3N2I5YWRkYSIsInJvbGUiOlsiVXNlciIsIkFkbWluIl0sIm5iZiI6MTY4Mjg2NzY2NSwiZXhwIjoxNjgzNDcyNDY1LCJpYXQiOjE2ODI4Njc2NjV9.yXJvkV1QbGS9lbR5O2cIG-BJ6FCpQyyMhQ3DsO9RQ1g";
+            try
+            {
+                IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+                IJsonSerializer serializer = new JsonNetSerializer();
+                IDateTimeProvider provider = new UtcDateTimeProvider();
+                IJwtValidator validator = new JwtValidator(serializer, provider);
+                IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+                IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+                var json = decoder.Decode(token, key, verify: true);
+                return json;
+            }
+            catch (TokenExpiredException)
+            {
+                Console.WriteLine("過期");
+            }
+            catch (SignatureVerificationException)
+            {
+                Console.WriteLine("校驗失敗");
+            }*/
+
+            //tokenEnCode TokenEnCode = new tokenEnCode(HttpContextAccessor.HttpContext);
+
+
+
             //判斷此帳號是否有購物車了
             string yesno_cart = "SELECT count(*) AS COUNT FROM cart where \"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and cart_states='0'";
 

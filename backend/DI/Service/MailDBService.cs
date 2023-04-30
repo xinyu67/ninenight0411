@@ -5,8 +5,11 @@ namespace DI.Service
     public class MailDBService
     {
         private string gmail_account = "tnny2455@gmail.com"; //Gmail 帳號
-        private string gmail_password = "ssagzgityyyefhhi"; //Gmail 密碼
+       private string gmail_password = "ssagzgityyyefhhi"; //Gmail 密碼
         private string gmail_mail = "tnny2455@gmail.com"; //Gmail 信箱
+        //private string gmail_account = "silvia50727@gmail.com"; //Gmail 帳號
+        //private string gmail_password = "Silvia910607"; //Gmail 密碼
+        //private string gmail_mail = "silvia50727@gmail.com"; //Gmail 信箱
         //寄會員驗證信
         // 產生驗證碼方法
         public string GetValidateCode()
