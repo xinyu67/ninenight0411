@@ -10,9 +10,9 @@ namespace DI.Service
         private readonly IConfiguration configuration;
         private readonly string connectionString;
         //發送email的人
-        private string gmail_account = "tnny2455@gmail.com"; //Gmail 帳號
-        private string gmail_password = "ssagzgityyyefhhi"; //Gmail 密碼
-        private string gmail_mail = "tnny2455@gmail.com"; //Gmail 信箱
+        private string gmail_account = "ninenight999999@gmail.com"; //Gmail 帳號
+        private string gmail_password = "ejcmhmtfigokebco"; //Gmail 密碼
+        private string gmail_mail = "ninenight999999@gmail.com"; //Gmail 信箱
 
         public ForgetPwdDBService(IConfiguration Configuration)
         {
