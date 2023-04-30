@@ -32,6 +32,7 @@ namespace DI.Controllers
         #region 後 - 使用者總覽
         [HttpGet]
         [Route("B_All")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult B_AllUser(string search = null)
         {
             var result = _userDBService.B_AllUser(search);
@@ -46,6 +47,7 @@ namespace DI.Controllers
         #region 後 - 修改狀態
         [HttpPut]
         [Route("B_Put")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult B_PutUser([FromBody] User_B_UpdateViewModel value)
         {
             var result = _userDBService.B_PutUser(value);

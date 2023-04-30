@@ -1,7 +1,9 @@
 ﻿using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace DI.Controllers
 {
@@ -49,6 +51,7 @@ namespace DI.Controllers
 
         #region 新增門市
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateStory([FromForm] StoreCreateViewModels value)
         {
             var result = _storeDBService.CreateStore(value);
@@ -62,6 +65,7 @@ namespace DI.Controllers
 
         #region 修改門市
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult UpdStore([FromForm] StoreUpdateViewModels value)
         {
             var result = _storeDBService.UpdStore(value);
@@ -75,6 +79,7 @@ namespace DI.Controllers
 
         #region 刪除門市
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult DeleteStore([FromQuery] Guid store_id)
         {
             var result = _storeDBService.DeleteStore(store_id);

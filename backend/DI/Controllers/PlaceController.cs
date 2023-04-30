@@ -1,7 +1,9 @@
 ﻿using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DI.Controllers
@@ -24,6 +26,7 @@ namespace DI.Controllers
 
         #region 新增產地
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreatePlace([FromBody] PlaceCreateViewModels value)
         {
             var result = _placeDBService.CreatePlace(value);
@@ -50,6 +53,7 @@ namespace DI.Controllers
 
         #region 修改產地
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult PutPlace([FromBody] PlaceUpdateViewModel value)
         {
             var result = _placeDBService.PutPlace(value);
@@ -64,6 +68,7 @@ namespace DI.Controllers
 
         #region 軟刪除
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult DeletePlace([FromQuery] Guid place_id)
         {
             string result = _placeDBService.DeletePlace(place_id);

@@ -1,7 +1,9 @@
 ﻿using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 
 namespace DI.Controllers
@@ -23,6 +25,7 @@ namespace DI.Controllers
 
         #region 新增產品品牌
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateBrand([FromBody] BrandCreateViewModels value)
         {
             var result = _brandDBService.CreateBrand(value);
@@ -36,6 +39,7 @@ namespace DI.Controllers
 
         #region 後 - 產品品牌總覽
         [HttpGet]
+        //[Authorize(Roles = "Admin")]
         public IActionResult B_AllBrand()
         {
             var result = _brandDBService.B_AllBrand();
@@ -63,6 +67,7 @@ namespace DI.Controllers
 
         #region 修改產品品牌
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult PutBrand([FromBody] BrandUpdateViewModel value)
         {
             var result = _brandDBService.PutBrand(value);
@@ -76,6 +81,7 @@ namespace DI.Controllers
 
         #region 軟刪除
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult DeleteBrand([FromQuery] Guid brand_id)
         {
             string result = _brandDBService.DeleteBrand(brand_id);

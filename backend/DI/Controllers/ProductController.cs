@@ -1,10 +1,12 @@
 ﻿using DI.Models;
 using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DI.Controllers
@@ -64,6 +66,7 @@ namespace DI.Controllers
 
         #region 新增商品
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Createproduct([FromForm] ProductCreateViewModels value) {
             var create = _productDBService.CreateproductAsync(value);
             if (create == null)
@@ -76,6 +79,7 @@ namespace DI.Controllers
 
         #region 修改商品
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Putproduct([FromForm] ProductUpdateViewModel value)
         {
             var result = _productDBService.PutProduct(value);
@@ -89,6 +93,7 @@ namespace DI.Controllers
 
         #region 軟刪除商品
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Deleteproduct([FromQuery] Guid product_id)
         {
             string result = _productDBService.Deleteproduct(product_id);

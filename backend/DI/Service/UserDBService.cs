@@ -197,7 +197,8 @@ namespace DI.Service
 
 
             sql = @"INSERT INTO ""user"" ( user_id, user_account,  user_pwd,user_name, user_gender, user_birthday, user_email,  user_authcode,user_phone, user_address,
-                    user_level,isdel) VALUES (@user_id, @user_account,@user_pwd,@user_name,@user_gender,@user_birthday,@user_email,@user_authcode, @user_phone, @user_address,@user_level,@isdel )";
+                    user_level,user_start,isdel,create_id,create_time,update_id,update_time) VALUES (@user_id, @user_account,  @user_pwd,@user_name, @user_gender, @user_birthday, @user_email,  @user_authcode,@user_phone, @user_address,
+                    @user_level,@user_start,@isdel,@create_id,@create_time,@update_id,@update_time )";
 
             try
             {
@@ -215,7 +216,12 @@ namespace DI.Service
                 command.Parameters.AddWithValue("@user_phone", newMember.user_phone);
                 command.Parameters.AddWithValue("@user_address", newMember.user_address);
                 command.Parameters.AddWithValue("@user_level", 1);
+                command.Parameters.AddWithValue("@user_start", 0);
                 command.Parameters.AddWithValue("@isdel", 0);
+                command.Parameters.AddWithValue("@create_id", newMember.user_account);
+                command.Parameters.AddWithValue("@create_time", DateTime.Now);
+                command.Parameters.AddWithValue("@update_id", newMember.user_account);
+                command.Parameters.AddWithValue("@update_time", DateTime.Now);
                 command.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -437,6 +443,9 @@ namespace DI.Service
             return ValidateStr;
         }
         #endregion
+
+
+
         #region 登入確認
         // 登入帳密確認方法，並回傳驗證後訊息
         public string LoginCheck(string user_account, string user_pwd)
@@ -445,14 +454,24 @@ namespace DI.Service
             User LoginUser = GetDataByAccount(user_account);
 
 
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            string sql_user_start = $@"SELECT user_start FROM ""user"" where user_account ='{user_account}' ";
+            SqlCommand cmd_user_start = new SqlCommand(sql_user_start, conn);
+            int user_start_num = (int)cmd_user_start.ExecuteScalar();
+
+            string sql_user_pwd = $@"SELECT user_pwd FROM ""user"" where user_account ='{user_account}' ";
+            SqlCommand cmd_user_pwd = new SqlCommand(sql_user_pwd, conn);
+            string PWD = cmd_user_pwd.ExecuteScalar().ToString();
+
             // 判斷是否有此會員
             if (LoginUser != null)
             {
                 // 判斷是否有經過信箱驗證，有經驗證驗證碼欄位會被清空
-                if (String.IsNullOrWhiteSpace(LoginUser.user_authcode))
+                if (user_start_num == 1)
                 {
                     // 進行帳號密碼確認
-                    if (PasswordCheck(LoginUser, user_pwd))
+                    if (user_pwd == PWD)
                     {
                         return "";
                     }
@@ -461,15 +480,19 @@ namespace DI.Service
                         return " 密碼輸入錯誤 ";
                     }
                 }
-                else
+                else if(user_start_num == 0)
                 {
                     return " 此帳號尚未經過 Email 驗證，請去收信 ";
+                }else {
+                    return " 此帳號停用中"+user_start_num;
                 }
             }
             else
             {
                 return " 無此會員帳號，請去註冊 ";
             }
+
+            conn.Close();
         }
         #endregion
 

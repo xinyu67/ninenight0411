@@ -31,6 +31,6 @@ namespace DI.Models
         public bool user_level { get; set; }
         public bool isdel { get; set; } = false;
 
-        public bool user_start { get; set; }
+        public int user_start { get; set; }
     }
 }

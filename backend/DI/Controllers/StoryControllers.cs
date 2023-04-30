@@ -1,7 +1,9 @@
 ﻿using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace DI.Controllers
 {
@@ -48,6 +50,7 @@ namespace DI.Controllers
 
         #region 新增品牌故事
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateStory([FromForm] StoryCreateViewModels value) {
             var result = _storyDBService.CreateStory(value);
             if (result == null)
@@ -60,6 +63,7 @@ namespace DI.Controllers
 
         #region 修改品牌故事
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult UpdStory([FromForm] StoryUpdateViewModels value)
         {
             var result = _storyDBService.UpdStory(value);
@@ -73,6 +77,7 @@ namespace DI.Controllers
         
         #region 刪除品牌故事
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult DeleteStory([FromQuery] Guid story_id)
         {
             var result = _storyDBService.DeleteStory(story_id);

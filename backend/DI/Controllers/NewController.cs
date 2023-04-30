@@ -1,7 +1,9 @@
 ﻿using DI.Service;
 using DI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace DI.Controllers
 {
@@ -21,6 +23,7 @@ namespace DI.Controllers
 
         #region 新增最新消息
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public IActionResult CreateNew([FromForm] NewCreateViewModels value)
         {
             var create = _newDBService.CreateNew(value);
@@ -63,6 +66,7 @@ namespace DI.Controllers
 
         #region 修改最新消息
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public IActionResult PutNew([FromForm] NewUpdateViewModel value)
         {
             var result = _newDBService.PutNew(value);
@@ -76,6 +80,7 @@ namespace DI.Controllers
 
         #region 軟刪除最新消息
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public IActionResult DeleteNew([FromQuery] Guid new_id)
         {
             string result = _newDBService.DeleteNew(new_id);
