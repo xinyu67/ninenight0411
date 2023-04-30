@@ -182,3 +182,9 @@ C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Mi
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\JWT.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\NLog.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\RestSharp.dll

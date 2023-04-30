@@ -5,6 +5,7 @@ using DI.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
 using System.Data.SqlClient;
 using System.Net;
 
@@ -231,6 +232,8 @@ namespace DI.Controllers
                 SqlCommand conn_User_id = new SqlCommand(ID_sql, conn);
                 string user_ID = conn_User_id.ExecuteScalar().ToString();
 
+
+                HttpContext.Response.Cookies.Append("UserAccount", LoginMember.user_account);
 
                 string Role = _userDBService.GetRole(LoginMember.user_account);
                 string jwt = _jwtService.f(user_ID, LoginMember.user_account, Role);

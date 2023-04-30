@@ -1,11 +1,16 @@
-﻿using DI.ViewModels;
+﻿using DI.Models;
+using DI.ViewModels;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Security.Cryptography;
+using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DI.Service
@@ -20,8 +25,10 @@ namespace DI.Service
             connectionString = _config.GetConnectionString("local");
         }
 
-        #region 新增購物車
-        public string CreateCart(Guid product_id)
+       
+
+    #region 新增購物車
+    public string CreateCart(Guid product_id)
         {
             //判斷此帳號是否有購物車了
             string yesno_cart = "SELECT count(*) AS COUNT FROM cart where \"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and cart_states='0'";

@@ -479,13 +479,14 @@ namespace DI.Service
                 }else {
                     return " 此帳號停用中"+user_start_num;
                 }
+                conn.Close();
             }
             else
             {
                 return " 無此會員帳號，請去註冊 ";
             }
 
-            conn.Close();
+            
         }
         #endregion
 
