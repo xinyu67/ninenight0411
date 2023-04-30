@@ -172,8 +172,6 @@ namespace DI.Service
                 return "密碼不相符";
             }
 
-
-            return "";
         }
         #endregion
     }

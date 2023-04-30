@@ -175,3 +175,10 @@ C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\obj\Debug\net7.0\re
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\obj\Debug\net7.0\DI.pdb
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\obj\Debug\net7.0\DI.genruntimeconfig.cache
 C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\obj\Debug\net7.0\ref\DI.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\silvi\OneDrive\桌面\DI-2\ninenight0411\backend\DI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

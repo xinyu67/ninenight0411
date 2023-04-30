@@ -1,6 +1,10 @@
+using DI.Security;
 using DI.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using System.Data.SqlClient;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +14,30 @@ var configurationBuilder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 var configuration = configurationBuilder.Build();
 
+#region 33
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    options.IncludeErrorDetails = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        // 透過這項宣告，就可以從 "roles" 取值，並可讓 [Authorize] 判斷角色
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Jwt:SecretKey"))),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+#endregion
+
+
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
 
 // goose
@@ -39,6 +62,8 @@ builder.Services.AddSingleton<Order_B_DBService>();
 builder.Services.AddSingleton<UserDBService>();
 builder.Services.AddSingleton<IndexDBService>();
 builder.Services.AddSingleton<ForgetPwdDBService>();
+builder.Services.AddSingleton<MailDBService>();   
+builder.Services.AddSingleton<JwtService>();  
 
 
 var app = builder.Build();
@@ -66,6 +91,8 @@ app.UseHttpsRedirection();
 app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 // app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5555").AllowAnyHeader().AllowAnyMethod());
+
+app.UseAuthentication(); //33
 
 app.UseAuthorization();
 
