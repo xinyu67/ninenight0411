@@ -187,7 +187,7 @@ namespace DI.Service
 
 
 
-        #region
+        #region 註冊
         public void Register(UserRegisterViewModel newMember, string AuthCode)
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -196,9 +196,7 @@ namespace DI.Service
             string sql = string.Empty;
 
 
-            sql = @"INSERT INTO ""user"" ( user_id, user_account,  user_pwd,user_name, user_gender, user_birthday, user_email,  user_authcode,user_phone, user_address,
-                    user_level,user_start,isdel,create_id,create_time,update_id,update_time) VALUES (@user_id, @user_account,  @user_pwd,@user_name, @user_gender, @user_birthday, @user_email,  @user_authcode,@user_phone, @user_address,
-                    @user_level,@user_start,@isdel,@create_id,@create_time,@update_id,@update_time )";
+            sql = @"INSERT INTO ""user"" ( user_id, user_account,  user_pwd,user_name, user_gender, user_birthday, user_email,  user_authcode,user_phone, user_address,user_level,user_start,isdel,create_id,create_time,update_id,update_time) VALUES (@user_id, @user_account,  @user_pwd,@user_name, @user_gender, @user_birthday, @user_email,  @user_authcode,@user_phone, @user_address,@user_level,@user_start,@isdel,@create_id,@create_time,@update_id,@update_time )";
 
             try
             {
@@ -210,7 +208,7 @@ namespace DI.Service
                 command.Parameters.AddWithValue("@user_pwd", newMember.user_pwd);
                 command.Parameters.AddWithValue("@user_name", newMember.user_name);
                 command.Parameters.AddWithValue("@user_gender", newMember.user_gender);
-                command.Parameters.AddWithValue("@user_birthday", newMember.user_birthday);
+                command.Parameters.AddWithValue("@user_birthday", newMember.user_birthday.ToString("yyyyMMdd"));
                 command.Parameters.AddWithValue("@user_email", newMember.user_email);
                 command.Parameters.AddWithValue("@user_authcode", AuthCode);
                 command.Parameters.AddWithValue("@user_phone", newMember.user_phone);
@@ -408,7 +406,7 @@ namespace DI.Service
 
                     // 將資料庫中的驗證碼設為空
                     //sql 更新語法
-                    string sql = $@" update  ""user""  set  user_authcode = '{string.Empty}'  ,   user_start='true' where user_account = '{user_account}' ";
+                    string sql = $@" update  ""user""  set  user_authcode = '{string.Empty}'  ,   user_start='1' where user_account = '{user_account}' ";
 
                     try
                     {
@@ -460,9 +458,6 @@ namespace DI.Service
             SqlCommand cmd_user_start = new SqlCommand(sql_user_start, conn);
             int user_start_num = (int)cmd_user_start.ExecuteScalar();
 
-            string sql_user_pwd = $@"SELECT user_pwd FROM ""user"" where user_account ='{user_account}' ";
-            SqlCommand cmd_user_pwd = new SqlCommand(sql_user_pwd, conn);
-            string PWD = cmd_user_pwd.ExecuteScalar().ToString();
 
             // 判斷是否有此會員
             if (LoginUser != null)
@@ -471,7 +466,7 @@ namespace DI.Service
                 if (user_start_num == 1)
                 {
                     // 進行帳號密碼確認
-                    if (user_pwd == PWD)
+                    if (PasswordCheck(LoginUser, user_pwd))
                     {
                         return "";
                     }
