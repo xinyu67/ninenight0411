@@ -451,17 +451,15 @@ namespace DI.Service
             // 取得傳入帳號的會員資料
             User LoginUser = GetDataByAccount(user_account);
 
-
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-            string sql_user_start = $@"SELECT user_start FROM ""user"" where user_account ='{user_account}' ";
-            SqlCommand cmd_user_start = new SqlCommand(sql_user_start, conn);
-            int user_start_num = (int)cmd_user_start.ExecuteScalar();
-
-
             // 判斷是否有此會員
             if (LoginUser != null)
             {
+                SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+                string sql_user_start = $@"SELECT user_start FROM ""user"" where user_account ='{user_account}' ";
+                SqlCommand cmd_user_start = new SqlCommand(sql_user_start, conn);
+                int user_start_num = (int)cmd_user_start.ExecuteScalar();
+
                 // 判斷是否有經過信箱驗證，有經驗證驗證碼欄位會被清空
                 if (user_start_num == 1)
                 {

@@ -23,12 +23,16 @@ namespace DI.Controllers
         [Route("LikeProduct")]
         public IActionResult LikeProduct()
         {
+            string cookieName = _config["Jwt:CookieName"].ToString();
+
+            var cookie = Request.Cookies[cookieName];
+
             var result = _indexDBService.LikeProduct();
             if (result == null || result.Count <= 0)
             {
                 return NotFound("找不到資源");
             }
-            return Ok(result);
+            return Ok( cookie);
         }
         #endregion
 
