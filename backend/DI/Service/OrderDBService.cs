@@ -46,9 +46,9 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@order_phone", value.order_phone);
                     command.Parameters.AddWithValue("@order_state", '0');
                     command.Parameters.AddWithValue("@isdel", "false");
-                    command.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                    command.Parameters.AddWithValue("@create_id", value.user_id);
                     command.Parameters.AddWithValue("@create_time", DateTime.Now);
-                    command.Parameters.AddWithValue("@update_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                    command.Parameters.AddWithValue("@update_id", value.user_id);
                     command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int num = command.ExecuteNonQuery();
                     command_cart_sql.ExecuteNonQuery();

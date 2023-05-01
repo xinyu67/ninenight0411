@@ -95,9 +95,9 @@ namespace DI.Service
                         comm_cart.Parameters.AddWithValue("@user_id", user_id);
                         comm_cart.Parameters.AddWithValue("@cart_states", "0");
                         comm_cart.Parameters.AddWithValue("@isdel", "0");
-                        comm_cart.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                        comm_cart.Parameters.AddWithValue("@create_id", user_id);
                         comm_cart.Parameters.AddWithValue("@create_time", DateTime.Now);
-                        comm_cart.Parameters.AddWithValue("@update_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                        comm_cart.Parameters.AddWithValue("@update_id", user_id);
                         comm_cart.Parameters.AddWithValue("@update_time", DateTime.Now);
                         comm_cart.ExecuteNonQuery();
                     }
@@ -148,9 +148,9 @@ namespace DI.Service
         #endregion
 
         #region 購物車總覽
-        public List<CartAllViewModels> Allcart()
+        public List<CartAllViewModels> Allcart(Guid user_id)
         {
-            string Sql = "SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join \"user\" on cart.\"user_id\"=\"user\".\"user_id\" where cart.cart_states='0' and cart.isdel='false'";
+            string Sql = $@"SELECT * FROM ((cart inner join cart_product on cart.cart_id = cart_product.cart_id) inner join product on cart_product.product_id=product.product_id) inner join ""user"" on cart.""user_id""=""user"".""user_id"" where ""user"".""user_id""= '{user_id}' and cart.cart_states='0' and cart.isdel='false' and ""user"".""user_id""='{user_id}' ";
             //string Sql = "SELECT C.cart_id,C.\"user_id\",C.cart_states,C.isdel,CART_P.cart_product_id,CART_P.product_id,CART_P.cart_product_amount,P.product_name,P.product_img,P.product_price FROM \r\n\t((cart AS C inner join cart_product AS CART_P on C.cart_id = CART_P.cart_id)\r\n\tinner join product AS P on CART_P.product_id=P.product_id) where P.isdel='false'";
 
             List<CartViewModels> DataList = new List<CartViewModels>();

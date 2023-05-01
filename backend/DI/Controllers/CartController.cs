@@ -34,9 +34,9 @@ namespace DI.Controllers
 
         #region 購物車總覽
         [HttpGet]
-        public IActionResult Allcart()
+        public IActionResult Allcart([FromQuery]  Guid user_id)
         {
-            var result = _cartDBService.Allcart();
+            var result = _cartDBService.Allcart(user_id);
             if (result == null)
             {
                 return NotFound("找不到資源");

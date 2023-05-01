@@ -213,7 +213,7 @@ namespace DI.Service
                 command.Parameters.AddWithValue("@user_authcode", AuthCode);
                 command.Parameters.AddWithValue("@user_phone", newMember.user_phone);
                 command.Parameters.AddWithValue("@user_address", newMember.user_address);
-                command.Parameters.AddWithValue("@user_level", 1);
+                command.Parameters.AddWithValue("@user_level", 0);
                 command.Parameters.AddWithValue("@user_start", 0);
                 command.Parameters.AddWithValue("@isdel", 0);
                 command.Parameters.AddWithValue("@create_id", newMember.user_account);
