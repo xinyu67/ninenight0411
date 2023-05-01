@@ -104,6 +104,7 @@ namespace DI.Service
                         Data.new_startdate = reader["new_startdate"].ToString();
                         Data.new_enddate = reader["new_enddate"].ToString();
                         Data.new_content = reader["new_content"].ToString();
+                        Data.update_time = (DateTime)reader["update_time"];
                         Data.new_img = img;
 
                         DataList.Add(Data);
@@ -118,7 +119,7 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList.OrderBy(item => item.new_startdate).ToList();
+                return DataList.OrderByDescending(pp => pp.update_time).ToList();
             }
         }
         #endregion

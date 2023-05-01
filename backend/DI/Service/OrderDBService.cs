@@ -96,6 +96,8 @@ namespace DI.Service
                         //Data.order_pick = (bool)reader["order_pick"];
                         //Data.order_address = reader["order_address"].ToString();
                         Data.order_state = (int)reader["order_state"];
+                        Data.create_time = (DateTime)reader["create_time"];
+                        Data.update_time = (DateTime)reader["update_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -108,7 +110,8 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                //return DataList;
+                return DataList.OrderByDescending(e => e.update_time).ThenByDescending(cc => cc.create_time).ThenByDescending(item => item.order_state).ToList();
             }
         }
         #endregion

@@ -12,5 +12,10 @@
         //public Guid place_id { get; set; }
         public string place_name { get; set; }
         public int product_ml { get; set; }
+
+        public DateTime create_time { get; set; }
+        public DateTime update_time { get; set; }
+
+
     }
 }

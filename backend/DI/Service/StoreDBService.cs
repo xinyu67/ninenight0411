@@ -41,6 +41,7 @@ namespace DI.Service
                         Data.store_email = reader["store_email"].ToString();
                         Data.store_phone = reader["store_phone"].ToString();
                         Data.store_time = reader["store_time"].ToString();
+                        Data.create_time = (DateTime)reader["create_time"];
                         Data.store_img = img;
 
                         DataList.Add(Data);
@@ -55,7 +56,8 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                //return DataList;
+                return DataList.OrderByDescending(item => item.create_time).ToList();
             }
         }
         #endregion

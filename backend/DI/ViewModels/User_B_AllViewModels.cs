@@ -9,5 +9,6 @@
         public string user_phone { get; set; }
         public bool user_level { get; set; }
         public int user_start { get; set; }
+        public DateTime update_time { get; set; }
     }
 }

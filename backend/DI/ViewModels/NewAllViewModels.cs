@@ -8,5 +8,6 @@
         public string new_enddate { get; set; }
         public string new_content { get; set; }
         public string new_img { get; set; }
+        public DateTime update_time { get; set; }
     }
 }

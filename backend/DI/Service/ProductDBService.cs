@@ -306,7 +306,8 @@ namespace DI.Service
                         Data.place_name = reader["place_name"].ToString();
                         Data.product_ml = (int)reader["product_ml"];
                         Data.product_price = (int)reader["product_price"];
-
+                        Data.create_time = (DateTime)reader["create_time"];
+                        Data.update_time = (DateTime)reader["update_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -321,15 +322,15 @@ namespace DI.Service
                 }
                 if (money == "DESC")
                 {
-                    return DataList.OrderByDescending(item => item.product_price).ToList();
+                    return DataList.OrderByDescending(item => item.product_price).ThenByDescending(pp => pp.update_time).ThenByDescending(pp => pp.create_time).ThenBy(item => item.product_name).ToList();
                 }
                 else if (money == "ASC")
                 {
-                    return DataList.OrderBy(item => item.product_price).ToList();
+                    return DataList.OrderBy(item => item.product_price).ThenByDescending(pp => pp.update_time).ThenByDescending(pp => pp.create_time).ThenBy(item => item.product_name).ToList();
                 }
                 else
                 {
-                    return DataList.OrderBy(item => item.product_name).ToList();
+                    return DataList.OrderByDescending(pp => pp.update_time).ThenByDescending(pp => pp.create_time).ThenBy(item => item.product_name).ToList();
                 }
                 
                 

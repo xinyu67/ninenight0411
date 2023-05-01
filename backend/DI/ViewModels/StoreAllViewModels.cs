@@ -9,5 +9,7 @@
         public string store_phone { get; set; }
         public string store_time { get; set; }
         public string store_img { get; set; }
+
+        public DateTime create_time { get; set; }
     }
 }

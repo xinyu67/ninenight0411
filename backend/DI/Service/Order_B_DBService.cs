@@ -63,7 +63,7 @@ namespace DI.Service
                     conn.Close();
                 }
                 //return DataList;
-                return DataList.OrderBy(e => e.update_time).ThenByDescending(item => item.order_state).ThenBy(e => e.order_name).ToList();
+                return DataList.OrderByDescending(e => e.update_time).ThenByDescending(item => item.order_state).ThenBy(e => e.order_name).ToList();
             }
         }
         #endregion

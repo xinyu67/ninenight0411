@@ -48,6 +48,7 @@ namespace DI.Service
                         Data.user_phone = reader["user_phone"].ToString();
                         Data.user_level = (bool)reader["user_level"];
                         Data.user_start = (int)reader["user_start"];
+                        Data.update_time = (DateTime)reader["update_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -61,7 +62,7 @@ namespace DI.Service
                     conn.Close();
                 }
                 //return DataList;
-                return DataList.OrderBy(item => item.user_start).ThenBy(e => e.user_name).ToList();
+                return DataList.OrderBy(level => level.user_level).ThenBy(item => item.user_start).ThenByDescending(time => time.update_time).ThenBy(e => e.user_name).ToList();
             }
         }
         #endregion
@@ -70,7 +71,7 @@ namespace DI.Service
         #region 後 - 修改狀態
         public string B_PutUser(User_B_UpdateViewModel value)
         {
-            string sql = $@"UPDATE ""user"" SET user_start=@user_start WHERE user_id = @user_id";
+            string sql = $@"UPDATE ""user"" SET user_start=@user_start,update_id=@update_id,update_time=@update_time WHERE user_id = @user_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -80,6 +81,8 @@ namespace DI.Service
                     conn.Open();
                     command.Parameters.AddWithValue("@user_id", value.user_id);
                     command.Parameters.AddWithValue("@user_start", value.user_start);
+                    command.Parameters.AddWithValue("@update_id", "admin");
+                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();
                     if (row > 0)
                     {
@@ -147,7 +150,7 @@ namespace DI.Service
         #region 前 - 修改資料
         public string F_PutUser(User_F_UpdateViewModel value)
         {
-            string sql = $@"UPDATE ""user"" SET user_name=@user_name,user_gender=@user_gender,user_address=@user_address WHERE user_id = @user_id";
+            string sql = $@"UPDATE ""user"" SET user_name=@user_name,user_gender=@user_gender,user_address=@user_address,update_id=@update_id,update_time=@update_time WHERE user_id = @user_id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -159,6 +162,8 @@ namespace DI.Service
                     command.Parameters.AddWithValue("@user_name", value.user_name);
                     command.Parameters.AddWithValue("@user_gender", value.user_gender);
                     command.Parameters.AddWithValue("@user_address", value.user_address);
+                    command.Parameters.AddWithValue("@update_id", value.user_id);
+                    command.Parameters.AddWithValue("@update_time", DateTime.Now);
                     int row = command.ExecuteNonQuery();
                     if (row > 0)
                     {

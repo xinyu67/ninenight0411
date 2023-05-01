@@ -105,6 +105,7 @@ namespace DI.Service
                         Data.place_id = (Guid)reader["place_id"];
                         Data.place_name = reader["place_name"].ToString();
                         Data.place_eng = reader["place_eng"].ToString();
+                        Data.update_time = (DateTime)reader["update_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -117,7 +118,7 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                return DataList.OrderByDescending(pp => pp.update_time).ToList();
             }
         }
         #endregion
@@ -179,8 +180,12 @@ namespace DI.Service
         {
             string Sql_repeat = "SELECT place_name FROM place where isdel='false'";
 
-            string sql = "";
-            if (value.place_name == "null")
+            string sql = "1";
+            if (value.place_name == "null" & value.place_eng == "null")
+            {
+                sql = "1";
+            }
+            else if (value.place_name == "null")
             {
                 sql = $@"
             UPDATE place SET place_eng=@place_eng,update_id=@update_id,update_time=@update_time WHERE place_id = @place_id";
@@ -203,43 +208,50 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-                    SqlDataReader reader = command_repeat.ExecuteReader();
-                    int no_create = 0;
-                    while (reader.Read())
+                    if (sql != "1")
                     {
-                        if (value.place_name == reader["place_name"].ToString())
+                        SqlDataReader reader = command_repeat.ExecuteReader();
+                        int no_create = 0;
+                        while (reader.Read())
                         {
-                            no_create = 1;
-                            break;
+                            if (value.place_name == reader["place_name"].ToString())
+                            {
+                                no_create = 1;
+                                break;
+                            }
+                            else
+                            {
+                                no_create = 0;
+                            }
+                        }
+                        if (no_create == 0)
+                        {
+                            command.Parameters.AddWithValue("@place_id", value.place_id);
+                            if (value.place_name != null)
+                                command.Parameters.AddWithValue("@place_name", value.place_name);
+                            if (value.place_eng != null)
+                                command.Parameters.AddWithValue("@place_eng", value.place_eng);
+                            command.Parameters.AddWithValue("@update_id", "admin");
+                            command.Parameters.AddWithValue("@update_time", DateTime.Now);
+                            int row = command.ExecuteNonQuery();
+                            if (row > 0)
+                            {
+                                return "修改成功！";
+                            }
+                            else
+                            {
+                                return "修改失敗，請重試！";
+                            }
                         }
                         else
                         {
-                            no_create = 0;
+                            return "已有此產地名稱";
                         }
                     }
-                    if (no_create == 0)
-                    {
-                        command.Parameters.AddWithValue("@place_id", value.place_id);
-                        if (value.place_name != null)
-                            command.Parameters.AddWithValue("@place_name", value.place_name);
-                        if (value.place_eng != null)
-                            command.Parameters.AddWithValue("@place_eng", value.place_eng);
-                        command.Parameters.AddWithValue("@update_id", "admin");
-                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
-                        int row = command.ExecuteNonQuery();
-                        if (row > 0)
-                        {
-                            return "修改成功！";
-                        }
-                        else
-                        {
-                            return "修改失敗，請重試！";
-                        }
+                    else {
+                        return "未修改資料";
                     }
-                    else
-                    {
-                        return "已有此產地名稱";
-                    }
+                    
 
                 }
                 catch (Exception e)

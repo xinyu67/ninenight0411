@@ -104,7 +104,7 @@ namespace DI.Service
                         Data.brand_id = (Guid)reader["brand_id"];
                         Data.brand_name = reader["brand_name"].ToString();
                         Data.brand_eng = reader["brand_eng"].ToString();
-
+                        Data.update_time = (DateTime)reader["update_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -117,7 +117,7 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                return DataList.OrderByDescending(pp => pp.update_time).ToList();
             }
         }
         #endregion
@@ -180,8 +180,11 @@ namespace DI.Service
             //是否存在
             string Sql_repeat = "SELECT brand_name FROM brand where isdel='false'";
 
-            string sql = "";
-            if (value.brand_name == "null")
+            string sql = "1";
+            if (value.brand_name == "null" & value.brand_eng == "null")
+            {
+                sql = "1";
+            }else if (value.brand_name == "null")
             {
                 sql = $@"
             UPDATE brand SET brand_eng=@brand_eng,update_id=@update_id,update_time=@update_time WHERE brand_id = @brand_id";
@@ -203,45 +206,51 @@ namespace DI.Service
                 try
                 {
                     conn.Open();
-
-                    SqlDataReader reader = command_repeat.ExecuteReader();
-                    int no_create = 0;
-                    while (reader.Read())
+                    if (sql != "1")
                     {
-                        if (value.brand_name == reader["brand_name"].ToString())
+                        SqlDataReader reader = command_repeat.ExecuteReader();
+                        int no_create = 0;
+                        while (reader.Read())
                         {
-                            no_create = 1;
-                            break;
+                            if (value.brand_name == reader["brand_name"].ToString())
+                            {
+                                no_create = 1;
+                                break;
+                            }
+                            else
+                            {
+                                no_create = 0;
+                            }
+                        }
+
+                        if (no_create == 0)
+                        {
+                            command.Parameters.AddWithValue("@brand_id", value.brand_id);
+                            if (value.brand_name != null)
+                                command.Parameters.AddWithValue("@brand_name", value.brand_name);
+                            if (value.brand_eng != null)
+                                command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
+                            command.Parameters.AddWithValue("@update_id", "admin");
+                            command.Parameters.AddWithValue("@update_time", DateTime.Now);
+                            int row = command.ExecuteNonQuery();
+                            if (row > 0)
+                            {
+                                return "修改成功！";
+                            }
+                            else
+                            {
+                                return "修改失敗，請重試！";
+                            }
                         }
                         else
                         {
-                            no_create = 0;
+                            return "已有此品牌名稱";
                         }
                     }
-
-                    if (no_create == 0)
-                    {
-                        command.Parameters.AddWithValue("@brand_id", value.brand_id);
-                        if (value.brand_name != null)
-                            command.Parameters.AddWithValue("@brand_name", value.brand_name);
-                        if (value.brand_eng != null)
-                            command.Parameters.AddWithValue("@brand_eng", value.brand_eng);
-                        command.Parameters.AddWithValue("@update_id", "admin");
-                        command.Parameters.AddWithValue("@update_time", DateTime.Now);
-                        int row = command.ExecuteNonQuery();
-                        if (row > 0)
-                        {
-                            return "修改成功！";
-                        }
-                        else
-                        {
-                            return "修改失敗，請重試！";
-                        }
+                    else {
+                        return "未修改資料";
                     }
-                    else
-                    {
-                        return "已有此品牌名稱";
-                    }
+                    
 
                 }
                 catch (Exception e)
