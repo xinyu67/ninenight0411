@@ -49,13 +49,15 @@
     <content>
         <div class="login-word">忘 記 密 碼 - 信 箱 驗 證</div>
 
-        <form action="./forget-reset.html">
+        <form>
             <div class="login-content">
-                <div class="login-user">會員信箱：<input type="text" class="user-textbox" required></div>
+                <div class="login-user">會員信箱：<input type="text" class="user-textbox"></div>
                 <div class="verification-pwd">
-                    <div class="aa">驗證碼：<input type="text" class="verification-textbox" required></div><a href="# " class="verification">驗證碼發送</a></div>
+                    <div class="aa">驗證碼：<input type="text" class="verification-textbox"></div>
+                    <a href="# " class="verification" onclick="sendEmail()">驗證碼發送</a></div>
                 <div class="buttons">
-                    <!-- <a href="./reset.html" class="noline"></a> --><input type="submit" class="down mouse" value="下一步">
+                    <!-- <a href="./reset.html" class="noline"></a> -->
+                    <input type="button" class="down mouse" onclick="next()" value="下一步">
                     <a href="./login.html" class="noline"><input type="button" class="cancel mouse" value="取消"></a>
                 </div>
             </div>
@@ -86,3 +88,6 @@
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/forget-api.js"></script>

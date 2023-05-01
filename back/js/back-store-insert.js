@@ -72,8 +72,8 @@ axios.post('https://localhost:7094/api/Store', formData, {
 }).then(response => {
   console.log('Response:', response);
   window.location.href = "back-store.html";
-  // location.reload();
   alert("新增成功");
+  location.reload();
 }).catch(error => {
   console.error('Error:', error);
 });
@@ -82,7 +82,6 @@ axios.post('https://localhost:7094/api/Store', formData, {
 
 }
 aass.addEventListener('click', bb);
-
 
 
 

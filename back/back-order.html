@@ -43,18 +43,18 @@
             </div>
             <div class="right-box ">
                 <ul>
-                    <li><a href="#">歡迎　--------</i></a></li>
+                    <li id="welcome"></li>
                 </ul>
             </div>
         </div>
     </header>
     <div class="banner1">
         <div class="change"><a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
-        <div class="logout"><a href="#"><input type="button" class="logout-btn mouse" value="登出"></a></div>
+        <div class="logout"><input type="button" id="logout" class="logout-btn mouse" value="登出"></div>
     </div>
     <div class="content">
         <div class="search">
-            <input type="text" id="search" placeholder="輸入欲查詢的 '電話' 或 '姓名'">
+            <input type="search" id="search" placeholder="輸入欲查詢的 '電話' 或 '姓名' 關鍵字...">
             <input type="button" id="search_btn" class="search-btn mouse" value="搜尋">
         </div>
         <div id="error"></div>
@@ -64,13 +64,14 @@
                 <th>取貨姓名</th>
                 <th>連絡電話</th>
                 <th>訂單金額</th>
-                <th>取貨時間</th>
+                <th>取貨/送貨時間</th>
                 <th>取貨方式</th>
                 <th>訂單狀態</th>
                 <th>更多功能</th>
                 <th>詳細資料</th>
             </tr>
-            <tr align="center">
+            <tbody class="order_content"></tbody>
+            <!-- <tr align="center">
                 <td id="num"></td>
                 <td id="name"></td>
                 <td id="phone"></td>
@@ -80,7 +81,7 @@
                 <td id="state"></td>
                 <td id="more"></td>
                 <td id="detail"></td>
-            </tr>
+            </tr> -->
             <!--<tr align="center">
                 <td>GTS569HX50USXKT6</td>
                 <td>邱郁珊</td>

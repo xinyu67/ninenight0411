@@ -39,19 +39,23 @@
                 </nav>
             </div>
             <div class="right-box" id="login1">
-                <!-- <ul>
+                <ul>
                     <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
                 </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
                         <a href="./front-myorder.html">我的訂單</a>
-                        <a href="./login.html">登 &nbsp 出</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
                     <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
@@ -63,22 +67,22 @@
     <content>
         <form>
             <div class="login-content">
-                <div class="login-user ">帳號：<input type="text" class="readonly" value="s1311131018" readonly></div>
-                <div class="login-user">姓名：<input type="text" class="user-textbox" value="邱郁珊" required></div>
+                <!-- <div class="login-user ">帳號：<input type="text" class="readonly" value="s1311131018" readonly></div>
+                <div class="login-user">姓名：<input type="text" class="user-textbox" value="陳欣妤" required></div>
                 <div class="sex-bir">
                     <div class="radio-user">性別：
                         <div class="aaa">
-                            <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" class="readonly" readonly><label for="sex">男　</label>
-                            <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" class="readonly" checked><label for="sex1">女</label>
+                            <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" class="readonly" value='0' readonly><label for="sex">男　</label>
+                            <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" class="readonly" value='1'><label for="sex1">女</label>
                         </div>
                     </div>
                     <div class="bir-user">生日：
-                        <input type="date" id="start" name="trip-start" min="1900-01-01" max="2023-12-31" class="readonly" value="2001-10-27" readonly> </div>
+                        <input type="date" id="start" name="trip-start" min="1900-01-01" max="2023-12-31" class="readonly" value="" readonly> </div>
                 </div>
-                <div class="login-user">信箱：<input type="text" class="readonly" value="s1311131018@nutc.edu.tw" readonly></div>
+                <div class="login-user">信箱：<input type="text" class="readonly" value="silvia50727@gmail.com" readonly></div>
                 <div class="login-user">電話：<input type="text" class="readonly" value="0912345678" readonly></div>
-                <div class="login-user">地址：<input type="text" class="user-textbox" value="台中市北區三民路三段" required></div>
-                <div class="buttons"><input type="button" class="down mouse" value="確認修改"></div>
+                <div class="login-user">地址：<input type="text" class="address user-textbox" value="台中市北區" required></div> 
+                <div class="buttons"><input type="button" onclick="fix()" class="down mouse" value="確認修改"></div>-->
             </div>
         </form>
     </content>
@@ -103,3 +107,6 @@
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/front-fix-user-api.js"></script>

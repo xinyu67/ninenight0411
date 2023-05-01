@@ -105,39 +105,67 @@ header {
 
 .right-box {
     display: flex;
+    align-items: center;
 }
 
-
-/*.right-box ul {
-  list-style-type: none;
-}
-
-.right-box a {
-  text-decoration: none;
-  color: #E5E5D4;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-}
-
-.right-box li a:hover {
-  color: #b8a397;
-}*/
-
-#cart {
-    margin-top: 27px;
-}
-
-.right-box li {
+.right-box ul {
     list-style-type: none;
 }
 
 .right-box a {
+    text-decoration: none;
     color: #E5E5D4;
+    font-size: 14px;
+    letter-spacing: 0.05em;
 }
 
-.right-box i {
-    font-size: 16px;
+.right-box li a:hover {
+    color: #b8a397;
 }
+
+/**/
+
+.userbtn,
+.cartbtn {
+    background-color: rgba(90, 58, 41, 1);
+    color: #EAE4DD;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    /* margin-top: 25px; */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #EAE4DD;
+    min-width: 100.5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 0px;
+}
+
+.dropdown-content a {
+    color: rgba(90, 58, 41, 1);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1px rgb(109, 107, 107) solid;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 
 /*header結束*/
@@ -288,52 +316,6 @@ content {
     padding: 2px 30px;
 }
 
-
-/**/
-
-.userbtn,
-.cartbtn {
-    background-color: rgba(90, 58, 41, 1);
-    color: #EAE4DD;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-top: 25px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #EAE4DD;
-    min-width: 100.5px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    margin-top: 12px;
-}
-
-.dropdown-content a {
-    color: rgba(90, 58, 41, 1);
-    padding: 10px 10px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    border: 1px rgb(109, 107, 107) solid;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
-/**/
 
 
 /*footer start*/

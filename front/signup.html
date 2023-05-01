@@ -47,24 +47,24 @@
     </header>
     <content>
         <div class="login-word">註 冊</div>
-        <form action="./signup-verification.html" method="get">
+        <form action="" method="get">
             <div class="login-content">
-                <div class="login-user">信箱：<input type="email" class="user-textbox" required></div>
-                <div class="login-user">帳號：<input type="text" class="user-textbox" required></div>
-                <div class="login-user">密碼：<input type="password" class="user-textbox" required></div>
-                <div class="login-user">確認密碼：<input type="password" class="user-textbox" required></div>
-                <div class="login-user">姓名：<input type="text" class="user-textbox" required></div>
+                <div class="login-user">信箱：<input type="email" class="mail user-textbox" required></div>
+                <div class="login-user">帳號：<input type="text" class="userid user-textbox" required></div>
+                <div class="login-user">密碼：<input type="password" class="userpwd user-textbox" required></div>
+                <div class="login-user">確認密碼：<input type="password" class="usercpwd user-textbox" required></div>
+                <div class="login-user">姓名：<input type="text" class="username user-textbox" required></div>
                 <div class="sex-bir">
                     <div class="radio-user">性別：
-                        <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" required><label for="sex">男　</label>
-                        <input type="radio" name="sex" style="ZOOM:1.5" id="sex1" required><label for="sex1">女</label>
+                        <input type="radio" name="sex" value="false" style="ZOOM:1.5" id="sex1" required><label for="sex">男　</label>
+                        <input type="radio" name="sex" value="true" style="ZOOM:1.5" id="sex1" required><label for="sex1">女</label>
                     </div>
-                    <div class="bir-user">生日：<input type="date" id="start" name="trip-start" min="1900-01-01" max="2023-12-31" class="birthday" required> </div>
+                    <div class="bir-user">生日：<input type="date" class="bd" id="start" name="trip-start" min="1900-01-01" max="2023-12-31" required> </div>
                 </div>
-                <div class="login-user">電話：<input type="tel" class="user-textbox" required></div>
-                <div class="login-user">地址：<input type="text" class="user-textbox" required></div>
+                <div class="login-user">電話：<input type="tel" class="userphone user-textbox" required></div>
+                <div class="login-user">地址：<input type="text" class="useradd user-textbox" required></div>
                 <div class="button-bottom">
-                    <div class="buttons2"><input type="submit" class="down mouse" value="下一步"></div>
+                    <div class="buttons2"><input type="button" onclick="send()" class="down mouse" value="下一步"></div>
                     <div class="buttons"><input type="reset" class="cancel mouse" value="清除"></div>
                     <a href="./login.html" class="noline">
                         <div class="buttons"><input type="button" class="cancel mouse" value="取消"></div>
@@ -94,3 +94,5 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/signup.js"></script>

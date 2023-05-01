@@ -91,8 +91,7 @@ window.onload = function(){
 	document.getElementById("blah").src=abc;
   document.getElementById('imgsrc').value = e.target.files[0].name;
   console.log(e.target.files[0].name);
-	}
-	);
+});
 }
 
 var aas = document.getElementById('button')

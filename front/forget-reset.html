@@ -10,7 +10,7 @@
     <!--網站icon-->
     <link rel="icon" href="./img/logo.png" type="image/x-icon" />
     <!--網站icon-->
-    <link rel="stylesheet" href="./css/forget-reset.css">
+    <link rel="stylesheet" href="./css/front-reset-pwd.css">
     <title>忘記密碼-重設密碼</title>
 </head>
 
@@ -50,11 +50,11 @@
         <div class="login-word">重 設 密 碼</div>
         <form>
             <div class="login-content">
-                <div class="login-user">重設密碼：<input type="text" class="user-textbox" required></div>
-                <div class="login-user">確認密碼：<input type="text" class="user-textbox" required></div>
+                <div class="login-user">重設密碼：<input type="password" class="user-textbox"></div>
+                <div class="login-user">確認密碼：<input type="password" class="check user-textbox"></div>
                 <div class="buttons">
-                    <input type="button" class="down mouse" value="送出">
-                    <input type="reset" class="cancel mouse" value="重設">
+                    <input type="button" onclick="send()" class="down mouse" value="送出">
+                    <input type="reset" class="cancel mouse" value="清除">
                 </div>
             </div>
         </form>
@@ -83,3 +83,6 @@
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/forget-reset-api.js "></script>

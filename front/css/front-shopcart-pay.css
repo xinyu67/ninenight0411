@@ -187,7 +187,8 @@ header {
     padding: 10px 0px;
 }
 
-.take {
+.take,
+.take-time {
     display: flex;
     justify-content: center;
 }

@@ -10,7 +10,7 @@ body {
 .mouse{
     cursor: pointer;
 }
-input[type=text] {
+input[type=search] {
     width: 30%;
     padding: 6px 15px;
     margin: 2px 0;
@@ -21,7 +21,7 @@ input[type=text] {
     color: #5A3A29;
     background-color: #b8b6b662;
   }
-  input[type=text]:focus {
+  input[type=search]:focus {
     background-color: #b8b6b6;
   }
   input[type=button] {
@@ -109,13 +109,13 @@ header {
 .right-box a {
     text-decoration: none;
     color: #E5E5D4;
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 0.05em;
 }
 
-.right-box li a:hover {
+/* .right-box li a:hover {
     color: #b8a397;
-}
+} */
 
 /*header結束*/
 
@@ -376,4 +376,18 @@ footer {
   .detail-btn:hover{
     background-color: #5a3a2967;
     color: #5a3a29;
+}
+
+  .out-btn{
+    background-color: #15a4b7;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 2px 10px;
+    height: 24px;
+  }
+  .out-btn:hover{
+    background-color: #EAE4DD;
+    color: #15a4b7;
 }

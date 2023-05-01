@@ -55,7 +55,7 @@
                     <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
                 </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
@@ -63,7 +63,6 @@
                         <a href="./front-login.html">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
                     <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
@@ -75,9 +74,9 @@
         <div class="login-word">會 員 登 入</div>
         <form>
             <div class="login-content">
-                <div class="login-user">帳號：<input type="text" id="user55" name="user55" required></div>
-                <div class="login-pwd">密碼：<input type="password" required></div>
-                <div class="login-button"><input type="button" class="loginb mouse" id="login" value="登入"></div>
+                <div class="login-user">帳號：<input type="text" id="user" name="user" required></div>
+                <div class="login-pwd">密碼：<input type="password" id="pwd" name="pwd"required></div>
+                <div class="login-button"><input type="button" class="loginb mouse" id="login" value="登入" onclick="return nexttt()"></div>
                 <div class="function">
                     <div class="forget"><a href="./forget.html" class="noline">忘記密碼?</a></div>
                     <div class="register"><a href="./signup.html" class="noline">會員註冊</a></div>
@@ -105,5 +104,5 @@
     </footer>
 </body>
 <script src="./js/login.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>

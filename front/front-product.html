@@ -38,9 +38,26 @@
                 </nav>
             </div>
 
-            <div class="right-box ">
+            <div class="right-box" id="login1">
                 <ul>
                     <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
+                <div class="dropdown">
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
+                    <div class="dropdown-content">
+                        <a href="./front-fix-user.html">修改資料</a>
+                        <a href="./front-fixpwd-verification.html">修改密碼</a>
+                        <a href="./front-myorder.html">我的訂單</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
+                    </div>
+                </div>
+                <ul id="cart">
+                    <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -58,43 +75,39 @@
 
                 <div class="sidebar-down">
                     <div class="sidenav">
-                        <button class="dropdown-btn"><span class="c">酒類品牌</span> <span class="e">Brand</span>
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-container1 dropdown-container dd">
-                            <select>
-                            <option>海尼根</option>
-                            <option>虎牌</option>
-                            <option>可樂娜</option>
-                            <option>海尼根</option>
-                            <option>虎牌</option>
-                            <option>可樂娜</option>
-                            <option>海尼根</option>
-                            <option>虎牌</option>
-                            <option>可樂娜</option>
-                        </select>
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select0" style="width:100%;">
+                                    <!-- <option>虎牌</option>
+                                    <option>可樂娜</option>
+                                    <option>海尼根</option>
+                                    <option>虎牌</option>
+                                    <option>可樂娜</option>
+                                    <option>海尼根</option>
+                                    <option>虎牌</option>
+                                    <option>可樂娜</option> -->
+                                </select>
                         </div><br><br>
 
-                        <button class="dropdown-btn"><span class="c">產地</span> <span class="e">Origin</span>
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                        <div class="dropdown-container2 dropdown-container ">
-                            <!-- <a href="#">產地Origin</a>
-                            <a href="#">產地Origin</a>
-                            <a href="#">產地Origin</a>
-                            <a href="#">產地Origin</a> -->
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select1" style="width:100%;">
+                                    <!-- <option>產地Origin</option>
+                                    <option>產地Origin</option>
+                                    <option>產地Origin</option>
+                                    <option>產地Origin</option> -->
+                                </select>
                         </div><br><br>
 
-                        <button class="dropdown-btn"><span class="c">容量</span> <span class="e">Volume</span>
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                        <div class="dropdown-container3 dropdown-container">
-                            <a href="#">300ml~400ml</a>
-                            <a href="#">400ml~500ml</a>
-                            <a href="#">500ml~600ml</a>
-                            <a href="#">600ml~700ml</a>
-                            <a href="#">700ml以上</a>
-                        </div>
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select2" style="width:100%;">
+                                    <option value=""><span class="c">全部容量</span> <span class="e">Volume</span></option>
+                                    <option value="1">300ml以下</option>
+                                    <option value="2">300ml~400ml</option>
+                                    <option  value="3">400ml~500ml</option>
+                                    <option  value="4">500ml~600ml</option>
+                                    <option  value="5">600ml~700ml</option>
+                                    <option  value="6">700ml以上</option>
+                                </select>
+                        </div><br><br>
                     </div>
                 </div>
 
@@ -104,11 +117,9 @@
                 <div class="top">
                     <select name="top-select" class="top-select">
                         <option value="">--請選擇--</option>
-                        <option value="">價格由低到高</option>
-                        <option value="">價格由高到低</option>
+                        <option value="ASC">價格由低到高</option>
+                        <option value="DESC">價格由高到低</option>
                     </select>
-
-                    <p id="chose">目前選擇:</p>
 
                     <div class="search">
                         <input type="text" class="search-text" placeholder="&nbsp Search...">
@@ -116,9 +127,8 @@
                     </div>
 
                 </div>
-
                 <div class="menu-list">
-                    <!-- <div class="menu-product">
+                    <!--<div class="menu-product">
                         <div class="p-2">
                             <div class="product-img">
                                 <a href="./front-product-introduction.html"><img src="./img/product/p1.png" alt="" class="img-auto" /></a>
@@ -146,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>-->
 
                     <!-- <div class="menu-product">
                         <div class="p-2">
@@ -389,7 +399,12 @@
                     </div> -->
                 </div>
             </div>
+
+
+
         </div>
+        <div id="page"></div>
+        <div id="thispage"></div>
 
         <footer class="footer">
             <div class="line">
@@ -409,7 +424,6 @@
                 <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
                 禁止飲酒
             </div>
-
         </div>
     </div>
 </body>
