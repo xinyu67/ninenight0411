@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 
-.mouse{
+.mouse {
     cursor: pointer;
 }
 
@@ -149,7 +149,8 @@ header {
     position: relative;
     top: 70px;
     padding-bottom: 180px;
-    height: 720px;
+    min-height: 710px;
+    max-height: 100%;
 }
 
 .content img {

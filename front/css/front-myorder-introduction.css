@@ -137,6 +137,15 @@ header {
     color: #E5E5D4;
 }
 
+.bbb {
+    list-style: none;
+}
+
+.aaa {
+    text-decoration: none;
+    color: #484848;
+}
+
 
 /*----header END----*/
 
@@ -145,6 +154,8 @@ header {
     position: relative;
     top: 70px;
     padding-bottom: 180px;
+    min-height: 720px;
+    max-height: 100%;
 }
 
 .content img {

@@ -1,18 +1,43 @@
-*{
+/* 定義浮動視窗樣式 */
+
+#popup {
+    display: none;
+    /* 預設隱藏 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 999;
+    /* 設置 z-index，使浮動視窗顯示在最上層 */
+}
+
+* {
     padding: 0px;
     margin: 0px;
 }
+
 body {
     font-family: 'Libre Baskerville', serif, '微軟正黑體';
     background-color: rgba(255, 250, 244, 1);
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-  /*讓按鈕有手指圖案*/
-  .mouse{
+}
+
+
+/*讓按鈕有手指圖案*/
+
+.mouse {
     cursor: pointer;
 }
+
 input[type=text] {
     width: 50%;
     padding: 6px 10px;
@@ -24,13 +49,13 @@ input[type=text] {
     margin-left: 12px;
     color: #5A3A29;
     background-color: #d4d4d4;
-  }
-  input[type=text]:focus {
+}
+
+input[type=text]:focus {
     background-color: #b8b6b6;
-  }
+}
 
-
-  header {
+header {
     width: 100%;
     height: 70px;
     background-color: rgba(90, 58, 41, 1);
@@ -51,7 +76,7 @@ input[type=text] {
     height: 70px;
 }
 
-.header-word{
+.header-word {
     width: 100%;
     height: 100%;
     display: flex;
@@ -60,7 +85,7 @@ input[type=text] {
     margin-right: 145px;
 }
 
-.header-word a{
+.header-word a {
     color: #E5E5D4;
     font-size: 30px;
     padding-left: 40px;
@@ -70,8 +95,7 @@ input[type=text] {
     display: flex;
 }
 
-
-.banner1{
+.banner1 {
     width: 100%;
     height: 50px;
     display: flex;
@@ -82,27 +106,31 @@ input[type=text] {
     border-top: 2px solid #EAE4DD;
 }
 
+
 /*banner1結束*/
 
-.content{
+.content {
     width: calc(100% - 0px);
     min-height: 702px;
     max-height: 100%;
     /* padding: 0px 200px; */
 }
-.product-top{
+
+.product-top {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.place{
+
+.place {
     width: 80%;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-table{
+
+table {
     border: 1px solid #000;
     border-collapse: collapse;
     margin: 0px auto;
@@ -110,26 +138,31 @@ table{
     margin-bottom: 10px;
     width: 45%;
 }
-table th{
+
+table th {
     border: 1px solid #000;
     border-collapse: collapse;
     padding: 0px 5px;
     background-color: #A28360;
     height: 30px;
 }
-table td{
+
+table td {
     border: 1px solid #000;
     border-collapse: collapse;
     padding: 5px 7px;
     height: 30px;
 }
-#hidden1{
+
+#hidden1 {
     background-color: #ff00004d;
 }
-#hidden2{
+
+#hidden2 {
     background-color: #ff00004d;
 }
-.product-bottom{
+
+.product-bottom {
     width: 80%;
     height: 50px;
     margin: 0px auto;
@@ -138,14 +171,14 @@ table td{
     justify-content: center;
     align-items: center;
 }
-.product-bottom a{
+
+.product-bottom a {
     text-decoration: none;
 }
 
 
-
-
 /* content結束 */
+
 .footer-slogan {
     width: 100%;
     height: 55px;
@@ -188,8 +221,7 @@ table td{
     height: 100%;
 }
 
-
-  footer {
+footer {
     background-color: #5A3A29;
     color: #fff;
     text-align: center;
@@ -198,9 +230,9 @@ table td{
     height: 50px;
     margin-bottom: 55px;
     margin-top: 55px;
-  }
+}
 
-  .copy{
+.copy {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,13 +240,12 @@ table td{
     padding-top: 20px;
     border-top: 1px solid #afafaf;
     font-size: 12px;
-  }
-
-
+}
 
 
 /*按鈕*/
-.back-btn{
+
+.back-btn {
     background-color: #EAE4DD;
     color: #5A3A29;
     font-size: 20px;
@@ -224,7 +255,8 @@ table td{
     margin-left: 10px;
     margin-right: 10px;
 }
-.back-btn:hover{
+
+.back-btn:hover {
     background-color: #5A3A29;
     color: #EAE4DD;
     font-size: 20px;
@@ -232,7 +264,8 @@ table td{
     border: 0px;
     padding: 2px 30px;
 }
-.cancel-btn{
+
+.cancel-btn {
     background-color: #8383837e;
     color: #5A3A29;
     border: 2px solid #8383837e;
@@ -246,7 +279,8 @@ table td{
     align-items: center;
     width: 150px;
 }
-.cancel-btn:hover{
+
+.cancel-btn:hover {
     background-color: #EAE4DD;
     color: #5A3A29;
     border: 2px solid #8383837e;
@@ -254,7 +288,8 @@ table td{
     border-radius: 5px;
     padding: 2px 30px;
 }
-.yes-btn{
+
+.yes-btn {
     background-color: #5A3A29;
     color: #EAE4DD;
     border: 2px solid #5A3A29;
@@ -268,7 +303,8 @@ table td{
     align-items: center;
     width: 150px;
 }
-.yes-btn:hover{
+
+.yes-btn:hover {
     background-color: #EAE4DD;
     color: #5A3A29;
     border: 2px solid #5A3A29;
@@ -276,7 +312,8 @@ table td{
     border-radius: 5px;
     padding: 2px 30px;
 }
-.update{
+
+.update {
     background-color: #8383837e;
     color: #5A3A29;
     border: 2px solid #8383837e;
@@ -287,13 +324,15 @@ table td{
     justify-content: center;
     align-items: center;
 }
-.update:hover{
+
+.update:hover {
     background-color: #EAE4DD;
     color: #5A3A29;
     border: 2px solid #8383837e;
     border-radius: 5px;
 }
-.delete{
+
+.delete {
     background-color: #5A3A29;
     color: #EAE4DD;
     border: 2px solid #5A3A29;
@@ -305,13 +344,15 @@ table td{
     justify-content: center;
     align-items: center;
 }
-.delete:hover{
+
+.delete:hover {
     background-color: #EAE4DD;
     color: #5A3A29;
     border: 2px solid #5A3A29;
     border-radius: 5px;
 }
-.buttonflex{
+
+.buttonflex {
     display: flex;
     justify-content: center;
     width: 40%;

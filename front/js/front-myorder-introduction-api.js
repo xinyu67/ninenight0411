@@ -1,43 +1,66 @@
-var uu = window.location.href;
-var order_id = uu.split("=");
-console.log(order_id[1]);
+//  用getItem抓login的資料存入login裡
+var login = localStorage.getItem("login");
+console.log(login);
+//  如果login是null就跳轉到登入畫面(會是null是因為登出時清空了所有在localStorage裡的資料)
+if (login === null) {
+    window.location.href = "../front/login.html";
+    //   var hello = document.getElementById("login1");
+    //   var hello2 = document.getElementById("login2");
+    //   hello.style.display = "flex";
+    //   hello2.style.display = "none";
+} else {
+    var hello = document.getElementById("login1");
+    var hello2 = document.getElementById("login2");
+    if ((user != "") & (login != null)) {
+        var useer = document.getElementById("useer");
+        var user = localStorage.getItem("user");
+        var user_id = localStorage.getItem("user_id");
+        console.log(user);
+        hello.style.display = "none";
+        hello2.style.display = "flex";
+        useer.innerHTML = user;
+    }
 
-// JSON 檔案網址
-const url = `https://localhost:7094/api/Order/order_id?order_id=` + order_id[1];
+    var uu = window.location.href;
+    var order_id = uu.split("=");
+    console.log(order_id[1]);
 
-let data = [];
-/** 步驟一 取得資料**/
-(function getData() {
-    axios.get(url)
-        .then(function(response) {
-            // 檢查：  
-            //console.log('url.search: ' + url.search);
-            //console.log(response.data);
-            // 將取得資料帶入空陣列 data 中
-            data = response.data;
-            order(data);
-        })
-})();
+    // JSON 檔案網址
+    const url = `https://localhost:7094/api/Order/order_id?order_id=` + order_id[1];
 
-//訂單詳細總覽
+    let data = [];
+    /** 步驟一 取得資料**/
+    (function getData() {
+        axios.get(url)
+            .then(function(response) {
+                // 檢查：  
+                //console.log('url.search: ' + url.search);
+                //console.log(response.data);
+                // 將取得資料帶入空陣列 data 中
+                data = response.data;
+                order(data);
+            })
+    })();
 
-function order(arr) {
-    const order_pp = document.querySelector(".order_person")
-    let ss = "";
-    //將資料存入
-    arr.slice(0, 1).forEach(function(data) {
-        //抓取欄位
+    //訂單詳細總覽
 
-        //判斷宅配自取方式
-        let type = "";
-        var pike = "";
-        type = `${data.order_pick}`;
-        if (type === 'true') {
-            pike = "宅配";
-        } else if (type === 'false') {
-            pike = "自取";
-        }
-        ss += `
+    function order(arr) {
+        const order_pp = document.querySelector(".order_person")
+        let ss = "";
+        //將資料存入
+        arr.slice(0, 1).forEach(function(data) {
+            //抓取欄位
+
+            //判斷宅配自取方式
+            let type = "";
+            var pike = "";
+            type = `${data.order_pick}`;
+            if (type === 'true') {
+                pike = "宅配";
+            } else if (type === 'false') {
+                pike = "自取";
+            }
+            ss += `
         <tr>
         <td style="background-color:#DECECE">${data.order_name}</td>
         <td style="background-color:#DECECE">${data.order_phone}</td>
@@ -46,15 +69,15 @@ function order(arr) {
         <td style="background-color:#DECECE">${data.order_picktime}</td>
     </tr>
     `
-    })
-    order_pp.innerHTML = ss;
-    const order_ii = document.querySelector(".order_body")
-    let str = "";
-    //將資料存入
-    arr.forEach(function(data) {
-        console.log(`${order_id[1]}`);
-        //抓取欄位
-        str += `
+        })
+        order_pp.innerHTML = ss;
+        const order_ii = document.querySelector(".order_body")
+        let str = "";
+        //將資料存入
+        arr.forEach(function(data) {
+            console.log(`${order_id[1]}`);
+            //抓取欄位
+            str += `
         <tr>
         <td>
         <div class="table-img"><img src="${data.product_img}"></div>
@@ -65,15 +88,29 @@ function order(arr) {
         <td>$${data.money}</td>
     </tr>
         `
-    })
+        })
 
 
-    arr.forEach(function(data) {
+        arr.forEach(function(data) {
 
-        order_ii.innerHTML = str;
-        const total = document.querySelector(".total-money")
-        total.innerHTML = `$&nbsp;${data.order_price}`;
-    })
+            order_ii.innerHTML = str;
+            const total = document.querySelector(".total-money")
+            total.innerHTML = `$&nbsp;${data.order_price}`;
+        })
+    }
+
+    //登出
+    var logout1 = document.getElementById("logout");
+
+    function logout() {
+        if (confirm('確認要登出嗎？') == true) {
+            window.location.href = "../front/login.html";
+            localStorage.clear();
+        } else {
+
+        }
+    }
+    logout1.addEventListener("click", logout);
 }
 
 //產品總覽

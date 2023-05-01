@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>購物車</title>
     <link rel="icon" href="./img/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/front-shopcart.css">
+    <link rel="stylesheet" href="./css/front-myorder-introduction.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
 </head>
@@ -38,17 +38,24 @@
                 </nav>
             </div>
 
-            <div class="right-box">
+            <div class="right-box" id="login1">
+                <ul>
+                    <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
                         <a href="./front-myorder.html">我的訂單</a>
-                        <a href="./front-login.html">登 &nbsp 出</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
                     <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
@@ -113,8 +120,8 @@
 
             <div class="next">
                 <!--<button>去結帳</button>-->
-                <a href="./front-myorder.html">
-                    <li>返回</li>
+                <a class="aaa" href="./front-myorder.html">
+                    <li class="bbb">返回</li>
                 </a>
             </div>
         </div>

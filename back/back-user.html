@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--網站icon-->
-    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
     <!--網站icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./css/back-user.css">
     <title>(後台)瀏覽會員資料</title>
 </head>
+
 <body>
     <header>
         <div class="header-content ">
@@ -49,7 +52,9 @@
         </div>
     </header>
     <div class="banner1">
-        <div class="change"><a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
+        <div class="change">
+            <a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a>
+        </div>
         <div class="logout"><input type="button" id="logout" class="logout-btn mouse" value="登出"></div>
     </div>
     <div class="content">
@@ -62,11 +67,13 @@
             <tr align="center">
                 <th>帳號</th>
                 <th>姓名</th>
+                <th>電話</th>
+                <th>信箱</th>
                 <th>權限</th>
                 <th>功能</th>
             </tr>
             <tbody class="uuser">
-            <!-- <tr align="center">
+                <!-- <tr align="center">
                 <td>Nine Night</td>
                 <td>Nine Night</td>
                 <td>管理者</td>
@@ -130,10 +137,11 @@
     </div>
     <footer>
         <div class="copy">
-            <p>版權所有 Copyright © 2023   Nine Night </p>
+            <p>版權所有 Copyright © 2023 Nine Night </p>
         </div>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-user.js"></script>
+
 </html>

@@ -3,51 +3,51 @@ var login = localStorage.getItem("login");
 console.log(login);
 //  如果login是null就跳轉到登入畫面(會是null是因為登出時清空了所有在localStorage裡的資料)
 if (login === null) {
-  var hello = document.getElementById("login1");
-  var hello2 = document.getElementById("login2");
-  hello.style.display = "flex";
-  hello2.style.display = "none";
+    var hello = document.getElementById("login1");
+    var hello2 = document.getElementById("login2");
+    hello.style.display = "flex";
+    hello2.style.display = "none";
 } else {
-  var hello = document.getElementById("login1");
-  var hello2 = document.getElementById("login2");
-  if ((user != "") & (login != null)) {
-    var useer = document.getElementById("useer");
-    var user = localStorage.getItem("user");
-    console.log(user);
-    hello.style.display = "none";
-    hello2.style.display = "flex";
-    useer.innerHTML = user;
+    var hello = document.getElementById("login1");
+    var hello2 = document.getElementById("login2");
+    if ((user != "") & (login != null)) {
+        var useer = document.getElementById("useer");
+        var user = localStorage.getItem("user");
+        var user_id = localStorage.getItem("user_id");
+        console.log(user);
+        hello.style.display = "none";
+        hello2.style.display = "flex";
+        useer.innerHTML = user;
 
-    var uu = window.location.href;
-    var product_id = uu.split("=");
-    console.log(product_id[1]);
+        var uu = window.location.href;
+        var product_id = uu.split("=");
+        console.log(product_id[1]);
 
-    // JSON 檔案網址
-    const url =
-      `https://localhost:7094/api/Product/product_id?product_id=` +
-      product_id[1];
+        // JSON 檔案網址
+        const url =
+            `https://localhost:7094/api/Product/product_id?product_id=` + product_id[1];
 
-    let data = [];
-    /** 步驟一 取得資料**/
-    (function getData() {
-      axios.get(url).then(function (response) {
-        // 檢查：
-        console.log("url.search: " + url.search);
-        console.log(response.data);
-        // 將取得資料帶入空陣列 data 中
-        data = response.data;
-        product(data);
-      });
-    })();
+        let data = [];
+        /** 步驟一 取得資料**/
+        (function getData() {
+            axios.get(url).then(function(response) {
+                // 檢查：
+                console.log("url.search: " + url.search);
+                console.log(response.data);
+                // 將取得資料帶入空陣列 data 中
+                data = response.data;
+                product(data);
+            });
+        })();
 
-    //產品總覽
-    function product(arr) {
-      //抓取欄位
-      const p_ii = document.querySelector(".content-body");
-      let str = "";
-      //將資料存入
-      arr.forEach(function (data) {
-        str += ` 
+        //產品總覽
+        function product(arr) {
+            //抓取欄位
+            const p_ii = document.querySelector(".content-body");
+            let str = "";
+            //將資料存入
+            arr.forEach(function(data) {
+                str += ` 
         <div class="top">
         <div class="left">
             <div class="left-content">
@@ -103,38 +103,43 @@ if (login === null) {
 
     </div>
         `;
-      });
-      p_ii.innerHTML = str;
-
-      const add = document.querySelectorAll(".buy button");
-
-      add.forEach((button) => {
-        button.addEventListener("click", () => {
-          // 從按鈕的ID中取商品ID
-          const productId = button.id.substring(3);
-          const apiUrl = `https://localhost:7094/api/Cart?product_id=${productId}`;
-
-          axios
-            .post(apiUrl)
-            .then((response) => {
-              console.log(response.data);
-              alert(response.data);
-              alert(`${productId}`);
-              // ("商品已成功加入購物車");
-            })
-            .catch((error) => {
-              console.error(error);
-              //alert("加入購物車失敗");
             });
-        });
-      });
+            p_ii.innerHTML = str;
+
+            const add = document.querySelectorAll(".buy button");
+
+            add.forEach((button) => {
+                button.addEventListener("click", () => {
+                    // 從按鈕的ID中取商品ID
+                    const productId = button.id.substring(3);
+                    const apiUrl = `https://localhost:7094/api/Cart?user_id=${user_id}&product_id=${productId}`;
+
+                    axios
+                        .post(apiUrl)
+                        .then((response) => {
+                            console.log(response.data);
+                            alert(response.data);
+                            //alert(`${productId}`);
+                            // ("商品已成功加入購物車");
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            //alert("加入購物車失敗");
+                        });
+                });
+            });
+        }
     }
-  }
-  //登出
-  var logout1 = document.getElementById("logout");
-  function logout() {
-    window.location.href = "../front/login.html";
-    localStorage.clear();
-  }
-  logout1.addEventListener("click", logout);
+    //登出
+    var logout1 = document.getElementById("logout");
+
+    function logout() {
+        if (confirm('確認要登出嗎？') == true) {
+            window.location.href = "../front/login.html";
+            localStorage.clear();
+        } else {
+
+        }
+    }
+    logout1.addEventListener("click", logout);
 }

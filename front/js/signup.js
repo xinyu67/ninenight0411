@@ -6,9 +6,9 @@ function send() {
     const username = document.querySelector(".username").value;
     const sex = document.querySelector('input[name="sex"]:checked').value;
     if (sex == "true") {
-        sexx = Boolean("true");
+        var sexx = Boolean("true");
     } else if (sex == "false") {
-        sexx = Boolean("");
+        var sexx = Boolean("");
     }
     const birthday = document.querySelector(".bd").value;
     const userphone = document.querySelector(".userphone").value;
@@ -34,7 +34,6 @@ function send() {
         return age;
     }
 
-
     if (mail == "" || userid == "" || userpwd == "" || usercpwd == "" || username == "" || birthday == "" || userphone == "" || useradd == "") {
         alert("⛔欄位不可為空!!")
     } else if (!validateEmail(mail)) {
@@ -44,6 +43,7 @@ function send() {
     } else if (getAge(birthday) < 18) {
         alert("🔞未滿18歲不可註冊");
     } else {
+
 
         const data = {
             user_account: userid,
@@ -63,6 +63,7 @@ function send() {
             })
             .catch(error => {
                 console.error(error);
+                alert(error.response.data);
             });
     }
 }

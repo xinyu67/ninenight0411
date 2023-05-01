@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>購物車-結帳</title>
     <link rel="icon" href="./img/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/front-shopcart-pay.css">
+    <link rel="stylesheet" href="./css/front-shopcart-pay.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
 </head>
 
 <body>
     <header>
-        <div class="header-content ">
+        <div class="header-content">
             <div class="logo">
-                <a href="./front-index.html" target="_self"><img src="./img/logo.png "></a>
+                <a href="./front-index.html" target="_self"><img src="./img/logo.png " /></a>
             </div>
-            <div class="center-box ">
-                <nav class="menu ">
+            <div class="center-box">
+                <nav class="menu">
                     <ul>
                         <li>
                             <a href="./front-story.html">品牌故事</a>
@@ -36,26 +36,41 @@
                     </ul>
                 </nav>
             </div>
-            <div class="right-box">
+            <div class="right-box" id="login1">
+                <ul>
+                    <li>
+                        <a href="./login.html">會員註冊 / 登入 <i class="fa-solid fa-right-to-bracket"></i
+              ></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display: none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn">
+              <i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a
+              >　你好 &ensp; &ensp;
+            </button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
                         <a href="./front-myorder.html">我的訂單</a>
-                        <a href="./login.html">登 &nbsp 出</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
-                    <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li>
+                        <a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i
+              ></a>
+                    </li>
                 </ul>
             </div>
-
         </div>
     </header>
     <div class="content">
-        <img src="./img/bannerpng7.png">
+        <img src="./img/bannerpng7.png" />
         <div class="content-body">
             <table class="t2">
                 <tr>
@@ -64,7 +79,6 @@
                     <th>產品價格</th>
                     <th>產品數量</th>
                     <th>總金額</th>
-
                 </tr>
                 <tbody class="product_all">
                     <!-- <tr>
@@ -82,113 +96,126 @@
             </table>
 
             <div class="total-content">
-                <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
+                <div class="total-chi">
+                    <span id="chi">商品金額總計</span><br /><span id="eng">Total Product Amout</span
+            >
+          </div>
 
-                <div class="total-money"></div>
-            </div>
-
-
-            <table class="t1">
-                <tr>
-                    <th>取貨人</th>
-                    <th style=" background-color: #E5E5D4;"><input type="text" style="height: 20px;" id="take_person"></th>
-                </tr>
-
-                <tr>
-                    <th>連絡電話</th>
-                    <th style=" background-color: #E5E5D4;"><input type="text" style="height: 20px;" id="take_phone"></th>
-                </tr>
-
-                <tr>
-                    <th>取貨方式</th>
-                    <th style=" background-color: #E5E5D4;">
-                        <div class="function">
-                            <div class="f-text">
-                                <input type="radio" name="take" id="myself" value="0">自取
-                                <input type="hidden" id="cc" value="">
-                                <select id="store">
-                                <option value="">--請選擇--</option>
-                                <option value="Nine-Night臺北直營店">Nine-Night臺北直營店</option>
-                                <option value="Nine-Night臺中旗艦店">Nine-Night臺中旗艦店</option>
-                            </select>
-                            </div><br>
-                            <div class="f-text">
-                                <input type="radio" name="take" id="other" value="1">宅配
-                                <input type="text" id="add" style="width: 70%;">
-                            </div>
-                        </div>
-                    </th>
-                </tr>
-
-                <tr>
-                    <th>取貨時間</th>
-
-                    <td style="display: flex;padding-left: 20%;">
-                        <input type="date" id="take_time" name="trip-start" min="2023-04-26" max="2023-05-31">
-                        <div class="take" style="padding-left: 3%;">
-                            <input type="hidden" id="ampma" value="">
-                            <select id="ampm">
-                            <option value="">--請選擇--</option>
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                        </select>
-                        </div>
-                        <div class="take-time" style="padding-left: 3%;">
-                            <select id="amtime">
-                            <option value="">--請選擇--</option>
-                            <option value="00:00~03:00">00:00~03:00</option>
-                            <option value="03:00~06:00">03:00~06:00</option>
-                            <option value="06:00~09:00">06:00~09:00</option>
-                            <option value="09:00~12:00">09:00~12:00</option>
-                        </select>
-
-                            <select id="pmtime">
-                            <option value="" >--請選擇--</option>
-                            <option value="12:00~15:00">12:00~15:00</option>
-                            <option value="15:00~18:00">15:00~18:00</option>
-                            <option value="18:00~21:00">18:00~21:00</option>
-                            <option value="21:00~00:00">21:00~00:00</option>
-                        </select>
-                        </div>
-                    </td>
-                </tr>
-
-            </table>
-
-
-            <div class="next">
-                <!--<button>去結帳</button>-->
-                <li style="background-color:#d2d0d0;"><a href="./front-shopcart.html">返回</a></li>&ensp;&ensp;
-                <li id="submit1"><a>送出</a></li>
-
-            </div>
+          <div class="total-money"></div>
         </div>
+
+        <table class="t1">
+          <tr>
+            <th>取貨人</th>
+            <th style="background-color: #e5e5d4">
+              <input type="text" style="height: 20px" id="take_person" />
+            </th>
+          </tr>
+
+          <tr>
+            <th>連絡電話</th>
+            <th style="background-color: #e5e5d4">
+              <input type="text" style="height: 20px" id="take_phone" />
+            </th>
+          </tr>
+
+          <tr>
+            <th>取貨方式</th>
+            <th style="background-color: #e5e5d4">
+              <div class="function">
+                <div class="f-text">
+                  <input type="radio" name="take" id="myself" value="0" />自取
+                  <input type="hidden" id="cc" value="" />
+                  <select id="store">
+                    <option value="">--請選擇--</option>
+                    <!-- <option value="Nine-Night臺北直營店">Nine-Night臺北直營店</option>
+                                <option value="Nine-Night臺中旗艦店">Nine-Night臺中旗艦店</option> -->
+                  </select>
+                </div>
+                <br />
+                <div class="f-text">
+                  <input type="radio" name="take" id="other" value="1" />宅配
+                  <input type="text" id="add" style="width: 70%" />
+                </div>
+              </div>
+            </th>
+          </tr>
+
+          <tr>
+            <th>取貨時間</th>
+
+            <td style="display: flex; padding-left: 20%">
+
+              <input type="date" id="take_time" name="trip-start" />
+              <!-- 設定選擇日期 -->
+              <script type="text/javascript">
+                var today = new Date();
+                var maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+                var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+            
+                document.getElementById("take_time").setAttribute("max", maxDate.toISOString().split('T')[0]);
+                document.getElementById("take_time").setAttribute("min", minDate.toISOString().split('T')[0]);
+            </script>
+
+              <div class="take" style="padding-left: 3%">
+                <input type="hidden" id="ampma" value="" />
+                <select id="ampm">
+                  <option value="">--請選擇--</option>
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+              <div class="take-time" style="padding-left: 3%">
+                <select id="amtime">
+                  <option value="">--請選擇--</option>
+                  <option value="00:00~03:00">00:00~03:00</option>
+                  <option value="03:00~06:00">03:00~06:00</option>
+                  <option value="06:00~09:00">06:00~09:00</option>
+                  <option value="09:00~12:00">09:00~12:00</option>
+                </select>
+
+                <select id="pmtime">
+                  <option value="">--請選擇--</option>
+                  <option value="12:00~15:00">12:00~15:00</option>
+                  <option value="15:00~18:00">15:00~18:00</option>
+                  <option value="18:00~21:00">18:00~21:00</option>
+                  <option value="21:00~00:00">21:00~00:00</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="next">
+          <!--<button>去結帳</button>-->
+          <li style="background-color: #d2d0d0">
+            <a href="./front-shopcart.html">返回</a>
+          </li>
+          &ensp;&ensp;
+          <li id="submit1"><a>送出</a></li>
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="line">
-            版權所有 Copyright © 2023 Nine Night
-        </div>
+      <div class="line">版權所有 Copyright © 2023 Nine Night</div>
     </footer>
 
     <div class="footer-slogan">
-        <div class="slogan-left">
-            禁止酒駕
-            <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
-            安全有保障&ensp;
-        </div>
+      <div class="slogan-left">
+        禁止酒駕
+        <div class="slogan-img"><img src="./img/bottomIcon1.png" /></div>
+        安全有保障&ensp;
+      </div>
 
-        <div class="slogan-right">
-            未滿十八歲者
-            <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
-            禁止飲酒
-        </div>
-
+      <div class="slogan-right">
+        未滿十八歲者
+        <div class="slogan-img"><img src="./img/bottomIcon2.png" /></div>
+        禁止飲酒
+      </div>
     </div>
-
-</body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="./js/front-shopcart-pay-api.js"></script>
-<script src="./js/front-shopcart-pay.js"></script>
-
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./js/front-shopcart-pay-api.js"></script>
+  <script src="./js/front-shopcart-pay.js"></script>
 </html>

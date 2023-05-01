@@ -7,9 +7,11 @@ body {
     font-family: 'Libre Baskerville', serif, '微軟正黑體';
     background-color: rgba(255, 250, 244, 1);
 }
-.mouse{
+
+.mouse {
     cursor: pointer;
 }
+
 input[type=search] {
     width: 30%;
     padding: 6px 15px;
@@ -20,13 +22,11 @@ input[type=search] {
     font-size: 17px;
     color: #5A3A29;
     background-color: #b8b6b662;
-  }
-  input[type=search]:focus {
+}
+
+input[type=search]:focus {
     background-color: #b8b6b6;
-  }
-
-
-
+}
 
 header {
     width: 100%;
@@ -79,7 +79,7 @@ header {
     border-bottom: 3px solid #E5E5D4;
 }
 
-.thispage a{
+.thispage a {
     background-color: #8383837e;
 }
 
@@ -111,13 +111,15 @@ header {
     letter-spacing: 0.05em;
 }
 
+
 /* .right-box li a:hover {
     color: #b8a397;
 } */
 
+
 /*header結束*/
 
-.banner1{
+.banner1 {
     width: 100%;
     height: 50px;
     display: flex;
@@ -127,7 +129,8 @@ header {
     margin-top: 70px;
     border-top: 2px solid #EAE4DD;
 }
-.change-btn{
+
+.change-btn {
     background-color: #EAE4DD;
     color: #5A3A29;
     font-size: 20px;
@@ -135,7 +138,8 @@ header {
     border: 0px;
     padding: 2px 30px;
 }
-.change-btn:hover{
+
+.change-btn:hover {
     background-color: #A28360;
     color: #EAE4DD;
     font-size: 20px;
@@ -143,7 +147,8 @@ header {
     border: 0px;
     padding: 2px 30px;
 }
-.logout-btn{
+
+.logout-btn {
     background-color: #EAE4DD;
     color: #B71515;
     font-size: 20px;
@@ -152,7 +157,8 @@ header {
     padding: 2px 30px;
     margin-left: 10px;
 }
-.logout-btn:hover{
+
+.logout-btn:hover {
     background-color: #B71515;
     color: #EAE4DD;
     font-size: 20px;
@@ -161,31 +167,33 @@ header {
     padding: 2px 30px;
 }
 
+
 /*banner1結束*/
 
-
-.content{
+.content {
     width: calc(100% - 600px);
     min-height: 707px;
     max-height: 100%;
     padding: 0px 300px;
-
 }
-#error{
+
+#error {
     display: flex;
     margin-top: 50px;
     justify-content: center;
     font-size: 28px;
-    color:#5A3A29;
+    color: #5A3A29;
 }
-.search{
+
+.search {
     margin-top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.search-btn{
+
+.search-btn {
     background-color: #5a3a29ee;
     color: #EAE4DD;
     font-size: 18px;
@@ -195,34 +203,35 @@ header {
     margin-left: 10px;
     height: 32px;
 }
-.search-btn:hover{
+
+.search-btn:hover {
     background-color: #5A3A29;
     color: #EAE4DD;
 }
 
-table{
+table {
     border: 1px solid #000;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
     margin: 0px auto;
     margin-top: 30px;
 }
-table th{
+
+table th {
     border: 1px solid #000;
     border-collapse: collapse;
     padding: 0px 5px;
     background-color: #A28360;
-    width: 25%;
+    width: 20%;
     height: 30px;
 }
-table td{
+
+table td {
     border: 1px solid #000;
     border-collapse: collapse;
     padding: 0px 5px;
     height: 30px;
 }
-
-
 
 
 /*content結束*/
@@ -269,7 +278,6 @@ table td{
     height: 100%;
 }
 
-
 footer {
     background-color: #5A3A29;
     color: #fff;
@@ -279,9 +287,9 @@ footer {
     position: relative;
     width: 100%;
     height: 50px;
-  }
+}
 
-  .copy{
+.copy {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,11 +297,12 @@ footer {
     padding-top: 20px;
     border-top: 1px solid #afafaf;
     font-size: 12px;
-  }
+}
 
 
-  /*按鈕*/
-  .edit-btn{
+/*按鈕*/
+
+.edit-btn {
     background-color: #5a3a29;
     color: #fff;
     font-size: 16px;
@@ -303,12 +312,13 @@ footer {
     margin: 0px 10px;
     height: 24px;
 }
-  .edit-btn:hover{
+
+.edit-btn:hover {
     background-color: #5a3a2967;
     color: #5a3a29;
 }
 
-.stop-btn{
+.stop-btn {
     background-color: #B71515;
     color: #fff;
     font-size: 16px;
@@ -318,12 +328,13 @@ footer {
     margin: 0px 10px;
     height: 24px;
 }
-  .stop-btn:hover{
+
+.stop-btn:hover {
     background-color: #EAE4DD;
     color: #B71515;
 }
 
-.start-btn{
+.start-btn {
     background-color: #1ab715;
     color: #fff;
     font-size: 16px;
@@ -333,7 +344,8 @@ footer {
     margin: 0px 10px;
     height: 24px;
 }
-  .start-btn:hover{
+
+.start-btn:hover {
     background-color: #EAE4DD;
     color: #1ab715;
 }
