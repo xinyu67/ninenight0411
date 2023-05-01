@@ -69,8 +69,8 @@ namespace DI.Service
 
                 // 將使用者資料填入
                 string TempString;
-                TempString = TempMail.Replace("{{UserName}}", User_name);
-                TempString = TempMail.Replace("{{ValidateCode}}", ValidateCode);
+                TempMail = TempMail.Replace("{{UserName}}", User_name);
+                TempMail = TempMail.Replace("{{ValidateCode}}", ValidateCode);
 
 
                 //寄email
@@ -94,7 +94,7 @@ namespace DI.Service
                 // 設定信件主旨
                 mail.Subject = " 會員註冊確認信 ";
                 // 設定信件內容
-                mail.Body = TempString;
+                mail.Body = TempMail;
                 // 設定信件內容為 HTML 格式
                 mail.IsBodyHtml = true;
                 // 送出信件
