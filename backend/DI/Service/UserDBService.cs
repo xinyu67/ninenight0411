@@ -213,7 +213,7 @@ namespace DI.Service
                 command.Parameters.AddWithValue("@user_authcode", AuthCode);
                 command.Parameters.AddWithValue("@user_phone", newMember.user_phone);
                 command.Parameters.AddWithValue("@user_address", newMember.user_address);
-                command.Parameters.AddWithValue("@user_level", 0);
+                command.Parameters.AddWithValue("@user_level", 1);
                 command.Parameters.AddWithValue("@user_start", 0);
                 command.Parameters.AddWithValue("@isdel", 0);
                 command.Parameters.AddWithValue("@create_id", newMember.user_account);
@@ -557,7 +557,7 @@ namespace DI.Service
             // 取得傳入帳號的會員資料
             User LoginMember = GetDataByAccount(user_account);
             // 判斷資料庫欄位，用以確認是否為 Admon
-            if (LoginMember.user_level)
+            if (LoginMember.user_level == false)
             {
                 Role += ",Admin"; // 添加 Admin
             }
