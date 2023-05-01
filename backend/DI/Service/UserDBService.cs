@@ -44,6 +44,8 @@ namespace DI.Service
                         Data.user_id = (Guid)reader["user_id"];
                         Data.user_account = reader["user_account"].ToString();
                         Data.user_name = reader["user_name"].ToString();
+                        Data.user_email = reader["user_email"].ToString();
+                        Data.user_phone = reader["user_phone"].ToString();
                         Data.user_level = (bool)reader["user_level"];
                         Data.user_start = (int)reader["user_start"];
                         DataList.Add(Data);
@@ -120,7 +122,7 @@ namespace DI.Service
                         Data.user_id = (Guid)reader["user_id"];
                         Data.user_account = reader["user_account"].ToString();
                         Data.user_name = reader["user_name"].ToString();
-                        Data.user_gender = (int)reader["user_gender"];
+                        Data.user_gender = (bool)reader["user_gender"];
                         Data.user_birthday = reader["user_birthday"].ToString();
                         Data.user_email = reader["user_email"].ToString();
                         Data.user_phone = reader["user_phone"].ToString();

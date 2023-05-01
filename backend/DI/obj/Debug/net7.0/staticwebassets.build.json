@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OqMtzsSIf64sO784Y95ApcdIxttGlnnAAG0qnwB40JM=",
+  "Hash": "BTjNNGGawnNACoOAsC33HVMmZ9uSL8VsjRpmyzoCNxw=",
   "Source": "DI",
   "BasePath": "_content/DI",
   "Mode": "Default",
@@ -406,6 +406,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\20230427170055aboutus3.png"
+    },
+    {
+      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230501171159品牌故事.png",
+      "SourceId": "DI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "BasePath": "_content/DI",
+      "RelativePath": "image/20230501171159品牌故事.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\20230501171159品牌故事.png"
+    },
+    {
+      "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\20230501205352bannerpng.png",
+      "SourceId": "DI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\",
+      "BasePath": "_content/DI",
+      "RelativePath": "image/20230501205352bannerpng.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\20230501205352bannerpng.png"
     },
     {
       "Identity": "C:\\Users\\silvi\\OneDrive\\桌面\\DI-2\\ninenight0411\\backend\\DI\\wwwroot\\image\\2unnamed2.jpg",

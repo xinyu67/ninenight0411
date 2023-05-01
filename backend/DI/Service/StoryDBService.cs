@@ -38,6 +38,7 @@ namespace DI.Service
                         Data.story_title = reader["story_title"].ToString();
                         Data.story_content = reader["story_content"].ToString();
                         Data.story_img = img;
+                        Data.create_time = (DateTime)reader["create_time"];
                         DataList.Add(Data);
                     }
                 }
@@ -50,7 +51,8 @@ namespace DI.Service
                 {
                     conn.Close();
                 }
-                return DataList;
+                //return DataList;
+                return DataList.OrderByDescending(item => item.create_time).ToList();
             }
         }
 
