@@ -5,44 +5,414 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>產品總覽</title>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="./css/test.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="main rounded">
-            <table class="market table me-4">
-                <thead class="js-sort-advanced">
-                    <tr>
-                        <th width="16.6%">作物名稱</th>
-                        <th width="16.6%">上價
 
-                        </th>
-                        <th width="16.6%">中價
+    <header>
+        <div class="header-content ">
+            <div class="logo">
+                <a href="./front-index.html" target="_self"><img src="./img/logo.png "></a>
+            </div>
 
-                        </th>
-                        <th width="16.6%">下價
+            <div class="center-box ">
+                <nav class="menu">
+                    <ul>
+                        <li>
+                            <a href="./front-story.html">品牌故事</a>
+                        </li>
+                        <li>
+                            <a href="./front-news.html">最新資訊</a>
+                        </li>
+                        <li>
+                            <a href="./front-store.html">門市據點</a>
+                        </li>
+                        <li class="this-page">
+                            <a href="./front-product.html">產品總覽</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="showList">
-                    <tr>
-                        <td colspan="6" class="text-center p-3">請輸入並搜尋想比價的作物名稱^＿^</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="right-box ">
+                <ul>
+                    <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <img src="./img/bannerpng3.png">
+        <div class="content-body">
+            <div id="sidebar" class="sidebar">
+
+                <div class="sidebar-top">
+                    <span class="eng">SHOP BY CATEGORIES</span>
+                    <span class="chi">產品篩選</span>
+                </div>
+
+                <div class="sidebar-down">
+                    <div class="sidenav">
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select0" style="width:100%;">
+                                    <!-- <option>虎牌</option>
+                                    <option>可樂娜</option>
+                                    <option>海尼根</option>
+                                    <option>虎牌</option>
+                                    <option>可樂娜</option>
+                                    <option>海尼根</option>
+                                    <option>虎牌</option>
+                                    <option>可樂娜</option> -->
+                                </select>
+                        </div><br><br>
+
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select1" style="width:100%;">
+                                    <!-- <option>產地Origin</option>
+                                    <option>產地Origin</option>
+                                    <option>產地Origin</option>
+                                    <option>產地Origin</option> -->
+                                </select>
+                        </div><br><br>
+
+                        <div class="custom-select" style="width:100%;">
+                            <select class="custom-select2" style="width:100%;">
+                                    <option value=""><span class="c">容量</span> <span class="e">Volume</span></option>
+                                    <option value="1">300ml以下</option>
+                                    <option value="2">300ml~400ml</option>
+                                    <option  value="3">400ml~500ml</option>
+                                    <option  value="4">500ml~600ml</option>
+                                    <option  value="5">600ml~700ml</option>
+                                    <option  value="6">700ml以上</option>
+                                </select>
+                        </div><br><br>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-in">
+                <div class="top">
+                    <select name="top-select" class="top-select">
+                        <option value="">--請選擇--</option>
+                        <option value="">價格由低到高</option>
+                        <option value="">價格由高到低</option>
+                    </select>
+
+                    <p id="choose">目前選擇:</p>
+
+                    <div class="search">
+                        <input type="text" class="search-text" placeholder="&nbsp Search...">
+                        <span class="span"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+
+                </div>
+
+                <div class="menu-list">
+                    <!-- <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <a href="./front-product-introduction.html"><img src="./img/product/p1.png" alt="" class="img-auto" /></a>
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：荷蘭</div>
+                                        <div class="right">容量：650ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">75</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p2.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">海尼根星銀啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：荷蘭</div>
+                                        <div class="right">容量：330ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">40</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p3.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">虎牌1度C冰釀啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：新加坡</div>
+                                        <div class="right">容量：600ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">60</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p4.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">虎牌1度C冰釀啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：新加坡</div>
+                                        <div class="right">容量：330ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">30</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p5.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">百威啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：中國 </div>
+                                        <div class="right">容量：330ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">40</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p5-1.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">百威啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：中國</div>
+                                        <div class="right">容量：500ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">55</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p6.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">紅馬烈啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：香港</div>
+                                        <div class="right">容量：500ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">45</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p7.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">台啤特釀黑麥啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：臺灣 </div>
+                                        <div class="right">容量：500ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">80</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-product">
+                        <div class="p-2">
+                            <div class="product-img">
+                                <img src="./img/product/p8.png" alt="" class="img-auto" />
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-content-text">
+                                    <div class="menu-title"><a href="#">蕾曼老褐金帶啤酒</a></div>
+                                    <div class="m-content">
+                                        <div class="left">產地：比利時</div>
+                                        <div class="right">容量：750ml</div>
+                                    </div>
+                                    <div class="m-line"> </div>
+                                    <div class="price">
+                                        <div class="p-text">
+                                            <span id="t1">NT：$</span>
+                                            <span id="tt1">270</span>
+                                            <span id="t2">/</span>
+                                            <span id="t3">瓶</span>
+                                        </div>
+
+                                        <div class="buy">
+                                            <button><span>加入購物車<div class="cart"><img src="./img/product/p0.png"></div></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <div class="line">
+                版權所有 Copyright © 2023 Nine Night
+            </div>
+        </footer>
+
+        <div class="footer-slogan">
+            <div class="slogan-left">
+                禁止酒駕
+                <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
+                安全有保障&ensp;
+            </div>
+
+            <div class="slogan-right">
+                未滿十八歲者
+                <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
+                禁止飲酒
+            </div>
 
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- 請於此處貼上 axios CDN 連結-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./js/test.js"></script>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/test.js"></script>
+<script src="./js/front-product-api.js"></script>
 
 </html>

@@ -60,51 +60,62 @@
     <div class="content">
         <img src="./img/bannerpng8.png">
         <div class="content-body">
-            <table>
+
+
+            <table class="oder_all">
                 <tr>
-                    <th colspan="5" style="font-size: 20px;">商品清單</th>
+                    <th style="background-color:#9B8D8C">訂購人姓名</th>
+                    <th style="background-color:#9B8D8C">訂購人電話</th>
+                    <th style="background-color:#9B8D8C">取貨方式</th>
+                    <th style="background-color:#9B8D8C">取貨地址</th>
+                    <th style="background-color:#9B8D8C">預計取貨時間</th>
                 </tr>
+                <tbody class="order_person">
+                    <!-- <tr>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                    </tr> -->
+                </tbody>
+
+                <th colspan="6" style="background-color:rgba(255, 250, 244, 1)" ;></th>
 
                 <tr>
-                    <td>
-                        <div class="table-img"><img src="./img/product/p1.png"></div>
-                    </td>
-                    <td>海尼根星銀啤酒&nbsp;650ml</td>
-                    <td>$75</td>
-                    <td>
-                        2
-                        <!--<input id="dec" type="button" value="-">-->
-                        <!-- <input id="count" type="text" value="2" size="1" style="text-align:center;background-color:rgb(197, 197, 197);" readonly> -->
-                        <!--<input id="inc" type="button" value="+">-->
-                    </td>
-                    <td>$160</td>
-                </tr>
 
-                <tr>
-                    <td>
-                        <div class="table-img"><img src="./img/product/p3.png"></div>
-                    </td>
-                    <td>虎牌1度C冰釀啤酒&nbsp;600ml</td>
-                    <td>$60</td>
-                    <td>
-                        2
-                        <!--<input id="dec" type="button" value="-">-->
-                        <!-- <input type="text" value="2" size="1" style="text-align:center;background-color:rgb(197, 197, 197);" readonly> -->
-                        <!--<input id="inc" type="button" value="+">-->
-                    </td>
-                    <td>$120</td>
+                    <th>產品圖片</th>
+                    <th>產品名稱</th>
+                    <th>產品價格</th>
+                    <th>產品數量</th>
+                    <th>金額</th>
                 </tr>
+                <tbody class="order_body">
+                    <!-- <tr>
+                        <td>
+                            <div class="table-img"><img src="./img/product/p1.png"></div>
+                        </td>
+                        <td>海尼根星銀啤酒&nbsp;650ml</td>
+                        <td>$75</td>
+                        <td>
+                            2
+                        </td>
+                        <td>$160</td>
+                    </tr> -->
+                </tbody>
             </table>
 
             <div class="total-content">
                 <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
 
-                <div class="total-money">$280</div>
+                <div class="total-money"></div>
             </div>
 
             <div class="next">
                 <!--<button>去結帳</button>-->
-                <li><a href="./front-myorder.html">返回</a></li>
+                <a href="./front-myorder.html">
+                    <li>返回</li>
+                </a>
             </div>
         </div>
     </div>
@@ -132,6 +143,7 @@
 
 </body>
 
-<script src="./js/front-myorder.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/front-myorder-introduction-api.js"></script>
 
 </html>

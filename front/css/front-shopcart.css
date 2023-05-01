@@ -10,6 +10,10 @@ body {
     margin: 0;
 }
 
+.mouse{
+    cursor: pointer;
+}
+
 header {
     width: 100%;
     height: 70px;
@@ -145,6 +149,7 @@ header {
     position: relative;
     top: 70px;
     padding-bottom: 180px;
+    height: 720px;
 }
 
 .content img {

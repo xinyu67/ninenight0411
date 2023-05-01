@@ -101,18 +101,18 @@ input[type=text] {
     background-color: #b8b6b660;
     padding: 8px 0px;
 }
-.num-left{
+/* .num-left{
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-right: 1px solid #afafaf;
-}
+} */
 .cart-num{
     margin-left: 10px;
 }
 .num-right{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +132,7 @@ input[type=text] {
     padding: 8px 0px;
 }
 .other-left{
-    width: 33%;
+    width: 28%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,7 +142,7 @@ input[type=text] {
     margin-left: 10px;
 }
 .other-center{
-    width: 33%;
+    width: 44%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,7 +151,7 @@ input[type=text] {
     margin-left: 10px;
 }
 .other-right{
-    width: 33%;
+    width: 28%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@ input[type=text] {
 table{
     border: 1px solid #000;
     border-collapse: collapse;
-    width: 90%;
+    width: 100%;
     margin: 0px auto;
     margin-top: 50px;
     font-size: 18px;
@@ -186,7 +186,10 @@ table td{
     background-color: #b8b6b6;
     font-weight: bold;
 }
-
+#totall{
+    background-color: #b8b6b6;
+    font-weight: bold;
+}
 
 
 /* content結束 */

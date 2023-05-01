@@ -36,19 +36,26 @@
                     </ul>
                 </nav>
             </div>
-            <div class="right-box">
+            <div class="right-box" id="login1">
+                <ul>
+                    <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
                         <a href="./front-myorder.html">我的訂單</a>
-                        <a href="./login.html">登 &nbsp 出</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
-                    <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </div>
 
@@ -67,50 +74,45 @@
                     <th>總金額</th>
                     <th>操作</th>
                 </tr>
-
-                <tr>
-                    <td>
+                <tbody class="product_all">
+                    <!--    <tr>
+                        <td>
                         <div class="table-img"><img src="./img/product/p1.png"></div>
                     </td>
                     <td>海尼根星銀啤酒&nbsp;650ml</td>
                     <td>$75</td>
                     <td>
-                        <!--<input id="dec" type="button" value="-">-->
                         <input id="count" type="text" value="2" size="1" style="text-align:center;">
-                        <!--<input id="inc" type="button" value="+">-->
                     </td>
                     <td>$160</td>
                     <td>
                         <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
                     </td>
-                </tr>
-
-                <tr>
+                    </tr>-->
+                </tbody>
+                <!-- <tr>
                     <td>
                         <div class="table-img"><img src="./img/product/p3.png"></div>
                     </td>
                     <td>虎牌1度C冰釀啤酒&nbsp;600ml</td>
                     <td>$60</td>
                     <td>
-                        <!--<input id="dec" type="button" value="-">-->
                         <input id="count" type="text" value="2" size="1" style="text-align:center;">
-                        <!--<input id="inc" type="button" value="+">-->
                     </td>
                     <td>$120</td>
                     <td>
                         <li><a href="#"><i class="fa-solid fa-circle-minus"></i></a></li>
                     </td>
-                </tr>
+                </tr> -->
             </table>
 
             <div class="total-content">
                 <div class="total-chi"><span id="chi">商品金額總計</span><br><span id="eng">Total Product Amout</span></div>
 
-                <div class="total-money">$280</div>
+                <div class="total-money"></div>
             </div>
 
             <div class="next">
-                <!--<button>去結帳</button>-->
                 <li><a href="./front-shopcart-pay.html">去結帳</a></li>
             </div>
         </div>
@@ -138,6 +140,7 @@
     </div>
 
 </body>
-<script src="./js/front-myorder.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/front-shopcart-api.js"></script>
 
 </html>

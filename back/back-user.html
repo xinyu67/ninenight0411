@@ -43,21 +43,22 @@
             </div>
             <div class="right-box ">
                 <ul>
-                    <li><a href="#">歡迎　--------</i></a></li>
+                    <li id="welcome"></li>
                 </ul>
             </div>
         </div>
     </header>
     <div class="banner1">
         <div class="change"><a href="../front/front-index.html"><input type="button" class="change-btn mouse" value="切換會員頁面"></a></div>
-        <div class="logout"><a href="#"><input type="button" class="logout-btn mouse" value="登出"></a></div>
+        <div class="logout"><input type="button" id="logout" class="logout-btn mouse" value="登出"></div>
     </div>
     <div class="content">
         <div class="search">
-            <input type="text" placeholder="search...">
-            <input type="button" class="search-btn mouse" value="搜尋">
+            <input type="search" id="search" placeholder="輸入欲查詢的 '帳號' 或 '姓名' 關鍵字...">
+            <input type="button" id="search_btn" class="search-btn mouse" value="搜尋">
         </div>
-        <table>
+        <div id="error"></div>
+        <table id="table">
             <tr align="center">
                 <th>帳號</th>
                 <th>姓名</th>
@@ -133,6 +134,6 @@
         </div>
     </footer>
 </body>
-<!-- <script src="./js/back-user.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/back-user.js"></script>
 </html>

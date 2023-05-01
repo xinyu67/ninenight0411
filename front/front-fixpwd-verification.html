@@ -39,19 +39,23 @@
                 </nav>
             </div>
             <div class="right-box" id="login1">
-                <!-- <ul>
+                <ul>
                     <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
                 </ul> -->
                 <div class="dropdown">
-                    <button class="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp; XXX 你好 &ensp; &ensp;</button>
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
                     <div class="dropdown-content">
                         <a href="./front-fix-user.html">修改資料</a>
                         <a href="./front-fixpwd-verification.html">修改密碼</a>
                         <a href="./front-myorder.html">我的訂單</a>
-                        <a href="#">登 &nbsp 出</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
                     </div>
                 </div>
-
                 <ul id="cart">
                     <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
@@ -65,9 +69,10 @@
             <div class="login-content">
                 <div class="login-user">會員信箱：<input type="text" class="user-textbox" required></div>
                 <div class="verification-pwd">
-                    <div class="aa">驗證碼：<input type="text" class="verification-textbox" required></div><a href="# " class="verification">驗證碼發送</a></div>
+                    <div class="aa">驗證碼：<input type="text" class="verification-textbox" required></div>
+                    <a href="#" onclick="sendEmail()" class="verification">驗證碼發送</a></div>
                 <div class="buttons">
-                    <!-- <a href="./reset.html" class="noline"></a> --><input type="submit" class="down mouse" value="下一步">
+                    <!-- <a href="./reset.html" class="noline"></a> --><input type="button" onclick="next()" class="down mouse" value="下一步">
                     <a href="#" class="noline"><input type="button" class="cancel mouse" value="取消"></a>
                 </div>
             </div>
@@ -94,3 +99,5 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/front-fixpwd-verification-api.js"></script>

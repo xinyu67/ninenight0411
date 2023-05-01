@@ -38,9 +38,26 @@
                     </ul>
                 </nav>
             </div>
-            <div class="right-box ">
+            <div class="right-box" id="login1">
                 <ul>
                     <li><a href="./login.html">會員註冊 / 登入  <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-box" id="login2" style="display:none">
+                <!-- <ul>
+                    <li><a href="./front-login-index.html">-------- 您好 <i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+                </ul> -->
+                <div class="dropdown">
+                    <button class="userbtn" id="userbtn"><i class="fa-regular fa-circle-user"></i>&nbsp;<a id="useer"></a>　你好 &ensp; &ensp;</button>
+                    <div class="dropdown-content">
+                        <a href="./front-fix-user.html">修改資料</a>
+                        <a href="./front-fixpwd-verification.html">修改密碼</a>
+                        <a href="./front-myorder.html">我的訂單</a>
+                        <a id="logout" class="mouse">登 &nbsp 出</a>
+                    </div>
+                </div>
+                <ul id="cart">
+                    <li><a href="./front-shopcart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -50,11 +67,11 @@
         <div class="login-word">重設密碼</div>
         <form>
             <div class="login-content">
-                <div class="login-user">重設密碼：<input type="text" class="user-textbox" required></div>
-                <div class="login-user">確認密碼：<input type="text" class="user-textbox" required></div>
+                <div class="login-user">重設密碼：<input type="password" class="user-textbox" required></div>
+                <div class="login-user">確認密碼：<input type="password" class="check user-textbox" required></div>
                 <div class="buttons">
-                    <input type="button" class="down mouse" value="送出">
-                    <input type="reset" class="cancel mouse" value="重設"></a>
+                    <input type="reset" class="cancel mouse" value="清除">
+                    <input type="button" class="down mouse" onclick="send()" value="送出">
                 </div>
             </div>
         </form>
@@ -80,3 +97,5 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/front-reset-pwd-api.js"></script>

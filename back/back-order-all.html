@@ -25,14 +25,14 @@
     </div>
     <div class="content">
         <div class="num">
-            <div class="num-left">購物車編號：<div class="cart-num">S492DF85VFTT521D</div></div>
-            <div class="num-right">訂單編號：<div class="order-num">GTS569HX50USXKT6</div></div>
+            <!-- <div class="num-left">購物車編號：<div class="cart-num" id="cart_num">S492DF85VFTT521D</div></div> -->
+            <div class="num-right">訂單編號：<div class="order-num" id="order_num">GTS569HX50USXKT6</div></div>
         </div>
         <div class="other">
-            <!-- other-center之後要改取貨地址或債配地址 -->
-            <div class="other-left">會員帳號：<div class="user-num">1311131028</div></div>
-            <div class="other-center">取貨地址：<div class="takedelivery-num">台中旗艦店</div></div>
-            <div class="other-right">下單時間：<div class="time-num">2023-03-25 20:32:22</div></div>
+            <!-- other-center之後要改取貨地址或宅配地址 -->
+            <div class="other-left">會員帳號：<div class="user-num" id="user_num">1311131028</div></div>
+            <div class="other-center"><div class="address" id="address"></div><div class="takedelivery-num" id="takedelivery_num">台中旗艦店</div></div>
+            <div class="other-right">下單時間：<div class="time-num" id="time_num">2023-03-25 20:32:22</div></div>
         </div>
         <table>
         <tr align="center">
@@ -41,7 +41,8 @@
             <th>產品數量</th>
             <th>產品價格</th>
         </tr>
-        <tr align="center">
+        <tbody class="order_all_content"></tbody>
+        <!-- <tr align="center">
             <td>GTS569HX50USXKT6</td>
             <td>柏克金科隆啤酒</td>
             <td>2</td>
@@ -58,11 +59,11 @@
             <td>虎牌啤酒</td>
             <td>1</td>
             <td>50</td>
-        </tr>
+        </tr>-->
         <tr class="total">
             <td colspan="3" id="total">總金額</td>
-            <td align="center" id="total">345</td>
-        </tr>
+            <td align="center" id="totall">345</td>
+        </tr> 
     </table>
     </div>
     <div class="footer-slogan">
@@ -84,5 +85,6 @@
         </div>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-order-all.js"></script>
 </html>
