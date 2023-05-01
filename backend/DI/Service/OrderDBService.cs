@@ -74,9 +74,9 @@ namespace DI.Service
         #endregion
         
         #region 總覽訂單
-        public List<Order_F_AllViewModels> AllOrder()
+        public List<Order_F_AllViewModels> AllOrder(Guid user_id)
         {
-            string Sql = "SELECT * FROM \"order\" AS O inner join cart AS C on O.cart_id=C.cart_id  where C.\"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and O.isdel='false'";
+            string Sql = $@"SELECT * FROM ""order"" AS O inner join cart AS C on O.cart_id=C.cart_id  where C.""user_id""='{user_id}' and O.isdel='false'";
 
             List<Order_F_AllViewModels> DataList = new List<Order_F_AllViewModels>();
             using (SqlConnection conn = new SqlConnection(connectionString))

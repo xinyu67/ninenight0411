@@ -21,9 +21,9 @@ namespace DI.Controllers
 
         #region 購物車新增
         [HttpPost]
-        public IActionResult CreateCart([FromQuery] Guid product_id)
+        public IActionResult CreateCart([FromQuery] Guid product_id, Guid user_id)
         {
-            var create = _cartDBService.CreateCart(product_id);
+            var create = _cartDBService.CreateCart(product_id, user_id);
             if (create == null)
             {
                 return NotFound("找不到資源");

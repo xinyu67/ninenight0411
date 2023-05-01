@@ -142,7 +142,7 @@ namespace DI.Service
         }
         #endregion
 
-        #region 前 - 修改狀態
+        #region 前 - 修改資料
         public string F_PutUser(User_F_UpdateViewModel value)
         {
             string sql = $@"UPDATE ""user"" SET user_name=@user_name,user_gender=@user_gender,user_address=@user_address WHERE user_id = @user_id";

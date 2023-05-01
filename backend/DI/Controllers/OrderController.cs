@@ -34,9 +34,9 @@ namespace DI.Controllers
         
         #region 訂單總覽
         [HttpGet]
-        public IActionResult AllOrder()
+        public IActionResult AllOrder([FromQuery] Guid user_id)
         {
-            var result = _orderDBService.AllOrder();
+            var result = _orderDBService.AllOrder(user_id);
             if (result == null )
             {
                 return NotFound("找不到資源");

@@ -33,7 +33,7 @@ namespace DI.Service
        
 
     #region 新增購物車
-    public string CreateCart(Guid product_id)
+    public string CreateCart(Guid product_id , Guid user_id)
         {
             //token解碼
             //製作金鑰
@@ -64,7 +64,7 @@ namespace DI.Service
 
 
             //判斷此帳號是否有購物車了
-            string yesno_cart = "SELECT count(*) AS COUNT FROM cart where \"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and cart_states='0'";
+            string yesno_cart = $@"SELECT count(*) AS COUNT FROM cart where ""user_id""='{user_id}' and cart_states='0'";
 
             //新增cart
             string sql_cart = $@"INSERT INTO cart(cart_id,user_id,cart_states,isdel,create_id,create_time,update_id,update_time) VALUES (@cart_id,@user_id,@cart_states,@isdel,@create_id,@create_time,@update_id,@update_time)";
@@ -92,7 +92,7 @@ namespace DI.Service
                     if (count == 0)
                     {
                         comm_cart.Parameters.AddWithValue("@cart_id", Cart_NewGuid);
-                        comm_cart.Parameters.AddWithValue("@user_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
+                        comm_cart.Parameters.AddWithValue("@user_id", user_id);
                         comm_cart.Parameters.AddWithValue("@cart_states", "0");
                         comm_cart.Parameters.AddWithValue("@isdel", "0");
                         comm_cart.Parameters.AddWithValue("@create_id", "814aa3a7-f4d7-4a78-9eb5-0aff99d2d003");
@@ -103,7 +103,7 @@ namespace DI.Service
                     }
                     else {
                         //抓購物車id
-                        string catr_id = "SELECT cart_id FROM cart where \"user_id\"='814aa3a7-f4d7-4a78-9eb5-0aff99d2d003' and cart_states='0'";
+                        string catr_id = $@"SELECT cart_id FROM cart where ""user_id""='{user_id}' and cart_states='0'";
                         SqlCommand comm_cart_id = new SqlCommand(catr_id, conn);
                         //Guid G_cart_id = (Guid)comm_cart_id.ExecuteScalar();
                         //購物車編號
