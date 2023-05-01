@@ -7,6 +7,7 @@ namespace DI.Service
 {
     public class ForgetPwdDBService
     {
+        private readonly UserDBService _userService;
         private readonly IConfiguration configuration;
         private readonly string connectionString;
         //發送email的人
@@ -14,8 +15,9 @@ namespace DI.Service
         private string gmail_password = "ejcmhmtfigokebco"; //Gmail 密碼
         private string gmail_mail = "ninenight999999@gmail.com"; //Gmail 信箱
 
-        public ForgetPwdDBService(IConfiguration Configuration)
+        public ForgetPwdDBService(UserDBService userdbService, IConfiguration Configuration)
         {
+            _userService = userdbService;
             configuration = Configuration;
             connectionString = configuration.GetConnectionString("Local");
 
@@ -151,12 +153,13 @@ namespace DI.Service
         #region 修改密碼
         public string upd_pwd(string email,string pwd, string pwd_two)
         {
+            string USER_pwd = _userService.HashPassword(pwd);
             if (pwd == pwd_two)
             {
                 SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
                 //修改資料庫驗證碼欄位
-                string upd_pwd_sql = $@"UPDATE ""user"" SET user_pwd='{pwd}' WHERE user_email ='{email}'";
+                string upd_pwd_sql = $@"UPDATE ""user"" SET user_pwd='{USER_pwd}' WHERE user_email ='{email}'";
                 SqlCommand upd_pwd_command = new SqlCommand(upd_pwd_sql, conn);
                 int num = upd_pwd_command.ExecuteNonQuery();
                 conn.Close();
