@@ -123,6 +123,7 @@ header {
     color: #b8a397;
 }
 
+
 /**/
 
 .userbtn,
@@ -166,10 +167,11 @@ header {
     display: block;
 }
 
+
 /*header結束*/
 
 content {
-    height: 100%;
+    height: 533px;
     width: 100%;
     display: flex;
     justify-content: center;

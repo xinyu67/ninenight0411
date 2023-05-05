@@ -53,7 +53,7 @@ let data = [];
     });
 })();
 
-//產品總覽
+//總覽
 function news(arr) {
     //抓取欄位
     const news_all = document.querySelector(".news-content");
@@ -65,7 +65,7 @@ function news(arr) {
                     <span>${data.new_startdate}</span>
                     <span>-</span>
                     <span>${data.new_enddate}</span>
-                    <a href="#">${data.new_title}</a>
+                    <a href="./front-news.html">${data.new_title}</a>
         </div>
     `;
     });
@@ -99,7 +99,7 @@ function product(add) {
             ${p_data.product_name}
         </div>
         <div class="products-img">
-            <a href="#"><img src="${p_data.product_img}"></a>
+            <a href="./front-product.html"><img src="${p_data.product_img}"></a>
         </div>
     </div>
     `;

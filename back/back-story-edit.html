@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--網站icon-->
-    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
     <!--網站icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./css/back-story-edit.css">
     <title>(後台)編輯品牌故事</title>
 </head>
+
 <body>
     <header>
         <div class="header-content ">
@@ -21,40 +24,42 @@
         </div>
     </header>
     <div class="banner1">
-        <div class="back"><a href="./back-story.html"><input type="button" class="back-btn mouse" value="返回"></a></div>
-    </div>
-    <form>
-    <div class="content">
-        <div class="story-content">
-            <div class="story-top">
-                <div class="story-top-left"><img id="blah" src="" /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" />
-                <!-- 上傳圖片時才會有的檔名 -->
-                <input type="hidden" id="imgsrc">
-                <!-- 本來圖片的檔名 -->
-                <input type="hidden" id="imgsrc1">
-                </div>
-                <div class="story-top-right">
-                    <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入活動標題" required/></div>
-                    <div class="storycontent">
-                        內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="story-bottom">
-                
-                <input type="button" id="reset" class="cancel-btn mouse noline" value="重設">
-                <input type="button" id="button" class="yes-btn mouse noline" value="確認修改">
-            </div>
+        <div class="back">
+            <a href="./back-story.html"><input type="button" class="back-btn mouse" value="返回"></a>
         </div>
     </div>
-</form>
+    <form>
+        <div class="content">
+            <div class="story-content">
+                <div class="story-top">
+                    <div class="story-top-left"><img id="blah" src="" /><input id="img-ing" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                        <!-- 上傳圖片時才會有的檔名 -->
+                        <input type="hidden" id="imgsrc">
+                        <!-- 本來圖片的檔名 -->
+                        <input type="hidden" id="imgsrc1">
+                    </div>
+                    <div class="story-top-right">
+                        <div class="title">標題：<input type="text" id="title" value="" placeholder="請輸入標題" required/></div>
+                        <div class="storycontent">
+                            內容：　<textarea name="editorDemo" id="editorDemo" style="white-space:pre-wrap;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-bottom">
+
+                    <input type="button" id="reset" class="cancel-btn mouse noline" value="重設">
+                    <input type="button" id="button" class="yes-btn mouse noline" value="確認修改">
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="footer-slogan">
         <div class="slogan-left">
             禁止酒駕
             <div class="slogan-img"><img src="./img/bottomIcon1.png"></div>
             安全有保障&ensp;
         </div>
-    
+
         <div class="slogan-right">
             未滿十八歲者
             <div class="slogan-img"><img src="./img/bottomIcon2.png"></div>
@@ -63,11 +68,12 @@
     </div>
     <footer>
         <div class="copy">
-            <p>版權所有 Copyright © 2023   Nine Night </p>
+            <p>版權所有 Copyright © 2023 Nine Night </p>
         </div>
     </footer>
 </body>
 <script src="./ckeditor/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./js/back-story-edit.js"></script>
+
 </html>

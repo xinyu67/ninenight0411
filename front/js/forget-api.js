@@ -8,7 +8,7 @@ function sendEmail() {
     }
 
     if (email === "") {
-        alert('會員信箱為必填');
+        alert('會員信箱為必填!!');
     } else if (!validateEmail(email)) {
         alert('信箱格式錯誤請重新輸入!!');
     } else {
@@ -24,6 +24,7 @@ function sendEmail() {
             })
             .catch(error => {
                 console.error(error);
+                alert("查無此信箱⚠️");
                 // TODO: 處理錯誤
             });
     }
@@ -39,10 +40,12 @@ function next() {
         return regex.test(email);
     }
 
-    if (email === "" || vcode === "") {
-        alert('會員信箱為必填');
+    if (email === "") {
+        alert('會員信箱為必填!!');
     } else if (!validateEmail(email)) {
         alert('信箱格式錯誤請重新輸入!!');
+    } else if (vcode === "") {
+        alert('驗證碼不得為空!!');
     } else {
         // 使用 axios 發送 GET 請求
         axios.get('https://localhost:7094/api/ForgetPwd/verify_cord', {
@@ -62,6 +65,7 @@ function next() {
             })
             .catch(error => {
                 console.error(error);
+                alert("查無此信箱⚠️");
                 // TODO: 處理錯誤
             });
     }

@@ -60,10 +60,12 @@ if (login === null) {
             return regex.test(email);
         }
 
-        if (email === "" || vcode === "") {
-            alert("會員信箱為必填");
+        if (email === "") {
+            alert("會員信箱為必填!!");
         } else if (!validateEmail(email)) {
             alert("信箱格式錯誤請重新輸入!!");
+        } else if (vcode === "") {
+            alert("驗證碼不得為空!!");
         } else {
             // 使用 axios 發送 GET 請求
             axios
